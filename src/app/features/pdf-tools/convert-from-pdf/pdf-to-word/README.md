@@ -100,3 +100,38 @@ Nếu gặp lỗi "Máy chủ chuyển đổi PDF hiện không khả dụng", h
 1. Thêm các tùy chọn chuyển đổi như chọn định dạng, bảo tồn hình ảnh, v.v.
 2. Cải thiện xử lý lỗi và thông báo cho người dùng
 3. Tối ưu hóa quá trình chuyển đổi cho các file PDF lớn 
+
+# PDF to Word Converter API
+
+Dịch vụ API chuyển đổi file PDF sang Word (DOCX).
+
+## Triển khai trên Railway.app
+
+### Các bước triển khai:
+
+1. Đăng ký tài khoản trên [Railway.app](https://railway.app/)
+2. Cài đặt Railway CLI: `npm i -g @railway/cli`
+3. Đăng nhập vào Railway: `railway login`
+4. Khởi tạo project: `railway init`
+5. Triển khai ứng dụng: `railway up`
+
+### Hoặc triển khai qua Github:
+
+1. Đăng nhập vào [Railway.app](https://railway.app/) bằng tài khoản Github
+2. Tạo New Project -> Deploy from GitHub repo
+3. Chọn repository của bạn
+4. Railway sẽ tự động detect các cấu hình và triển khai ứng dụng
+
+### Biến môi trường (không bắt buộc):
+
+- `PORT`: Port để chạy ứng dụng (mặc định: 5000)
+
+## API Endpoints
+
+- `POST /api/convert-pdf-to-word`: Chuyển đổi PDF sang Word
+- `GET /api/health`: Kiểm tra trạng thái API
+
+## Lưu ý
+
+- API này sử dụng Flask và gunicorn để phục vụ requests
+- Các dependencies sẽ được tự động cài đặt từ file requirements.txt 
