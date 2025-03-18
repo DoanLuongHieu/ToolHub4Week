@@ -1,5 +1,7 @@
 # ToolHub4Week - Ứng dụng Đa Công cụ Xử lý Tài liệu & Dữ liệu
 
+![ToolHub4Week Logo](https://github.com/DoanLuongHieu/ToolHub4Week/blob/main/src/assets/images/logo.png)
+
 ToolHub4Week là một ứng dụng web toàn diện cung cấp nhiều công cụ hữu ích để xử lý tài liệu, hình ảnh và các tác vụ tiện ích khác. Dự án được xây dựng trên Angular và Firebase, cung cấp giao diện người dùng hiện đại và trải nghiệm liền mạch cho người dùng.
 
 ## Tính năng chính
@@ -47,27 +49,42 @@ ToolHub4Week là một ứng dụng web toàn diện cung cấp nhiều công c�
 - **Backend**: Firebase (Authentication, Hosting)
 - **Thư viện**: pdf-lib, pdfjs-dist, cropperjs, exifr, file-saver
 
-## Yêu cầu cài đặt
-
+## Yêu cầu cài đặt
 - Node.js (phiên bản 18.x hoặc cao hơn)
 - npm (phiên bản 9.x hoặc cao hơn)
+- Python (phiên bản 3.9 hoặc cao hơn)
 - Angular CLI (phiên bản 17.x)
 - Git
 
-## Hướng dẫn cài đặt
+## Hướng dẫn cài đặt
 
-### 1. Clone repository
+### 1. Clone repository từ GitHub
 ```bash
 git clone https://github.com/DoanLuongHieu/ToolHub4Week.git
 cd ToolHub4Week
 ```
 
-### 2. Cài đặt dependencies
+### 2. Cài đặt dependencies cho Frontend (Angular)
 ```bash
 npm install
 ```
 
-### 3. Cấu hình Firebase
+### 3. Cài đặt môi trường ảo Python và dependencies
+```bash
+# Tạo môi trường ảo
+python -m venv venv
+
+# Kích hoạt môi trường ảo
+# Trên Windows:
+venv\Scripts\activate
+# Trên macOS/Linux:
+# source venv/bin/activate
+
+# Cài đặt các thư viện Python
+pip install -r src/requirements.txt
+```
+
+### 4. Cấu hình Firebase
 
 Dự án đã được cấu hình với Firebase, nhưng bạn cần thiết lập Authentication:
 
@@ -80,18 +97,18 @@ Dự án đã được cấu hình với Firebase, nhưng bạn cần thiết l�
 
 Xem thêm chi tiết tại: [FIREBASE_SETUP_GUIDE.txt](./src/FIREBASE_SETUP_GUIDE.txt)
 
-### 4. Chạy ứng dụng trong môi trường phát triển
+### 5. Chạy ứng dụng trong môi trường phát triển
 ```bash
 npm start
 ```
 Truy cập ứng dụng tại `http://localhost:4200/`
 
-### 5. Build cho môi trường production
+### 6. Build cho môi trường production
 ```bash
 npm run build
 ```
 
-### 6. Triển khai lên Firebase Hosting
+### 7. Triển khai lên Firebase Hosting
 ```bash
 # Cài đặt Firebase CLI nếu chưa có
 npm install -g firebase-tools
