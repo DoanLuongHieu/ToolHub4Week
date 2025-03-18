@@ -1,7 +1,5 @@
 # ToolHub4Week - Ứng dụng Đa Công cụ Xử lý Tài liệu & Dữ liệu
 
-![ToolHub4Week Logo](https://github.com/DoanLuongHieu/ToolHub4Week/blob/main/src/assets/images/logo.png)
-
 ToolHub4Week là một ứng dụng web toàn diện cung cấp nhiều công cụ hữu ích để xử lý tài liệu, hình ảnh và các tác vụ tiện ích khác. Dự án được xây dựng trên Angular và Firebase, cung cấp giao diện người dùng hiện đại và trải nghiệm liền mạch cho người dùng.
 
 ## Tính năng chính
