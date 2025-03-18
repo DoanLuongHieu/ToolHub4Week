@@ -52,7 +52,7 @@ ToolHub4Week là một ứng dụng web toàn diện cung cấp nhiều công c�
 - Node.js (phiên bản 18.x hoặc cao hơn)
 - npm (phiên bản 9.x hoặc cao hơn)
 - Angular CLI (phiên bản 17.x)
-- Git / Git LFS
+- Git
 
 ## Hướng dẫn cài đặt
 
