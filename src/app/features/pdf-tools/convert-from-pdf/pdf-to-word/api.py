@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["https://toolhub4week.web.app", "http://localhost:*"]}}) # Cho phép CORS để Angular có thể gọi API
+CORS(app, resources={r"/*": {"origins": "*"}})  # Cho phép tất cả các origin truy cập API
 
 # Thư mục để lưu trữ file tạm thời
 # Trên các dịch vụ cloud, thường chỉ /tmp là writable

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable, throwError, of } from 'rxjs';
+import { catchError, map, timeout, retry } from 'rxjs/operators';
 import { environment } from '../../../../../environments/environment';
 
 @Injectable({
@@ -20,6 +20,8 @@ export class PdfConversionService {
    */
   checkApiStatus(): Observable<boolean> {
     return this.http.get<{ status: string }>(`${this.apiUrl}/health`).pipe(
+      timeout(10000), // 10 giây timeout
+      retry(2), // Thử lại 2 lần nếu thất bại
       map(response => response.status === 'ok'),
       catchError(error => {
         console.error('API Health Check Error:', error);
@@ -41,6 +43,7 @@ export class PdfConversionService {
       reportProgress: true,
       observe: 'events'
     }).pipe(
+      timeout(60000), // 60 giây timeout cho quá trình chuyển đổi
       map((event: HttpEvent<Blob>) => {
         if (event.type === HttpEventType.Response) {
           return event.body as Blob;
