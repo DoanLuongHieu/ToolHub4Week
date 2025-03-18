@@ -138,7 +138,4 @@ Link: [ToolHub4Week](https://toolhub4week.web.app/)
 4. Push lên branch (`git push origin feature/amazing-feature`)
 5. Tạo Pull Request
 
-## Giấy phép
-
-Dự án được phân phối dưới giấy phép MIT. Xem `LICENSE` để biết thêm thông tin.
 
