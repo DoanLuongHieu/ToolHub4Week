@@ -1,27 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
-import { Observable, throwError, of } from 'rxjs';
-import { catchError, map, timeout, retry } from 'rxjs/operators';
-import { environment } from '../../../../../environments/environment';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PdfConversionService {
-  private readonly apiUrl: string;
+  private readonly apiUrl = 'http://localhost:5000/api'; // URL máy chủ Flask
 
-  constructor(private http: HttpClient) {
-    // Sử dụng URL API từ environment hoặc mặc định là localhost
-    this.apiUrl = environment.pdfToWordApiUrl || 'http://localhost:5000/api';
-  }
+  constructor(private http: HttpClient) {}
 
   /**
    * Kiểm tra trạng thái của server API
    */
   checkApiStatus(): Observable<boolean> {
     return this.http.get<{ status: string }>(`${this.apiUrl}/health`).pipe(
-      timeout(10000), // 10 giây timeout
-      retry(2), // Thử lại 2 lần nếu thất bại
       map(response => response.status === 'ok'),
       catchError(error => {
         console.error('API Health Check Error:', error);
@@ -43,7 +37,6 @@ export class PdfConversionService {
       reportProgress: true,
       observe: 'events'
     }).pipe(
-      timeout(60000), // 60 giây timeout cho quá trình chuyển đổi
       map((event: HttpEvent<Blob>) => {
         if (event.type === HttpEventType.Response) {
           return event.body as Blob;

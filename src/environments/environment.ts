@@ -9,6 +9,4 @@ export const environment = {
     appId: '1:205835177320:web:98c7197b032868328a1add',
     measurementId: 'G-DD23FSVQ4Y',
   },
-  // URL API cho dịch vụ chuyển đổi PDF sang Word
-  pdfToWordApiUrl: 'https://pdf-to-word-api.onrender.com/api',
 };
