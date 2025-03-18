@@ -1,0 +1,78 @@
+<div class="converter-container">
+  <h1>Image Format Converter</h1>
+
+  <div
+    class="upload-section"
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop($event)"
+    [class.drag-over]="isDragging"
+  >
+    <label for="fileInput" class="file-input-label">
+      <span>Choose Image File or Drag & Drop</span>
+      <input
+        type="file"
+        id="fileInput"
+        accept=".jpg,.jpeg,.png,.webp"
+        (change)="handleFileInput($event)"
+        [attr.aria-label]="'Choose image file to convert'"
+      />
+    </label>
+    <div class="supported-formats">Supported formats: JPG, PNG, WebP</div>
+  </div>
+
+  <div class="error-message" *ngIf="state().error">
+    {{ state().error }}
+  </div>
+
+  <div class="conversion-status" *ngIf="state().isConverting">
+    Converting image...
+  </div>
+
+  <div class="image-preview-container" *ngIf="state().originalImage">
+    <div class="image-preview">
+      <h3>Original Image ({{ state().originalFormat?.toUpperCase() }})</h3>
+      <div class="image-display">
+        <img
+          [src]="state().originalImage!"
+          alt="Original image"
+          class="preview-image"
+        />
+      </div>
+    </div>
+
+    <div class="format-selection" *ngIf="!state().isConverting">
+      <h3>Convert to:</h3>
+      <div class="format-buttons">
+        <button
+          *ngFor="let format of getAvailableFormats()"
+          class="format-button"
+          (click)="convertImage(format)"
+          [class.selected]="state().targetFormat === format"
+        >
+          {{ format.toUpperCase() }}
+        </button>
+      </div>
+    </div>
+
+    <div class="image-preview" *ngIf="state().convertedImage">
+      <h3>Converted Image ({{ state().targetFormat?.toUpperCase() }})</h3>
+      <div class="image-display">
+        <img
+          [src]="state().convertedImage!"
+          alt="Converted image"
+          class="preview-image"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="download-container" *ngIf="state().convertedImage">
+    <button
+      class="download-button"
+      (click)="downloadImage()"
+      [attr.aria-label]="'Download converted image'"
+    >
+      Download {{ state().targetFormat?.toUpperCase() }}
+    </button>
+  </div>
+</div>

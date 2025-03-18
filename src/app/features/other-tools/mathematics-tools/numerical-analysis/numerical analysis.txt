@@ -1,0 +1,117 @@
+* Cho 3 số a, b, c trong đó:
+- a là ngày sinh (a ∈ (1, 31) )
+- b là tháng sinh (b ∈ (1, 12) )
+- c là năm sinh (c ∈ (1900, 2099). 
+
+* Hãy phân tích và mấu chốt là trước tiên đưa ra TÓM TẮT của việc phân tích, sao cho chỉ dùng các phép tính cơ bản: phép cộng (+), phép trừ(-), phép nhân(*), phép chia(/), ta có thể biểu thị c thông qua a và b(chỉ được sử dụng a và b để có được c, không sử dụng các chữ số và biến khác. 
+
+* Một trong những ý tưởng ở thời điểm hiện tại của tôi là phân tích c thành tích của các số nguyên tố: 
+ 
+- Ví dụ a = 23, b = 11, c = 2002. Ta có: 2002 = 2 * 7 * 11 * 13, khi đó ta có thể biến đổi a, b nhiều lần thông qua các phép cộng, trừ, nhân, chia để có được các kết quả là 2, 7, 11, 13, sau đó nhân các kết quả đó để có được c. Nếu c là một số nguyên tố, ta có thể chỉ sử dụng các phép cộng, trừ như a ± b(có thể ± a và b nhiều lần) để có được các kết quả là 1, 2, 3, ..., 9, khi đó ta chỉ việc ± với 1, 2, 3, ..., 9 để có được c theo ý muốn. 
+
+* Một ý tưởng khác là tách c thành tổng của các tích chữ số nhân với hệ 10, 100, 1000: 
+
+- Ví dụ, ta có c = 1938, ta có thể tách chúng: 1938 = 1*1000 + 9*100 + 3*10 + 8, sau đó 10, 100, 1000 đều có thể quy về 10, 10*10, 10*10*10. Khi đó tất cả các phép tính cộng, trừ, nhân, chia đều có thể quy về việc kết quả luôn thuộc hệ 10: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9). Bên cạnh đó, 10 có thể tách thành 2 * 5, vì vậy, nếu ta có thể quy về việc biến đổi a và b để luôn ra các kết quả từ 0 tới 9, theo lý thuyết ta có thể biến đổi a và b để có được c. 
+
+* Ngoài ra, tôi còn có 3 vấn đề mà bạn cần chú ý để tránh mắc phải: 
+- 1 là đề bài không yêu cầu sử dụng lũy thừa của 10, mà BẮT BUỘC chỉ được sử dụng các phép cộng, trừ, nhân, chia, vì vậy để không dùng lũy thừa của 10, ta sẽ sử dụng 10, 10*10, 10*10*10. 
+- 2 là khi ta biểu diễn các số nguyên tố khi đã tách c, ta không thể sử dụng các chữ số ngoài các chữ số a và b. Như ở ví dụ trên, 2 = (3b-a)/5, nhưng ta không thể dùng 3 và 5 trước khi ta có thể biễu diễn 3 và 5 bằng các chữ số a và b được cho sẵn ở đề bài. Ta phải biểu diễn 2 thành CHỈ các chữ số a và b, ví dụ như ở trên, a = 23, b = 11, khi đó 2 = a - b - b (không được gộp thành a - 2b vì 2 lúc này chưa được biểu diễn). 
+- 3 là MỘT ĐIỀU GÓP Ý, ta có thể sử dụng nhiều phép cộng trừ nhân chia thay vì chỉ dùng với 1 phép tính như a + b, a / b, ... như là a + b * a - a / b + a * a * a - b, và bên cạnh đó ta được sử dụng các phép toán lồng ghép là 2 dấu NGOẶC "(" và ")".Tất nhiên, bạn có thể đưa ra ý kiến khác, những hay phân tích 2 phương pháp này trước đã.
+
+* Sau khi phân tích sơ lược, ta có thể đưa ra thuật toán tổng quát như sau: 
+- Input: a (ngày), b (tháng), c (năm cần biểu diễn).
+- Output: Biểu thức toán học chỉ chứa a, b, phép toán +, -, *, / và dấu ngoặc
+- Phương pháp:
+
+Bước 1: Phân tích c thành dạng nguyên tố hoặc chữ số thập phân.
+Bước 2: Tìm cách biểu diễn từng thành phần (nguyên tố/chữ số) qua a và b.
+Bước 3: Kết hợp các thành phần bằng phép nhân (cho nguyên tố) hoặc tổng có trọng số (cho chữ số).
+
+* Ở đây, tôi cần chỉ rõ một vài điều: 
+a. Phần khó nhất của thuật toán là một công thức chung để chuyển đổi a và b sao cho luôn có được c. Trải qua rất nhiều phương pháp trước đó, tôi không thể tìm ra được phần công thức chung để có được c thông qua a và b vì a, b, c được nhập từ input của người dùng, chúng là ngẫu nhiên nên thật khó để tìm ra được điểm chung giữa các con số. 
+Vì vậy, tôi nảy ra một ý tưởng rằng nếu không tìm được điểm chung giữa các con số, ta có thể phân loại a và b thành các nhóm chữ số và với mỗi nhóm này, ta tìm được thuật toán nhỏ, khi đó với mỗi người dùng nhập a và b ngẫu nhiên, nếu chúng có cùng nhóm mà data có, thì thuật toán sẽ chạy và luôn tìm được c.
+Một số hướng mà chúng tôi hướng tới có thể là nhóm các số a và b theo việc chúng đồng dư (module), chúng có cùng chia hết cho một số (ví dụ 24 và 9 đều chia hết cho 3, 28 và 12 đều chia hết cho 2 và 4, 30 và 20 đều chia hết cho 2 và 5, ...), ...
+b. Ở bước 1, chúng tôi đưa ra 2 cách phân tích c thành dạng nguyên tố hoặc chữ số. 
+Với dạng nguyên tố, ta có thể thấy chúng luôn được tách dưới dạng tích của các số nguyên tố, điều này có thể khó khăn nếu c là tích của hai số nguyên tố lớn hơn a và b, ví dụ c = c1 * c2, (c1, c2) > a_max = 31, ví dụ c = 1927 = 41 * 47, khi này 41 và 47 đều lớn hơn 31, và vì vậy chúng ta sẽ rất khó để giữa các phép tính a và b tạo ra số 41 và 47. 
+Trong trường hợp này, ta có thể lựa chọn tính sáng tạo bằng cách sử dụng kết hợp giữa phép nhân chia và phép cộng trừ, ví dụ ta có a = 29, b = 5, làm thế nào để có phép tính giữa a và b mà cho ra c1 = 41, c2 = 47. Sau một hồi suy nghĩ, đây là câu trả lời: 41 = 29 + 5 + 5 + (29 - (29 - 5 - 5)) / 5 tương đương c1 = a + b + b + (a - (a - b - b)) / b = a + 2b + 2b / b = a + 2b + 2 (nên nhớ ta chỉ có thể sử dụng số 2 lúc rút gọn phép tính, khi và chỉ khi ta định nghĩa được số 2 bằng cách sử dụng phép tính (a - (a - b - b)) / b. Điều này cũng phải tương tự với các định nghĩa số khác. Tương tự với c2 = 47 = 29 + 5 + 5 + 5 + (29 - (29 - 5 - 5 - 5)) / 5 = a + b + b + b + (a - (a - b - b - b)) / b = a + 3b + 3b / b = a + 3b + 3 (3 được định nghĩa = a - (a - b - b - b)) / b.
+Khi đó, c = c1 * c2 = (a + 2b + 2)(a + 3b + 3).
+c. Ở bước 3, ta có thể thấy thuật toán nói rằng ta có thể "Kết hợp các thành phần bằng phép nhân (cho nguyên tố) hoặc tổng có trọng số (cho chữ số).". Nhưng điều này là chưa đủ, vì ta có thể kết hợp dùng cả 
+phép nhân chia và phép cộng trừ miễn sao chúng cho ra kết quả chính xác là được, không có giới hạn với số phép cộng trừ nhân chia.
+d. Khi thực hiện bước 1 dưới dạng chữ số thập phân, ta luôn quy về hệ 10, khi đó chúng ta có thể đưa về dưới dạng 10 = 2 * 5, và 100, 1000 cũng tương tự là 2 * 2 * 5 * 5 và 2 * 2 * 2 * 5 * 5 * 5.
+Vì vậy, để quy chuẩn hơn, ta sẽ cần một chú ý đặc biệt, đó là dù quy đổi c về bất kì phương pháp nào, sau khi biến đổi xong, ta luôn cần biến đổi các phép a và b sao cho chúng luôn bằng các chữ số từ 0 tới 9, vì khi đó mọi số c sẽ luôn được biểu diễn dưới dạng tổng, hiệu, tích, thương của bất kì mọi chữ số thập phân lẫn nhau.
+e. Chú ý ta cần tránh biến đổi các phép tính mà thương của chúng không là số tự nhiên, ví dụ 26/3, 30/7, 14/9, 13/11, 25/10, ... vì khi đó c là năm sinh, c ∈ (1900, 2099) nên c không thể là kiểu số khác ngoài số tự nhiên.
+
+* Giờ sau khi với một số phân tích, hãy đưa ra ý kiến của bạn (bổ sung suy nghĩ, đưa ra thuật toán có ích hơn, chỉ rõ các bước nếu có sai sót, đưa ra những dẫn chứng, định lý, định nghĩa, công thức nếu chúng từng tồn tại trong lý thuyết toán học, ... và cuối cùng là xây dựng một chương trình có đẩy đủ các chức năng dựa trên các nội dung trên.
+
+* Đây là demo code javascript cho trường hợp nêu trên: 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Expression Finder</title>
+    <script>
+        function findExpression() {
+            let a = parseInt(document.getElementById("a").value);
+            let b = parseInt(document.getElementById("b").value);
+            let c = parseInt(document.getElementById("c").value);
+            
+            let result = generateExpression(a, b, c) || "No expression found";
+            document.getElementById("result").innerText = "Result: " + result;
+        }
+
+        function generateExpression(a, b, target) {
+            let operations = {
+                '+': (x, y) => x + y,
+                '-': (x, y) => x - y,
+                '*': (x, y) => x * y,
+                '/': (x, y) => y !== 0 ? x / y : null
+            };
+            
+            let queue = [{ value: a, expr: "a" }, { value: b, expr: "b" }];
+            let seen = new Set([a, b]);
+            
+            for (let i = 0; i < 6; i++) {
+                let newQueue = [];
+                for (let { value, expr } of queue) {
+                    for (let [op, func] of Object.entries(operations)) {
+                        let newValueA = func(value, a);
+                        let newExprA = `(${expr} ${op} a)`;
+                        if (newValueA === target) return newExprA.replace(/a/g, a).replace(/b/g, b);
+                        if (!seen.has(newValueA) && newValueA !== null) {
+                            seen.add(newValueA);
+                            newQueue.push({ value: newValueA, expr: newExprA });
+                        }
+
+                        let newValueB = func(value, b);
+                        let newExprB = `(${expr} ${op} b)`;
+                        if (newValueB === target) return newExprB.replace(/a/g, a).replace(/b/g, b);
+                        if (!seen.has(newValueB) && newValueB !== null) {
+                            seen.add(newValueB);
+                            newQueue.push({ value: newValueB, expr: newExprB });
+                        }
+                    }
+                }
+                queue = newQueue;
+            }
+            return null;
+        }
+    </script>
+</head>
+<body>
+    <h2>Find an Expression</h2>
+    <label for="a">Enter a:</label>
+    <input type="number" id="a" required>
+    <br>
+    <label for="b">Enter b:</label>
+    <input type="number" id="b" required>
+    <br>
+    <label for="c">Enter target (c):</label>
+    <input type="number" id="c" required>
+    <br>
+    <button onclick="findExpression()">Find Expression</button>
+    <h3 id="result"></h3>
+</body>
+</html>
+
+
+* Code cuối cùng cần mở rộng a, b, c và các phương pháp khác.

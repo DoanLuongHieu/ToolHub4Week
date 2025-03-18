@@ -1,0 +1,112 @@
+<div class="pdf-to-word">
+  <div class="container">
+    <header class="tool-header">
+      <h1>Chuyển đổi PDF sang Word</h1>
+      <p class="description">
+        Chuyển đổi file PDF của bạn sang định dạng Word (.docx) dễ dàng và miễn phí
+      </p>
+    </header>
+
+    @if (apiError) {
+      <div class="alert alert-error">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>{{ apiError }}</span>
+      </div>
+    }
+
+    <div class="upload-section" 
+         [class.drag-over]="isDragging" 
+         (dragover)="onDragOver($event)"
+         (dragleave)="onDragLeave($event)" 
+         (drop)="onDrop($event)">
+      
+      <div class="upload-content">
+        <input #fileInput 
+               type="file" 
+               accept=".pdf"
+               (change)="onFileSelected($event)" 
+               class="file-input" 
+               hidden>
+        
+        @if (!selectedFile) {
+          <div class="upload-prompt">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>Kéo thả file PDF vào đây</h3>
+            <p>hoặc</p>
+            <button class="btn-primary" (click)="fileInput.click()">
+              Chọn file PDF
+            </button>
+            <p class="file-requirements">Định dạng hỗ trợ: PDF</p>
+          </div>
+        }
+
+        @if (selectedFile) {
+          <div class="selected-file">
+            <div class="file-info">
+              <i class="fas fa-file-pdf"></i>
+              <span>{{ selectedFile.name }}</span>
+              <span class="file-size">({{ formatFileSize(selectedFile.size) }})</span>
+            </div>
+            <button class="btn-icon" (click)="removeFile()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+
+    @if (selectedFile) {
+      <div class="action-buttons">
+        <button class="btn-primary" 
+                [disabled]="isConverting || !apiAvailable"
+                (click)="convertToWord()">
+          @if (isConverting) {
+            <i class="fas fa-spinner fa-spin"></i>
+            Đang chuyển đổi...
+          } @else {
+            <i class="fas fa-exchange-alt"></i>
+            Chuyển đổi sang Word
+          }
+        </button>
+      </div>
+
+      @if (isConverting) {
+        <div class="conversion-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="conversionProgress"></div>
+          </div>
+          <p class="progress-text">
+            @if (conversionProgress < 100) {
+              Đang xử lý...
+            } @else {
+              Hoàn tất! Đang tải file về máy của bạn.
+            }
+          </p>
+        </div>
+      }
+    }
+
+    <div class="info-section">
+      <h3>Về công cụ chuyển đổi PDF sang Word</h3>
+      <p>
+        Công cụ này sử dụng Python với thư viện pdf-plumber và pdf2docx để chuyển đổi 
+        tài liệu PDF sang định dạng Word (.docx) với độ chính xác cao. 
+        Quá trình chuyển đổi diễn ra hoàn toàn trên máy chủ, bảo đảm an toàn dữ liệu.
+      </p>
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-lock"></i>
+          <span>Bảo mật dữ liệu</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-rocket"></i>
+          <span>Chuyển đổi nhanh chóng</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-check-circle"></i>
+          <span>Chất lượng cao</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

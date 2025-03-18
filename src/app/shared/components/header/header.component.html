@@ -1,0 +1,192 @@
+<header class="header">
+  <div class="header-container">
+    <!-- Logo -->
+    <a routerLink="/" class="logo">
+      <img src="assets/toolhub4week.png" alt="Logo" />
+    </a>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+      <!-- PDF Tools Dropdown -->
+      <div class="dropdown" clickOutside (clickOutside)="closeDropdown('pdf')">
+        <button class="dropdown-btn" (click)="toggleDropdown('pdf')">
+          PDF Tools
+          <i [class]="isDropdownOpen.pdf ? 'arrow-up' : 'arrow-down'"></i>
+        </button>
+        <div class="dropdown-content" [class.show]="isDropdownOpen.pdf">
+          <div class="dropdown-group">
+            <h3>Convert from PDF</h3>
+            <a routerLink="/features/pdf-tools/convert-from-pdf/pdf-to-word"
+              >PDF to Word</a
+            >
+            <a routerLink="/features/pdf-tools/convert-from-pdf/pdf-to-excel"
+              >PDF to Excel</a
+            >
+          </div>
+          <div class="dropdown-group">
+            <h3>Convert to PDF</h3>
+            <a routerLink="/features/pdf-tools/convert-to-pdf/word-to-pdf"
+              >Word to PDF</a
+            >
+            <a routerLink="/features/pdf-tools/convert-to-pdf/excel-to-pdf"
+              >Excel to PDF</a
+            >
+          </div>
+          <div class="dropdown-group">
+            <h3>Organize PDF</h3>
+            <a routerLink="/features/pdf-tools/organize/compress-pdf"
+              >Compress PDF</a
+            >
+            <a routerLink="/features/pdf-tools/organize/split-pdf">Split PDF</a>
+            <a routerLink="/features/pdf-tools/organize/merge-pdf">Merge PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Tools Dropdown -->
+      <div
+        class="dropdown"
+        clickOutside
+        (clickOutside)="closeDropdown('image')"
+      >
+        <button class="dropdown-btn" (click)="toggleDropdown('image')">
+          Image Tools
+          <i [class]="isDropdownOpen.image ? 'arrow-up' : 'arrow-down'"></i>
+        </button>
+        <div class="dropdown-content" [class.show]="isDropdownOpen.image">
+          <div class="dropdown-group">
+            <h3>Convert Images</h3>
+            <a routerLink="/features/image-tools/convert/image-converter"
+              >Image Converter</a
+            >
+          </div>
+          <div class="dropdown-group">
+            <h3>Edit Images</h3>
+            <a routerLink="/features/image-tools/edit/compress-image"
+              >Compress Image</a
+            >
+            <a routerLink="/features/image-tools/edit/read-image-exif"
+              >Read Image EXIF</a
+            >
+            <a routerLink="/features/image-tools/edit/frame-image"
+              >Frame Image</a
+            >
+            <a routerLink="/features/image-tools/edit/crop-image">Crop Image</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Tools Dropdown -->
+      <div
+        class="dropdown"
+        clickOutside
+        (clickOutside)="closeDropdown('others')"
+      >
+        <button class="dropdown-btn" (click)="toggleDropdown('others')">
+          Other Tools
+          <i [class]="isDropdownOpen.others ? 'arrow-up' : 'arrow-down'"></i>
+        </button>
+        <div class="dropdown-content" [class.show]="isDropdownOpen.others">
+          <div class="dropdown-group">
+            <h3>Generate Tools</h3>
+            <a
+              routerLink="/features/other-tools/generate-tools/password-generator"
+              >Password Generator</a
+            >
+            <a routerLink="/features/other-tools/generate-tools/lorem-ipsum"
+              >Lorem Ipsum</a
+            >
+          </div>
+          <div class="dropdown-group">
+            <h3>Javascript Tools</h3>
+            <a routerLink="/features/other-tools/javascript-tools/json-to-csv"
+              >JSON to CSV</a
+            >
+            <a routerLink="/features/other-tools/javascript-tools/csv-to-json"
+              >CSV to JSON</a
+            >
+          </div>
+          <div class="dropdown-group">
+            <h3>Mathematics Tools</h3>
+            <a
+              routerLink="/features/other-tools/mathematics-tools/numerical-analysis"
+              >Numerical Analysis</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Right side -->
+    <div class="header-right">
+      <div class="social-links">
+        <a href="#" class="social-icon" aria-label="Facebook">
+          <i class="facebook-icon"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="Twitter">
+          <i class="twitter-icon"></i>
+        </a>
+        <a href="#" class="social-icon" aria-label="LinkedIn">
+          <i class="linkedin-icon"></i>
+        </a>
+      </div>
+      <button class="theme-toggle" (click)="toggleTheme()">
+        <i [class]="isDark() ? 'moon-icon' : 'sun-icon'"></i>
+      </button>
+      <select
+        class="language-select"
+        [value]="currentLang()"
+        (change)="onLanguageChange($event)"
+      >
+        <option value="vi">Tiếng Việt</option>
+        <option value="en">English</option>
+      </select>
+      
+      <!-- Hiển thị nút đăng nhập khi chưa đăng nhập -->
+      <div class="login-container" *ngIf="!currentUser">
+        <button routerLink="/features/authentication/login" class="login-btn">Đăng nhập</button>
+      </div>
+      
+      <!-- Hiển thị avatar và dropdown khi đã đăng nhập -->
+      <div class="user-container" *ngIf="currentUser" clickOutside (clickOutside)="closeDropdown('user')">
+        <div class="user-avatar" (click)="toggleDropdown('user')">
+          <img 
+            [src]="currentUser.photoURL || getDefaultAvatar(currentUser.username)" 
+            [alt]="currentUser.username" 
+          />
+        </div>
+        
+        <!-- User dropdown menu -->
+        <div class="user-dropdown" [class.show]="isDropdownOpen.user">
+          <div class="user-info">
+            <div class="user-avatar-large">
+              <img 
+                [src]="currentUser.photoURL || getDefaultAvatar(currentUser.username)" 
+                [alt]="currentUser.username" 
+              />
+            </div>
+            <div class="user-details">
+              <div class="user-name">{{ currentUser.displayName || currentUser.username }}</div>
+              <div class="user-email">{{ currentUser.email }}</div>
+            </div>
+          </div>
+          
+          <div class="user-menu">
+            <a routerLink="/features/account/profile" class="user-menu-item">
+              <i class="user-icon"></i>
+              <span>Thông tin tài khoản</span>
+            </a>
+            <a routerLink="/features/help" class="user-menu-item">
+              <i class="help-icon"></i>
+              <span>Trợ giúp</span>
+            </a>
+            <button (click)="logout()" class="user-menu-item logout-item">
+              <i class="logout-icon"></i>
+              <span>Đăng xuất</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

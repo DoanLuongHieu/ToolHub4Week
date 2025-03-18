@@ -1,0 +1,91 @@
+<div class="lorem-ipsum-container">
+  <div class="notifications">
+    <div
+      *ngFor="let notification of notifications"
+      class="notification"
+      [class.success]="notification.type === 'success'"
+      [class.error]="notification.type === 'error'"
+    >
+      {{ notification.message }}
+      <button
+        class="close-notification"
+        (click)="removeNotification(notification.id)"
+      >
+        ×
+      </button>
+    </div>
+  </div>
+
+  <div class="control-panel">
+    <h2>Text Generator</h2>
+
+    <div class="method-selector">
+      <label for="method">Generation Method:</label>
+      <select id="method" [(ngModel)]="selectedMethod">
+        <option value="vietnamese">Vietnamese Text</option>
+        <option value="pattern">Pattern-Based</option>
+        <option value="syllable">Syllable Combination</option>
+        <option value="classic">Classic Lorem Ipsum</option>
+      </select>
+    </div>
+
+    <div class="method-description" [ngSwitch]="selectedMethod">
+      <p *ngSwitchCase="'vietnamese'">
+        Generates Vietnamese text using common words and syllable patterns, or
+        uses classic Vietnamese text samples.
+      </p>
+      <p *ngSwitchCase="'pattern'">
+        Generates text using consonant-vowel patterns to create pronounceable
+        words.
+      </p>
+      <p *ngSwitchCase="'syllable'">
+        Combines prefixes, roots, and suffixes to create structured words.
+      </p>
+      <p *ngSwitchCase="'classic'">
+        Uses the traditional Lorem Ipsum text from the 1500s.
+      </p>
+    </div>
+
+    <div class="input-group">
+      <label for="wordCount">Number of Words:</label>
+      <input
+        type="number"
+        id="wordCount"
+        [(ngModel)]="wordCount"
+        min="1"
+        max="1000"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="paragraphCount">Number of Paragraphs:</label>
+      <input
+        type="number"
+        id="paragraphCount"
+        [(ngModel)]="paragraphCount"
+        min="1"
+        max="10"
+      />
+    </div>
+
+    <div class="button-group">
+      <button (click)="generateText()" class="generate-btn">
+        Generate Text
+      </button>
+      <button
+        (click)="copyToClipboard()"
+        class="copy-btn"
+        [disabled]="!generatedText"
+      >
+        Copy to Clipboard
+      </button>
+    </div>
+  </div>
+
+  <div class="output-panel" *ngIf="generatedText">
+    <h3>Generated Text:</h3>
+    <div class="text-output">
+      {{ generatedText }}
+    </div>
+  </div>
+</div>

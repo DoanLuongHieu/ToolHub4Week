@@ -1,0 +1,70 @@
+<div class="converter-container">
+  <h1>PDF to Excel Converter</h1>
+
+  <div
+    class="upload-section"
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop($event)"
+    [class.drag-over]="state().isDragging"
+  >
+    <label for="fileInput" class="file-input-label">
+      <span>Choose PDF File or Drag & Drop </span>
+      <input
+        type="file"
+        id="fileInput"
+        accept=".pdf"
+        (change)="handleFileInput($event)"
+        [attr.aria-label]="'Choose PDF file to convert'"
+      />
+    </label>
+    <div class="supported-formats">Supported format: PDF</div>
+  </div>
+
+  <div class="error-message" *ngIf="state().error">
+    {{ state().error }}
+  </div>
+
+  <div class="conversion-status" *ngIf="state().isConverting">
+    Converting PDF to Excel...
+  </div>
+
+  <div
+    class="format-selection"
+    *ngIf="state().originalFile && !state().isConverting"
+  >
+    <h3>Output Format:</h3>
+    <div class="format-buttons">
+      <button
+        *ngFor="let format of supportedFormats"
+        class="format-button"
+        (click)="updateFormat(format)"
+        [class.selected]="state().outputFormat === format"
+      >
+        {{ format.toUpperCase() }}
+      </button>
+    </div>
+
+    <button
+      class="convert-button"
+      (click)="convertFile()"
+      [disabled]="state().isConverting"
+    >
+      Convert to {{ state().outputFormat.toUpperCase() }}
+    </button>
+  </div>
+
+  <div class="file-info" *ngIf="state().originalFile">
+    <h3>Selected File:</h3>
+    <p>{{ state().originalFile?.name || "" }}</p>
+  </div>
+
+  <div class="download-container" *ngIf="state().convertedFile">
+    <button
+      class="download-button"
+      (click)="downloadFile()"
+      [attr.aria-label]="'Download converted file'"
+    >
+      Download {{ state().outputFormat.toUpperCase() }}
+    </button>
+  </div>
+</div>

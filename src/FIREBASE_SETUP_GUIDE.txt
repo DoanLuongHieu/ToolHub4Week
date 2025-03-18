@@ -1,0 +1,38 @@
+HƯỚNG DẪN CÀI ĐẶT FIREBASE AUTHENTICATION
+
+1. KÍCH HOẠT FIREBASE AUTHENTICATION
+
+   a. Đăng nhập vào Firebase Console: https://console.firebase.google.com/
+   b. Chọn dự án của bạn đã được cài đặt trước đó
+   c. Trong menu bên trái, chọn "Authentication"
+   d. Chọn tab "Sign-in method"
+   e. Kích hoạt phương thức đăng nhập "Google" bằng cách:
+      - Nhấp vào "Google" trong danh sách
+      - Chuyển trạng thái thành "Enabled"
+      - Cấu hình tên dự án sẽ hiển thị cho người dùng
+      - Thêm email hỗ trợ (nếu có)
+      - Nhấp "Save"
+
+2. THIẾT LẬP DOMAIN CHO REDIRECT
+
+   a. Trong tab "Sign-in method", kéo xuống phần "Authorized domains"
+   b. Thêm domain của trang web nơi bạn đang triển khai ứng dụng
+   c. Nếu bạn đang phát triển cục bộ, hãy đảm bảo thêm "localhost"
+
+3. LẤY CẤU HÌNH FIREBASE WEB
+
+   a. Trong Firebase Console, chọn icon "Gear" (cài đặt dự án)
+   b. Chọn "Project settings"
+   c. Cuộn xuống phần "Your apps" và chọn ứng dụng web đã đăng ký
+   d. Sao chép thông tin cấu hình Firebase (firebaseConfig)
+   e. Dán vào file environment.ts và environment.prod.ts trong dự án của bạn
+
+4. CÁC GHI CHÚ QUAN TRỌNG
+
+   - Đảm bảo OAuth redirect URI được cấu hình đúng
+   - Kiểm tra các quy tắc bảo mật trong Firestore nếu bạn lưu trữ dữ liệu người dùng
+   - Cần kích hoạt các API cần thiết trong Google Cloud Console
+   - Chú ý đến các giới hạn của Firebase Authentication trong gói miễn phí
+
+Dự án đã có cài đặt Firebase Hosting, vì vậy các cài đặt cơ bản đã được thiết lập.
+Chỉ cần kích hoạt Authentication và các phương thức đăng nhập mong muốn. 

@@ -1,0 +1,178 @@
+<div class="tool-container">
+  <div class="tool-header">
+    <h2>CSV to JSON Converter</h2>
+    <p class="tool-description">
+      Chuyển đổi dữ liệu CSV (Comma-Separated Values) sang định dạng JSON
+      (JavaScript Object Notation) dễ dàng với nhiều tùy chọn tùy chỉnh.
+    </p>
+  </div>
+
+  <div class="tool-content">
+    <!-- File Upload Section -->
+    <div
+      class="upload-section"
+      [class.has-file]="csvData"
+      [class.drag-over]="isDragging"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave()"
+      (drop)="onDrop($event)"
+    >
+      <input
+        #fileInput
+        type="file"
+        (change)="onFileSelected($event)"
+        accept=".csv, text/csv"
+        [class.hidden]="csvData"
+      />
+      <div class="upload-placeholder" *ngIf="!csvData">
+        <i class="fas fa-file-csv"></i>
+        <p>Kéo thả file CSV vào đây hoặc nhấp để chọn file</p>
+        <p class="file-requirements">
+          Hỗ trợ các file CSV với kích thước tối đa 50MB
+        </p>
+      </div>
+      <div class="file-info" *ngIf="csvData && fileName">
+        <div class="file-details">
+          <i class="fas fa-file-csv"></i>
+          <span>{{ fileName }}</span>
+          <span class="file-size" *ngIf="fileSize">{{ fileSize }}</span>
+        </div>
+        <button class="btn-icon" (click)="resetTool()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Paste CSV Section -->
+    <div class="paste-section" *ngIf="!csvData || showTextArea">
+      <div class="section-header">
+        <h3>Hoặc dán dữ liệu CSV vào đây</h3>
+        <div class="toggle-raw" *ngIf="csvData">
+          <button class="btn-link" (click)="toggleRawInput()">
+            {{ showTextArea ? "Ẩn text editor" : "Hiển thị/Chỉnh sửa CSV" }}
+          </button>
+        </div>
+      </div>
+      <textarea
+        *ngIf="!csvData || showTextArea"
+        [(ngModel)]="csvInput"
+        (input)="onCsvInputChange()"
+        placeholder="Nhập dữ liệu CSV của bạn vào đây (ví dụ: name,age,email)"
+      ></textarea>
+    </div>
+
+    <!-- Conversion Options -->
+    <div class="conversion-options" *ngIf="csvData || csvInput">
+      <h3>Tùy chọn chuyển đổi</h3>
+
+      <div class="options-grid">
+        <div class="option-group">
+          <label>Ký tự phân cách:</label>
+          <select [(ngModel)]="delimiter" (change)="parseCSV()">
+            <option value=",">Dấu phẩy (,)</option>
+            <option value=";">Dấu chấm phẩy (;)</option>
+            <option value="\t">Tab (\t)</option>
+            <option value="|">Đường dọc (|)</option>
+            <option value="custom">Tùy chỉnh</option>
+          </select>
+          <input
+            *ngIf="delimiter === 'custom'"
+            type="text"
+            [(ngModel)]="customDelimiter"
+            (change)="parseCSV()"
+            placeholder="Nhập ký tự phân cách"
+            maxlength="1"
+          />
+        </div>
+
+        <div class="option-group">
+          <label>Định dạng đầu ra:</label>
+          <select [(ngModel)]="outputFormat" (change)="generateJSON()">
+            <option value="pretty">Định dạng đẹp (Pretty)</option>
+            <option value="compact">Nén (Compact)</option>
+          </select>
+        </div>
+
+        <div class="option-group checkbox-group">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              [(ngModel)]="hasHeader"
+              (change)="parseCSV()"
+            />
+            Dòng đầu tiên là tiêu đề
+          </label>
+        </div>
+
+        <div class="option-group checkbox-group">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              [(ngModel)]="detectDataTypes"
+              (change)="generateJSON()"
+            />
+            Tự động phát hiện kiểu dữ liệu
+          </label>
+        </div>
+
+        <div class="option-group checkbox-group">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              [(ngModel)]="processNestedObjects"
+              (change)="generateJSON()"
+            />
+            Xử lý cấu trúc lồng nhau (ví dụ: "user.name")
+          </label>
+        </div>
+
+        <div class="option-group checkbox-group">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              [(ngModel)]="processNestedArrays"
+              (change)="generateJSON()"
+            />
+            Xử lý mảng lồng nhau (ví dụ: "items[0]")
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview Section -->
+    <div class="preview-section" *ngIf="parsedData.length > 0">
+      <div class="preview-header">
+        <h3>Kết quả JSON</h3>
+        <div class="preview-actions">
+          <span class="data-info"
+            >{{ parsedData.length }} dòng được chuyển đổi</span
+          >
+          <button
+            class="btn-copy"
+            (click)="copyToClipboard()"
+            [disabled]="isCopying"
+          >
+            <i class="fas" [ngClass]="isCopying ? 'fa-check' : 'fa-copy'"></i>
+            {{ isCopying ? "Đã sao chép" : "Sao chép JSON" }}
+          </button>
+        </div>
+      </div>
+
+      <div class="preview-content">
+        <pre class="json-preview">{{ jsonOutput }}</pre>
+      </div>
+
+      <div class="download-section">
+        <button class="btn-primary" (click)="downloadJSON()">
+          <i class="fas fa-download"></i> Tải xuống file JSON
+        </button>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" *ngIf="errorMessage">
+      <i class="fas fa-exclamation-circle"></i>
+      <span>{{ errorMessage }}</span>
+    </div>
+  </div>
+</div>

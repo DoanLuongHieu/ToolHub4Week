@@ -1,0 +1,55 @@
+.error-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  min-width: 300px;
+  max-width: 500px;
+  z-index: 9999;
+  animation: slideIn 0.3s ease;
+}
+
+.error-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error-message {
+  flex: 1;
+  color: white;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.25rem;
+}
+
+.error {
+  background-color: var(--error-color, #dc3545);
+}
+
+.warning {
+  background-color: var(--warning-color, #ffc107);
+}
+
+.info {
+  background-color: var(--info-color, #17a2b8);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

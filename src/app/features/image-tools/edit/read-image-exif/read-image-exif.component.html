@@ -1,0 +1,71 @@
+<div class="exif-container">
+  <h1>Image EXIF Reader</h1>
+
+  <div
+    class="upload-section"
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop($event)"
+    [class.drag-over]="isDragging"
+  >
+    <label for="fileInput" class="file-input-label">
+      <span>Choose Image File or Drag & Drop</span>
+      <input
+        type="file"
+        id="fileInput"
+        accept=".jpg,.jpeg,.png,.webp,.tiff,.heic"
+        (change)="handleFileInput($event)"
+        [attr.aria-label]="'Choose image file to read EXIF'"
+      />
+    </label>
+    <div class="supported-formats">
+      Supported formats: JPG, PNG, WebP, TIFF, HEIC
+    </div>
+  </div>
+
+  <div class="error-message" *ngIf="state().error">
+    {{ state().error }}
+  </div>
+
+  <div class="loading-status" *ngIf="state().isLoading">
+    Reading EXIF data...
+  </div>
+
+  <div class="content-container" *ngIf="state().originalImage">
+    <!-- Image Preview -->
+    <div class="image-preview">
+      <h2>Image Preview</h2>
+      <div class="image-display">
+        <img
+          [src]="state().originalImage"
+          alt="Original image"
+          class="preview-image"
+        />
+      </div>
+    </div>
+
+    <!-- EXIF Data Grid -->
+    <div class="exif-grid" *ngIf="state().exifData">
+      <ng-container *ngFor="let group of getExifGroups()">
+        <div class="exif-group" *ngIf="hasValidData(group)">
+          <div class="group-header">
+            <span class="group-icon">{{ group.icon }}</span>
+            <h3>{{ group.title }}</h3>
+          </div>
+          <div class="group-content">
+            <ng-container *ngFor="let item of group.data">
+              <div class="exif-item" *ngIf="item.value">
+                <span class="item-label">{{ item.label }}:</span>
+                <span class="item-value">{{ item.value }}</span>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- No EXIF Data Message -->
+    <div class="no-exif-message" *ngIf="!state().exifData">
+      No EXIF data found in this image
+    </div>
+  </div>
+</div>

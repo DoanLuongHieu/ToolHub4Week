@@ -1,0 +1,59 @@
+<div class="converter-container">
+  <h1>Word to PDF Converter</h1>
+
+  <div
+    class="upload-section"
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop($event)"
+    [class.drag-over]="isDragging"
+  >
+    <label for="fileInput" class="file-input-label">
+      <span>Choose Word File or Drag & Drop</span>
+      <input
+        type="file"
+        id="fileInput"
+        accept=".doc,.docx"
+        (change)="handleFileInput($event)"
+        [attr.aria-label]="'Choose Word file to convert'"
+      />
+    </label>
+    <div class="supported-formats">Supported formats: DOC, DOCX</div>
+  </div>
+
+  <div class="error-message" *ngIf="state().error">
+    {{ state().error }}
+  </div>
+
+  <div class="file-info" *ngIf="state().originalFile">
+    <h3>Selected File:</h3>
+    <p>{{ state().originalFile?.name }}</p>
+    <button
+      class="convert-button"
+      (click)="convertToPdf()"
+      [disabled]="state().isConverting"
+    >
+      Convert to PDF
+    </button>
+  </div>
+
+  <div class="progress-container" *ngIf="state().isConverting">
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="state().progress"></div>
+    </div>
+    <div class="progress-text">Converting... {{ state().progress }}%</div>
+  </div>
+
+  <div class="result-container" *ngIf="state().convertedUrl">
+    <h3>Conversion Complete!</h3>
+    <div class="preview-container">
+      <iframe
+        [src]="state().convertedUrl || '' | safe : 'resourceUrl'"
+        frameborder="0"
+        class="pdf-preview"
+      ></iframe>
+    </div>
+    <button class="download-button" (click)="downloadPdf()">
+      Download PDF
+    </button>
+  </div>
+</div>

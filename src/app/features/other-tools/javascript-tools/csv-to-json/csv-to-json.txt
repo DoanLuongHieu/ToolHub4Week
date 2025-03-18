@@ -1,0 +1,53 @@
+
+1. Đọc file CSV:
+- Đọc nội dung của file CSV dưới dạng chuỗi.
+- Hỗ trợ cả file upload hoặc văn bản được dán vào.
+2. Phân tích dòng đầu tiên (header):
+- Tách dòng đầu tiên thành mảng các tiêu đề cột bằng cách phân tích dựa trên dấu phân cách (thường là dấu phẩy).
+- Xử lý các trường hợp đặc biệt như tiêu đề có dấu phẩy trong ngoặc kép.
+- Lưu trữ các tiêu đề này để sử dụng làm khóa cho các đối tượng JSON.
+3. Phân tích các dòng dữ liệu:
+- Duyệt qua từng dòng còn lại trong file CSV.
+- Với mỗi dòng:
+	- Tách dòng thành mảng các giá trị dựa trên dấu phân cách.
+	- Xử lý các trường hợp đặc biệt như giá trị có dấu phẩy trong ngoặc kép.
+	- Tạo một đối tượng mới, với khóa là các tiêu đề từ bước 2 và giá trị là các giá trị tương ứng từ dòng hiện tại.
+	- Thêm đối tượng này vào mảng kết quả.
+4. Xử lý các kiểu dữ liệu:
+- Chuyển đổi các giá trị thành kiểu dữ liệu phù hợp:
+	- Chuỗi số: chuyển thành số (parseInt hoặc parseFloat).
+	- "true"/"false": chuyển thành boolean.
+	- "null": chuyển thành null.
+	- Ngày tháng: phát hiện và chuyển đổi thành định dạng ngày tháng (tùy chọn).
+	- Các giá trị khác: giữ nguyên dạng chuỗi.
+5. Xử lý cấu trúc lồng nhau (tùy chọn):
+	- Phát hiện và xử lý các trường hợp có cấu trúc lồng nhau:
+	- Trường hợp object lồng nhau (ví dụ: "person.name").
+	- Trường hợp mảng (ví dụ: "tags[0]").
+6. Tạo chuỗi JSON:
+- Chuyển đổi mảng các đối tượng thành chuỗi JSON.
+- Định dạng JSON để dễ đọc (pretty print) hoặc dạng nén (tùy chọn).
+7. Trả về kết quả:
+- Trả về chuỗi JSON cuối cùng để hiển thị hoặc tải xuống.
+8. Các tính năng tùy chọn có thể bổ sung:
+- Hỗ trợ nhiều loại dấu phân cách khác nhau:
+- Dấu phẩy (,), dấu chấm phẩy (;), tab (\t), hoặc tùy chỉnh.
+- Xử lý ngoại lệ và thông báo lỗi:
+	- Kiểm tra tính hợp lệ của CSV đầu vào.
+	- Báo cáo lỗi chi tiết nếu có vấn đề trong quá trình chuyển đổi.
+- Xử lý tập ký tự Unicode:
+	- Đảm bảo tính tương thích với các ký tự đặc biệt và ngôn ngữ khác nhau.
+- Tối ưu hóa bộ nhớ:
+	- Xử lý từng dòng một thay vì đọc toàn bộ file vào bộ nhớ (đối với file lớn).
+- Xử lý header tùy chỉnh:
+	- Cho phép người dùng chỉ định các tiêu đề tùy chỉnh thay vì sử dụng dòng đầu tiên.
+- Xử lý file lớn theo luồng (Stream Processing):
+	- Xử lý CSV theo từng phần nhỏ thay vì tải toàn bộ vào bộ nhớ.
+	- Xuất JSON theo luồng, cho phép xử lý file CSV cực lớn (hàng GB).
+- Hỗ trợ nhiều định dạng đầu vào:
+	- Chuyển đổi từ Excel (XLSX, XLS) sang JSON.
+	- Xử lý file CSV được nén (ZIP, GZIP).
+- Kiểm tra và làm sạch dữ liệu:
+	- Phát hiện và xử lý giá trị bị thiếu hoặc không hợp lệ.
+	- Loại bỏ ký tự đặc biệt hoặc khoảng trắng không mong muốn.
+	- Chuẩn hóa dữ liệu (viết hoa, viết thường, cắt bỏ khoảng trắng).

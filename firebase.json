@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/tool-hub4-week/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
