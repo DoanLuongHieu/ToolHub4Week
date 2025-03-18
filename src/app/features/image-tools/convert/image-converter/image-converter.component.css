@@ -1,0 +1,410 @@
+/* Light Mode - Default Theme */
+:host {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-accent: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --border-color: #dee2e6;
+  --primary-color: #0d6efd;
+  --primary-hover: #0b5ed7;
+  --success-color: #198754;
+  --success-hover: #157347;
+  --error-bg: #f8d7da;
+  --error-border: #f5c2c7;
+  --error-text: #842029;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Container Styles */
+.converter-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: var(--bg-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Typography */
+h1 {
+  text-align: center;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* Upload Section */
+.upload-section {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-secondary);
+  transition: all 0.3s ease;
+}
+
+.upload-section:hover,
+.drag-over {
+  border-color: var(--primary-color);
+  background-color: var(--bg-accent);
+}
+
+.file-input-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.file-input-label:hover {
+  background-color: var(--primary-hover);
+}
+
+.file-input-label input {
+  display: none;
+}
+
+.supported-formats {
+  margin-top: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Status Messages */
+.error-message {
+  color: var(--error-text);
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border-radius: 6px;
+  background-color: var(--error-bg);
+  border: 1px solid var(--error-border);
+}
+
+.conversion-status {
+  text-align: center;
+  color: var(--primary-color);
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: var(--bg-accent);
+  border-radius: 6px;
+  animation: pulse 1.5s infinite;
+}
+
+/* Image Preview Section */
+.image-preview-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.image-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.image-preview:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.image-preview h3 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.image-display {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: var(--bg-accent);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.preview-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Format Selection */
+.format-selection {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.format-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.format-button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--bg-accent);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.format-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.format-button.selected {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Download Button */
+.download-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.download-button {
+  padding: 1rem 2rem;
+  background-color: var(--success-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.download-button:hover {
+  background-color: var(--success-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.download-button:active {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Dark Mode - Cập nhật màu sắc cho phù hợp với app chính */
+:host-context([data-theme="dark"]) {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-accent: #282828;
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --border-color: #404040;
+  --primary-color: #4f46e5;
+  --primary-hover: #6366f1;
+  --success-color: #22c55e;
+  --success-hover: #16a34a;
+  --error-bg: #450a0a;
+  --error-border: #dc2626;
+  --error-text: #fca5a5;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Các styles khác giữ nguyên, chỉ cập nhật một số hiệu ứng cho dark mode */
+:host-context([data-theme="dark"]) .converter-container {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+}
+
+:host-context([data-theme="dark"]) .upload-section {
+  background-color: var(--bg-secondary);
+  border: 2px dashed var(--border-color);
+}
+
+:host-context([data-theme="dark"]) .upload-section:hover {
+  border-color: var(--primary-color);
+  background-color: var(--bg-accent);
+}
+
+:host-context([data-theme="dark"]) .image-preview,
+:host-context([data-theme="dark"]) .format-selection {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+:host-context([data-theme="dark"]) .image-display {
+  background-color: var(--bg-accent);
+  border: 1px solid var(--border-color);
+}
+
+:host-context([data-theme="dark"]) .format-button {
+  background-color: var(--bg-accent);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+:host-context([data-theme="dark"]) .format-button:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+:host-context([data-theme="dark"]) .format-button.selected {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+:host-context([data-theme="dark"]) .download-button {
+  background-color: var(--success-color);
+  box-shadow: var(--shadow-sm);
+}
+
+:host-context([data-theme="dark"]) .download-button:hover {
+  background-color: var(--success-hover);
+  box-shadow: var(--shadow-md);
+}
+
+/* Cập nhật màu text và borders cho dark mode */
+:host-context([data-theme="dark"]) {
+  h1,
+  h3 {
+    color: var(--text-primary);
+  }
+
+  .supported-formats {
+    color: var(--text-secondary);
+  }
+
+  .error-message {
+    background-color: var(--error-bg);
+    border-color: var(--error-border);
+    color: var(--error-text);
+  }
+
+  .conversion-status {
+    color: var(--primary-color);
+    background-color: var(--bg-accent);
+  }
+
+  /* Thêm hiệu ứng hover cho các elements */
+  .image-preview:hover,
+  .format-selection:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Cải thiện hiển thị cho focus states */
+  .format-button:focus,
+  .download-button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .converter-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .image-preview-container {
+    grid-template-columns: 1fr;
+  }
+
+  .image-preview,
+  .format-selection {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .format-buttons {
+    flex-wrap: wrap;
+  }
+
+  .format-button {
+    flex: 1 1 auto;
+    min-width: 100px;
+  }
+
+  .download-container {
+    margin-top: 1.5rem;
+  }
+
+  .download-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .image-display {
+    padding: 0.5rem;
+  }
+}
+
+/* Accessibility Focus Styles */
+.file-input-label:focus-within {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.format-button:focus,
+.download-button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

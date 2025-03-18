@@ -1,1 +1,97 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Light theme */
+  --primary-color: #2563eb;
+  --secondary-color: #4f2d8c;
+  --bg-color: #ffffff;
+  --bg-alt: #f8fafc;
+  --card-bg: #ffffff;
+  --text-color: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --hero-gradient: linear-gradient(135deg, #2563eb, #4f46e5);
+  --cta-gradient: linear-gradient(135deg, #3b82f6, #6366f1);
+  --card-hover-bg: #f1f5f9;
+  --feature-icon-bg: #e0e7ff;
+  --button-hover: #1d4ed8;
+
+  --feedback-bg: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  --feedback-card-bg: #ffffff;
+  --feedback-text: #1e293b;
+  --feedback-title: #2563eb; /* Matching primary-color */
+  --feedback-subtitle: #64748b; /* Matching text-secondary */
+  --feedback-border: rgba(37, 99, 235, 0.1); /* Based on primary-color */
+  --feedback-shadow: rgba(0, 0, 0, 0.1);
+  --feedback-avatar-border: #2563eb; /* Matching primary-color */
+  --feedback-pattern: rgba(37, 99, 235, 0.05); /* Lighter primary-color */
+}
+
+[data-theme="dark"] {
+  --bg-color: #0f172a;
+  --bg-alt: #1e293b;
+  --card-bg: #1e293b;
+  --text-color: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --hero-gradient: linear-gradient(135deg, #1d4ed8, #4338ca);
+  --cta-gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
+  --card-hover-bg: #2d3748;
+  --feature-icon-bg: #312e81;
+  --button-hover: #3b82f6;
+
+  --feedback-bg: linear-gradient(135deg, #0f172a, #1e293b);
+  --feedback-card-bg: #1e293b;
+  --feedback-text: #f8fafc;
+  --feedback-title: #38e5d7; /* Matching bg-dark from dark theme */
+  --feedback-subtitle: #94a3b8; /* Matching text-secondary */
+  --feedback-border: rgba(56, 229, 215, 0.1); /* Based on bg-dark */
+  --feedback-shadow: rgba(0, 0, 0, 0.3);
+  --feedback-avatar-border: #38e5d7; /* Matching bg-dark */
+  --feedback-pattern: rgba(56, 229, 215, 0.05); /* Lighter bg-dark */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding-top: 4rem;
+}
+
+header {
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1rem 0;
+}
+
+header.scrolled {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    1
+  ); /* Màu nền mới cho header khi cuộn, không trong suốt */
+  transition: background-color 0.3s ease;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  /* Các thuộc tính khác cho drop-down nếu cần */
+}

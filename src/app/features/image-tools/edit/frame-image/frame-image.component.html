@@ -1,0 +1,409 @@
+<div class="frame-image-container">
+  <div class="content-wrapper">
+    <div class="left-panel">
+      <div class="upload-section">
+        <h3>Tải lên ảnh</h3>
+        <input
+          #fileInput
+          type="file"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          style="display: none"
+        />
+        <button class="btn btn-primary" (click)="fileInput.click()">
+          <i class="fas fa-upload"></i>
+          Chọn ảnh
+        </button>
+        <p class="hint-text">Kích thước ảnh: 900x610 pixel</p>
+      </div>
+
+      <div class="upload-section">
+        <h3>Tải lên khung ảnh</h3>
+        <input
+          #frameInput
+          type="file"
+          (change)="onFrameSelected($event)"
+          accept=".png,.jpg,.jpeg,.webp"
+          style="display: none"
+        />
+        <button class="btn btn-primary" (click)="frameInput.click()">
+          <i class="fas fa-image"></i>
+          Chọn khung
+        </button>
+        <p class="hint-text">Kích thước khung: 900x900 pixel</p>
+      </div>
+
+      <div class="tool-section">
+        <div class="section-header">
+          <h3>Quản lý Layer</h3>
+          <button class="btn-collapse" (click)="toggleSection('layers')">
+            <i
+              class="fas"
+              [class.fa-chevron-down]="!collapsedSections.layers"
+              [class.fa-chevron-right]="collapsedSections.layers"
+            ></i>
+          </button>
+        </div>
+
+        @if (!collapsedSections.layers) {
+        <div class="section-content">
+          <div class="layer-list">
+            <div class="list-header">
+              <span>Danh sách layer</span>
+              <span class="layer-count">{{ layers.length }}</span>
+            </div>
+            <div class="layer-items">
+              @for (layer of layers; track layer.id) {
+              <div
+                class="layer-item"
+                [class.active]="layer.id === selectedLayerId"
+                (click)="selectLayer(layer.id)"
+              >
+                <div class="layer-visibility">
+                  <button
+                    class="btn-icon"
+                    (click)="
+                      toggleLayerVisibility(layer.id); $event.stopPropagation()
+                    "
+                    [title]="layer.isVisible ? 'Ẩn layer' : 'Hiện layer'"
+                  >
+                    <i
+                      class="fas"
+                      [class.fa-eye]="layer.isVisible"
+                      [class.fa-eye-slash]="!layer.isVisible"
+                    ></i>
+                  </button>
+                </div>
+                <div class="layer-info">
+                  <span class="layer-name">{{ layer.name }}</span>
+                  <span class="layer-type">{{ layer.type }}</span>
+                </div>
+                <div class="layer-actions">
+                  <button
+                    class="btn-icon"
+                    (click)="
+                      toggleLayerLock(layer.id); $event.stopPropagation()
+                    "
+                    [title]="layer.isLocked ? 'Mở khóa layer' : 'Khóa layer'"
+                  >
+                    <i
+                      class="fas"
+                      [class.fa-lock]="layer.isLocked"
+                      [class.fa-unlock]="!layer.isLocked"
+                    ></i>
+                  </button>
+                  <button
+                    class="btn-icon"
+                    (click)="deleteLayer(layer.id); $event.stopPropagation()"
+                    title="Xóa layer"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+
+          <div class="layer-order-controls">
+            <button
+              class="btn-sm"
+              (click)="changeLayerOrder(selectedLayerId!, 'top')"
+              [disabled]="!selectedLayerId"
+              title="Đưa lên trên cùng"
+            >
+              <i class="fas fa-angle-double-up"></i>
+            </button>
+            <button
+              class="btn-sm"
+              (click)="changeLayerOrder(selectedLayerId!, 'up')"
+              [disabled]="!selectedLayerId"
+              title="Đưa lên trên"
+            >
+              <i class="fas fa-angle-up"></i>
+            </button>
+            <button
+              class="btn-sm"
+              (click)="changeLayerOrder(selectedLayerId!, 'down')"
+              [disabled]="!selectedLayerId"
+              title="Đưa xuống dưới"
+            >
+              <i class="fas fa-angle-down"></i>
+            </button>
+            <button
+              class="btn-sm"
+              (click)="changeLayerOrder(selectedLayerId!, 'bottom')"
+              [disabled]="!selectedLayerId"
+              title="Đưa xuống dưới cùng"
+            >
+              <i class="fas fa-angle-double-down"></i>
+            </button>
+          </div>
+        </div>
+        }
+      </div>
+
+      <div class="tool-section">
+        <div class="section-header">
+          <h3>Thêm chữ</h3>
+          <button class="btn-collapse" (click)="toggleSection('text')">
+            <i
+              class="fas"
+              [class.fa-chevron-down]="!collapsedSections.text"
+              [class.fa-chevron-right]="collapsedSections.text"
+            ></i>
+          </button>
+        </div>
+
+        @if (!collapsedSections.text) {
+        <div class="section-content">
+          <div class="text-input-group">
+            <input
+              type="text"
+              [(ngModel)]="newText"
+              placeholder="Nhập nội dung text..."
+              (keyup.enter)="addText()"
+            />
+            <button class="btn btn-primary" (click)="addText()">
+              <i class="fas fa-plus"></i> Thêm
+            </button>
+          </div>
+
+          @if (texts.length > 0 && selectedTextIndex >= 0) {
+          <div class="text-editor">
+            <div class="editor-tabs">
+              <button
+                class="tab-btn"
+                [class.active]="activeTextTab === 'content'"
+                (click)="activeTextTab = 'content'"
+              >
+                Nội dung
+              </button>
+              <button
+                class="tab-btn"
+                [class.active]="activeTextTab === 'style'"
+                (click)="activeTextTab = 'style'"
+              >
+                Kiểu chữ
+              </button>
+              <button
+                class="tab-btn"
+                [class.active]="activeTextTab === 'color'"
+                (click)="activeTextTab = 'color'"
+              >
+                Màu sắc
+              </button>
+            </div>
+
+            @if (activeTextTab === 'content') {
+            <div class="tab-content">
+              <div class="control-group">
+                <label for="textContent">Nội dung:</label>
+                <input
+                  type="text"
+                  id="textContent"
+                  [(ngModel)]="texts[selectedTextIndex].text"
+                  (input)="updateTextProperty()"
+                />
+              </div>
+            </div>
+            } @if (activeTextTab === 'style') {
+            <div class="tab-content">
+              <div class="control-group">
+                <label for="fontFamily">Font chữ:</label>
+                <select
+                  id="fontFamily"
+                  [(ngModel)]="texts[selectedTextIndex].font"
+                  (change)="updateTextProperty()"
+                >
+                  @for (font of fonts; track font) {
+                  <option [value]="font">{{ font }}</option>
+                  }
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="fontSize">Cỡ chữ:</label>
+                <div class="size-control">
+                  <input
+                    type="range"
+                    id="fontSize"
+                    min="10"
+                    max="72"
+                    [(ngModel)]="texts[selectedTextIndex].size"
+                    (input)="updateTextProperty()"
+                  />
+                  <span class="size-value"
+                    >{{ texts[selectedTextIndex].size }}px</span
+                  >
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label>Định dạng:</label>
+                <div class="format-buttons">
+                  <button
+                    class="format-btn"
+                    [class.active]="texts[selectedTextIndex].bold"
+                    (click)="
+                      texts[selectedTextIndex].bold =
+                        !texts[selectedTextIndex].bold;
+                      updateTextProperty()
+                    "
+                  >
+                    <i class="fas fa-bold"></i>
+                  </button>
+                  <button
+                    class="format-btn"
+                    [class.active]="texts[selectedTextIndex].italic"
+                    (click)="
+                      texts[selectedTextIndex].italic =
+                        !texts[selectedTextIndex].italic;
+                      updateTextProperty()
+                    "
+                  >
+                    <i class="fas fa-italic"></i>
+                  </button>
+                  <button
+                    class="format-btn"
+                    [class.active]="texts[selectedTextIndex].underline"
+                    (click)="
+                      texts[selectedTextIndex].underline =
+                        !texts[selectedTextIndex].underline;
+                      updateTextProperty()
+                    "
+                  >
+                    <i class="fas fa-underline"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            } @if (activeTextTab === 'color') {
+            <div class="tab-content">
+              <div class="control-group">
+                <label for="textColor">Màu chữ:</label>
+                <div class="color-input-group">
+                  <input
+                    #colorPicker
+                    type="color"
+                    id="textColor"
+                    [value]="texts[selectedTextIndex].color"
+                    (input)="
+                      texts[selectedTextIndex].color = colorPicker.value;
+                      updateTextProperty()
+                    "
+                  />
+                  <span class="color-value">{{
+                    texts[selectedTextIndex].color
+                  }}</span>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label for="bgColor">Màu nền:</label>
+                <div class="color-input-group">
+                  <input
+                    #bgColorPicker
+                    type="color"
+                    id="bgColor"
+                    [value]="
+                      texts[selectedTextIndex].backgroundColor || '#ffffff'
+                    "
+                    (input)="
+                      texts[selectedTextIndex].backgroundColor =
+                        bgColorPicker.value;
+                      updateTextProperty()
+                    "
+                  />
+                  <span class="color-value">{{
+                    texts[selectedTextIndex].backgroundColor || "Trong suốt"
+                  }}</span>
+                  <button
+                    class="transparent-btn"
+                    (click)="
+                      texts[selectedTextIndex].backgroundColor = '';
+                      updateTextProperty()
+                    "
+                  >
+                    Trong suốt
+                  </button>
+                </div>
+              </div>
+            </div>
+            }
+          </div>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="tool-section">
+        <div class="section-header">
+          <h3>Biểu tượng cảm xúc</h3>
+          <button class="btn-collapse" (click)="toggleSection('emoji')">
+            <i
+              class="fas"
+              [class.fa-chevron-down]="!collapsedSections.emoji"
+              [class.fa-chevron-right]="collapsedSections.emoji"
+            ></i>
+          </button>
+        </div>
+
+        @if (!collapsedSections.emoji) {
+        <div class="section-content">
+          <div class="emoji-toolbar">
+            @for (icon of fbIcons; track icon.type) {
+            <div
+              class="emoji-btn"
+              (click)="addIcon(icon)"
+              title="{{ icon.type }}"
+            >
+              <span class="emoji">{{ icon.emoji }}</span>
+            </div>
+            }
+          </div>
+
+          @if (selectedIconIndex >= 0) {
+          <div class="icon-editor">
+            <div class="control-group">
+              <label for="iconSize">Kích thước:</label>
+              <div class="size-control">
+                <input
+                  type="range"
+                  id="iconSize"
+                  min="20"
+                  max="100"
+                  [(ngModel)]="icons[selectedIconIndex].size"
+                  (input)="updateIconProperty()"
+                />
+                <span class="size-value"
+                  >{{ icons[selectedIconIndex].size }}px</span
+                >
+              </div>
+            </div>
+
+            <button
+              class="btn btn-danger"
+              (click)="deleteIcon(selectedIconIndex)"
+            >
+              <i class="fas fa-trash"></i> Xóa biểu tượng
+            </button>
+          </div>
+          }
+        </div>
+        }
+      </div>
+
+      <button class="btn btn-accent download-btn" (click)="downloadImage()">
+        <i class="fas fa-download"></i>
+        Tải xuống
+      </button>
+    </div>
+
+    <div class="right-panel">
+      <div class="canvas-container">
+        <canvas #canvas (click)="onCanvasClick($event)"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

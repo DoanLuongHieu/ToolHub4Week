@@ -1,0 +1,45 @@
+Hãy xây dựng công cụ tạo khung ảnh cho Facebook và mạng xã hội, với các yêu cầu sau: 
+
+1. Mô tả chung:
+Xây dựng một công cụ trực tuyến cho phép người dùng tạo khung ảnh tùy chỉnh để sử dụng trên Facebook, Instagram, TikTok, và các nền tảng khác. Công cụ cần có giao diện thân thiện, dễ sử dụng, cung cấp nhiều tùy chọn chỉnh sửa và cho phép người dùng tải xuống ảnh sau khi hoàn thành.
+
+2. Tính năng chính:
+
+A. Tải lên
+Người dùng có thể tải lên ảnh từ thiết bị hoặc chọn từ thư viện ảnh mẫu.
+Hỗ trợ các định dạng ảnh phổ biến: PNG, JPG, SVG.
+Cung cấp các công cụ chỉnh sửa cơ bản: xoay, cắt, thay đổi kích thước.
+
+B. Thêm và tùy chỉnh khung ảnh:
+Cung cấp thư viện khung ảnh theo chủ đề (Lễ hội, Sinh nhật, Sự kiện, Bóng đá, Gaming, Thương hiệu, v.v.).
+Cho phép điều chỉnh độ trong suốt của khung.
+Cho phép tải lên khung ảnh tùy chỉnh (PNG với nền trong suốt).
+
+C. Thêm hiệu ứng và nhãn dán:
+Hỗ trợ thêm hiệu ứng như đổ bóng, làm mờ nền, làm sáng, đổi màu.
+Thư viện nhãn dán và icon miễn phí.
+Người dùng có thể tải lên nhãn dán riêng của họ.
+
+D. Văn bản tùy chỉnh:
+Cho phép thêm văn bản với nhiều phông chữ khác nhau.
+Hỗ trợ đổi màu, thêm viền, đổ bóng, điều chỉnh kích thước.
+Cung cấp hiệu ứng chữ đặc biệt (Glitch, Neon, 3D, Gradient).
+
+E. Xuất và chia sẻ:
+Xuất ảnh với nhiều độ phân giải: 720p, 1080p, 4K.
+Tích hợp nút chia sẻ nhanh lên Facebook, Instagram, Twitter.
+Hỗ trợ tải xuống ảnh dưới dạng PNG hoặc JPG.
+
+3. Yêu cầu kỹ thuật:
+
+A. Công nghệ sử dụng:
+Frontend: Angular 17.
+Backend: Node.js.
+Xử lý hình ảnh: Sử dụng Canvas API.
+Lưu trữ: Firebase để lưu ảnh tải lên.
+Chia sẻ mạng xã hội: Facebook Graph API, Instagram API.
+
+B. Hiệu suất và trải nghiệm người dùng:
+Tải nhanh, giao diện mượt mà, hỗ trợ thao tác kéo thả.
+Hỗ trợ trên cả desktop và mobile.
+Không yêu cầu đăng ký tài khoản để sử dụng cơ bản, nhưng có tùy chọn đăng ký để lưu lịch sử thiết kế.

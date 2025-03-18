@@ -1,0 +1,22 @@
+GIỚI THIỆU DỰ ÁN TOOLHUB4WEEK
+
+ToolHub4Week là một nền tảng trực tuyến toàn diện cung cấp bộ công cụ đa chức năng để xử lý, chuyển đổi và quản lý tài liệu, hình ảnh và nhiều định dạng file khác nhau. Được phát triển bằng công nghệ Angular hiện đại, dự án được thiết kế để mang đến trải nghiệm người dùng mượt mà và hiệu quả cao.
+
+Dự án này được thiết kế để giải quyết các nhu cầu thường gặp về xử lý file, đặc biệt là các tài liệu PDF và hình ảnh, giúp người dùng tiết kiệm thời gian và nâng cao hiệu suất làm việc. ToolHub4Week cung cấp giao diện thân thiện với người dùng, cho phép truy cập nhanh chóng vào nhiều công cụ hữu ích mà không cần cài đặt phần mềm bổ sung.
+
+Điểm nổi bật của ToolHub4Week:
+
+1. Bộ công cụ xử lý PDF đa năng: Chuyển đổi PDF sang Word, Excel; chuyển đổi Word, Excel sang PDF; nén, tách và ghép file PDF.
+
+2. Công cụ xử lý hình ảnh chuyên nghiệp: Chuyển đổi định dạng hình ảnh, nén hình ảnh, đọc thông tin EXIF, cắt và tạo khung cho hình ảnh.
+
+3. Các công cụ khác: Trình tạo mật khẩu, tạo văn bản ngẫu nhiên, chuyển đổi định dạng JSON sang nhiều định dạng khác, công cụ phân tích số học.
+
+4. Hệ thống xác thực người dùng: Cho phép đăng ký và đăng nhập để lưu trữ lịch sử sử dụng và cá nhân hóa trải nghiệm.
+
+5. Giao diện đa ngôn ngữ: Hỗ trợ nhiều ngôn ngữ khác nhau, giúp người dùng từ nhiều quốc gia có thể sử dụng dễ dàng.
+
+6. Thiết kế hiện đại và đáp ứng: Hoạt động mượt mà trên mọi thiết bị, từ máy tính để bàn đến thiết bị di động.
+
+ToolHub4Week được xây dựng với mục tiêu trở thành giải pháp "tất cả trong một" cho các nhu cầu xử lý file trong môi trường làm việc và học tập hiện đại. Dự án này không chỉ giúp tối ưu hóa quy trình làm việc mà còn giúp người dùng dễ dàng quản lý và xử lý tài liệu số trong thời đại kỹ thuật số ngày nay. 
+

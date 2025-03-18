@@ -1,0 +1,91 @@
+<div class="converter-container">
+  <h1>PDF Compression Tool</h1>
+
+  <div
+    class="upload-section"
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop($event)"
+    [class.drag-over]="isDragging"
+  >
+    <label for="fileInput" class="file-input-label">
+      <span>Choose PDF File or Drag & Drop</span>
+      <input
+        type="file"
+        id="fileInput"
+        accept=".pdf"
+        (change)="handleFileInput($event)"
+        [attr.aria-label]="'Choose PDF file to compress'"
+      />
+    </label>
+    <div class="supported-formats">Supported format: PDF</div>
+  </div>
+
+  <div class="error-message" *ngIf="state().error">
+    {{ state().error }}
+  </div>
+
+  <div class="compression-status" *ngIf="state().isCompressing">
+    Compressing PDF...
+  </div>
+
+  <div class="compression-options" *ngIf="state().originalFile">
+    <div class="quality-control">
+      <label for="quality">Compression Level: {{ state().quality }}%</label>
+      <input
+        type="range"
+        id="quality"
+        min="1"
+        max="100"
+        [value]="state().quality"
+        (input)="updateQuality($event)"
+      />
+    </div>
+
+    <div class="metadata-control">
+      <label>
+        <input
+          type="checkbox"
+          [checked]="state().removeMetadata"
+          (change)="toggleMetadata()"
+        />
+        Remove PDF Metadata (Recommended for smaller size)
+      </label>
+    </div>
+
+    <button
+      class="compress-button"
+      (click)="compressPDF()"
+      [disabled]="state().isCompressing"
+    >
+      Compress PDF
+    </button>
+  </div>
+
+  <div class="file-info-container" *ngIf="state().originalFile">
+    <div class="file-info">
+      <h3>Original PDF</h3>
+      <div class="info-details">
+        <p>Size: {{ state().originalSize ?? 0 }} KB</p>
+        <p>Name: {{ state().originalFile?.name ?? "Unknown" }}</p>
+      </div>
+    </div>
+
+    <div class="file-info" *ngIf="state().compressedFile">
+      <h3>Compressed PDF</h3>
+      <div class="info-details">
+        <p>Size: {{ state().compressedSize ?? 0 }} KB</p>
+        <p>Compression: {{ getCompressionRatio() }}%</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="download-container" *ngIf="state().compressedFile">
+    <button
+      class="download-button"
+      (click)="downloadPDF()"
+      [attr.aria-label]="'Download compressed PDF'"
+    >
+      Download Compressed PDF
+    </button>
+  </div>
+</div>

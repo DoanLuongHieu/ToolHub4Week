@@ -1,0 +1,396 @@
+DANH SÁCH CÀI ĐẶT MULTI-LANGUAGE
+
+1. DATABASE (PostgreSQL)
+- Cài đặt PostgreSQL Server
+- Tạo database mới cho dự án
+- Tạo 2 bảng: Languages và Translations
+
+=== HƯỚNG DẪN TẠO DATABASE CHI TIẾT ===
+
+1. Tạo Database:
+```sql
+CREATE DATABASE multilanguage_db
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'en_US.utf8'
+    LC_CTYPE = 'en_US.utf8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+```
+
+2. Tạo Bảng Languages:
+```sql
+CREATE TABLE Languages (
+    Id SERIAL PRIMARY KEY,
+    Code VARCHAR(5) NOT NULL UNIQUE,
+    Name VARCHAR(50) NOT NULL,
+    IsDefault BOOLEAN DEFAULT false,
+    IsActive BOOLEAN DEFAULT true,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+3. Tạo Bảng Translations:
+```sql
+CREATE TABLE Translations (
+    Id SERIAL PRIMARY KEY,
+    LanguageId INT REFERENCES Languages(Id),
+    KeyName VARCHAR(255) NOT NULL,
+    Value TEXT NOT NULL,
+    Module VARCHAR(50),
+    Description TEXT,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(LanguageId, KeyName)
+);
+```
+
+4. Thêm dữ liệu mẫu cho Languages:
+```sql
+INSERT INTO Languages (Code, Name, IsDefault, IsActive) VALUES
+('vi', 'Tiếng Việt', true, true),
+('en', 'English', false, true);
+```
+
+5. Thêm dữ liệu mẫu cho Translations:
+```sql
+-- Thêm translations cho Tiếng Việt (giả sử LanguageId = 1)
+INSERT INTO Translations (LanguageId, KeyName, Value, Module) VALUES
+(1, 'COMMON.WELCOME', 'Chào mừng', 'Common'),
+(1, 'COMMON.LOGIN', 'Đăng nhập', 'Common'),
+(1, 'COMMON.REGISTER', 'Đăng ký', 'Common'),
+(1, 'COMMON.LOGOUT', 'Đăng xuất', 'Common'),
+(1, 'MENU.HOME', 'Trang chủ', 'Menu'),
+(1, 'MENU.ABOUT', 'Giới thiệu', 'Menu'),
+(1, 'MENU.CONTACT', 'Liên hệ', 'Menu');
+
+-- Thêm translations cho English (giả sử LanguageId = 2)
+INSERT INTO Translations (LanguageId, KeyName, Value, Module) VALUES
+(2, 'COMMON.WELCOME', 'Welcome', 'Common'),
+(2, 'COMMON.LOGIN', 'Login', 'Common'),
+(2, 'COMMON.REGISTER', 'Register', 'Common'),
+(2, 'COMMON.LOGOUT', 'Logout', 'Common'),
+(2, 'MENU.HOME', 'Home', 'Menu'),
+(2, 'MENU.ABOUT', 'About', 'Menu'),
+(2, 'MENU.CONTACT', 'Contact', 'Menu');
+
+-- Thêm translations cho các tính năng của ứng dụng
+INSERT INTO Translations (LanguageId, KeyName, Value, Module) VALUES
+-- Vietnamese (LanguageId = 1)
+-- Header & Navigation
+(1, 'NAV.ALL_TOOLS', 'Tất cả công cụ', 'Navigation'),
+(1, 'NAV.FEATURES', 'Tính năng', 'Navigation'),
+(1, 'NAV.AUTHENTICATION', 'Xác thực', 'Navigation'),
+
+-- PDF Tools
+(1, 'PDF_TOOLS.TITLE', 'Công cụ PDF', 'PDF'),
+(1, 'PDF_TOOLS.CONVERT_FROM_PDF', 'Chuyển từ PDF', 'PDF'),
+(1, 'PDF_TOOLS.CONVERT_TO_PDF', 'Chuyển sang PDF', 'PDF'),
+(1, 'PDF_TOOLS.PDF_TO_WORD', 'PDF sang Word', 'PDF'),
+(1, 'PDF_TOOLS.PDF_TO_EXCEL', 'PDF sang Excel', 'PDF'),
+(1, 'PDF_TOOLS.WORD_TO_PDF', 'Word sang PDF', 'PDF'),
+(1, 'PDF_TOOLS.EXCEL_TO_PDF', 'Excel sang PDF', 'PDF'),
+(1, 'PDF_TOOLS.COMPRESS_PDF', 'Nén PDF', 'PDF'),
+(1, 'PDF_TOOLS.SPLIT_PDF', 'Tách PDF', 'PDF'),
+(1, 'PDF_TOOLS.MERGE_PDF', 'Ghép PDF', 'PDF'),
+
+-- Image Tools
+(1, 'IMAGE_TOOLS.TITLE', 'Công cụ Ảnh', 'Image'),
+(1, 'IMAGE_TOOLS.CONVERT', 'Chuyển đổi ảnh', 'Image'),
+(1, 'IMAGE_TOOLS.IMAGE_CONVERTER', 'Chuyển đổi định dạng ảnh', 'Image'),
+(1, 'IMAGE_TOOLS.COMPRESS_IMAGE', 'Nén ảnh', 'Image'),
+(1, 'IMAGE_TOOLS.READ_EXIF', 'Đọc thông tin EXIF', 'Image'),
+(1, 'IMAGE_TOOLS.CROP_IMAGE', 'Cắt ảnh', 'Image'),
+(1, 'IMAGE_TOOLS.FRAME_IMAGE', 'Khung ảnh', 'Image'),
+
+-- Other Tools
+(1, 'OTHER_TOOLS.TITLE', 'Công cụ khác', 'Other'),
+(1, 'OTHER_TOOLS.PASSWORD_GENERATOR', 'Tạo mật khẩu', 'Other'),
+(1, 'OTHER_TOOLS.LOREM_IPSUM', 'Tạo văn bản mẫu', 'Other'),
+(1, 'OTHER_TOOLS.JSON_TO_CSV', 'JSON sang CSV', 'Other'),
+(1, 'OTHER_TOOLS.CSV_TO_JSON', 'CSV sang JSON', 'Other'),
+(1, 'OTHER_TOOLS.NUMERICAL_ANALYSIS', 'Phân tích số học', 'Other'),
+
+-- Authentication
+(1, 'AUTH.LOGIN_TITLE', 'Đăng nhập', 'Auth'),
+(1, 'AUTH.EMAIL', 'Email', 'Auth'),
+(1, 'AUTH.PASSWORD', 'Mật khẩu', 'Auth'),
+(1, 'AUTH.REMEMBER_ME', 'Ghi nhớ đăng nhập', 'Auth'),
+(1, 'AUTH.FORGOT_PASSWORD', 'Quên mật khẩu?', 'Auth'),
+(1, 'AUTH.LOGIN_WITH', 'Hoặc đăng nhập với', 'Auth'),
+(1, 'AUTH.NO_ACCOUNT', 'Chưa có tài khoản?', 'Auth'),
+(1, 'AUTH.REGISTER_NOW', 'Đăng ký ngay', 'Auth'),
+
+-- English (LanguageId = 2)
+-- Header & Navigation
+(2, 'NAV.ALL_TOOLS', 'All Tools', 'Navigation'),
+(2, 'NAV.FEATURES', 'Features', 'Navigation'),
+(2, 'NAV.AUTHENTICATION', 'Authentication', 'Navigation'),
+
+-- PDF Tools
+(2, 'PDF_TOOLS.TITLE', 'PDF Tools', 'PDF'),
+(2, 'PDF_TOOLS.CONVERT_FROM_PDF', 'Convert from PDF', 'PDF'),
+(2, 'PDF_TOOLS.CONVERT_TO_PDF', 'Convert to PDF', 'PDF'),
+(2, 'PDF_TOOLS.PDF_TO_WORD', 'PDF to Word', 'PDF'),
+(2, 'PDF_TOOLS.PDF_TO_EXCEL', 'PDF to Excel', 'PDF'),
+(2, 'PDF_TOOLS.WORD_TO_PDF', 'Word to PDF', 'PDF'),
+(2, 'PDF_TOOLS.EXCEL_TO_PDF', 'Excel to PDF', 'PDF'),
+(2, 'PDF_TOOLS.COMPRESS_PDF', 'Compress PDF', 'PDF'),
+(2, 'PDF_TOOLS.SPLIT_PDF', 'Split PDF', 'PDF'),
+(2, 'PDF_TOOLS.MERGE_PDF', 'Merge PDF', 'PDF'),
+
+-- Image Tools
+(2, 'IMAGE_TOOLS.TITLE', 'Image Tools', 'Image'),
+(2, 'IMAGE_TOOLS.CONVERT', 'Convert Images', 'Image'),
+(2, 'IMAGE_TOOLS.IMAGE_CONVERTER', 'Image Converter', 'Image'),
+(2, 'IMAGE_TOOLS.COMPRESS_IMAGE', 'Compress Image', 'Image'),
+(2, 'IMAGE_TOOLS.READ_EXIF', 'Read EXIF Data', 'Image'),
+(2, 'IMAGE_TOOLS.CROP_IMAGE', 'Crop Image', 'Image'),
+(2, 'IMAGE_TOOLS.FRAME_IMAGE', 'Frame Image', 'Image'),
+
+-- Other Tools
+(2, 'OTHER_TOOLS.TITLE', 'Other Tools', 'Other'),
+(2, 'OTHER_TOOLS.PASSWORD_GENERATOR', 'Password Generator', 'Other'),
+(2, 'OTHER_TOOLS.LOREM_IPSUM', 'Lorem Ipsum Generator', 'Other'),
+(2, 'OTHER_TOOLS.JSON_TO_CSV', 'JSON to CSV', 'Other'),
+(2, 'OTHER_TOOLS.CSV_TO_JSON', 'CSV to JSON', 'Other'),
+(2, 'OTHER_TOOLS.NUMERICAL_ANALYSIS', 'Numerical Analysis', 'Other'),
+
+-- Authentication
+(2, 'AUTH.LOGIN_TITLE', 'Login', 'Auth'),
+(2, 'AUTH.EMAIL', 'Email', 'Auth'),
+(2, 'AUTH.PASSWORD', 'Password', 'Auth'),
+(2, 'AUTH.REMEMBER_ME', 'Remember me', 'Auth'),
+(2, 'AUTH.FORGOT_PASSWORD', 'Forgot Password?', 'Auth'),
+(2, 'AUTH.LOGIN_WITH', 'Or login with', 'Auth'),
+(2, 'AUTH.NO_ACCOUNT', 'Don\'t have an account?', 'Auth'),
+(2, 'AUTH.REGISTER_NOW', 'Register now', 'Auth');
+
+-- Thêm descriptions cho một số translations quan trọng
+UPDATE Translations 
+SET Description = 'Tiêu đề chính của trang đăng nhập'
+WHERE KeyName = 'AUTH.LOGIN_TITLE';
+
+UPDATE Translations 
+SET Description = 'Tiêu đề của phần công cụ PDF'
+WHERE KeyName = 'PDF_TOOLS.TITLE';
+
+UPDATE Translations 
+SET Description = 'Tiêu đề của phần công cụ xử lý ảnh'
+WHERE KeyName = 'IMAGE_TOOLS.TITLE';
+
+-- Thêm translations cho Error Handling và Loading States
+INSERT INTO Translations (LanguageId, KeyName, Value, Module) VALUES
+-- Vietnamese (LanguageId = 1)
+-- Error Messages
+(1, 'ERROR.UNEXPECTED', 'Đã xảy ra lỗi không mong muốn', 'Error'),
+(1, 'ERROR.NOT_FOUND', 'Không tìm thấy tài nguyên', 'Error'),
+(1, 'ERROR.ACCESS_DENIED', 'Truy cập bị từ chối', 'Error'),
+(1, 'ERROR.SERVER_ERROR', 'Lỗi máy chủ', 'Error'),
+(1, 'ERROR.NETWORK_ERROR', 'Lỗi kết nối mạng', 'Error'),
+(1, 'ERROR.VALIDATION_ERROR', 'Lỗi xác thực dữ liệu', 'Error'),
+
+-- Loading States
+(1, 'LOADING.DEFAULT', 'Đang tải...', 'Loading'),
+(1, 'LOADING.PROCESSING', 'Đang xử lý...', 'Loading'),
+(1, 'LOADING.UPLOADING', 'Đang tải lên...', 'Loading'),
+(1, 'LOADING.DOWNLOADING', 'Đang tải xuống...', 'Loading'),
+(1, 'LOADING.CONVERTING', 'Đang chuyển đổi...', 'Loading'),
+
+-- Success Messages
+(1, 'SUCCESS.SAVED', 'Đã lưu thành công', 'Success'),
+(1, 'SUCCESS.UPDATED', 'Đã cập nhật thành công', 'Success'),
+(1, 'SUCCESS.DELETED', 'Đã xóa thành công', 'Success'),
+(1, 'SUCCESS.UPLOADED', 'Đã tải lên thành công', 'Success'),
+(1, 'SUCCESS.CONVERTED', 'Đã chuyển đổi thành công', 'Success'),
+
+-- Buttons & Actions
+(1, 'BUTTON.SUBMIT', 'Gửi', 'UI'),
+(1, 'BUTTON.CANCEL', 'Hủy', 'UI'),
+(1, 'BUTTON.SAVE', 'Lưu', 'UI'),
+(1, 'BUTTON.DELETE', 'Xóa', 'UI'),
+(1, 'BUTTON.EDIT', 'Sửa', 'UI'),
+(1, 'BUTTON.UPLOAD', 'Tải lên', 'UI'),
+(1, 'BUTTON.DOWNLOAD', 'Tải xuống', 'UI'),
+(1, 'BUTTON.CONVERT', 'Chuyển đổi', 'UI'),
+(1, 'BUTTON.CLOSE', 'Đóng', 'UI'),
+(1, 'BUTTON.CONFIRM', 'Xác nhận', 'UI'),
+
+-- Tooltips
+(1, 'TOOLTIP.DRAG_DROP', 'Kéo và thả file vào đây', 'UI'),
+(1, 'TOOLTIP.MAX_SIZE', 'Kích thước tối đa: {size}', 'UI'),
+(1, 'TOOLTIP.SUPPORTED_FORMATS', 'Định dạng hỗ trợ: {formats}', 'UI'),
+
+-- English (LanguageId = 2)
+-- Error Messages
+(2, 'ERROR.UNEXPECTED', 'An unexpected error occurred', 'Error'),
+(2, 'ERROR.NOT_FOUND', 'Resource not found', 'Error'),
+(2, 'ERROR.ACCESS_DENIED', 'Access denied', 'Error'),
+(2, 'ERROR.SERVER_ERROR', 'Server error', 'Error'),
+(2, 'ERROR.NETWORK_ERROR', 'Network error', 'Error'),
+(2, 'ERROR.VALIDATION_ERROR', 'Validation error', 'Error'),
+
+-- Loading States
+(2, 'LOADING.DEFAULT', 'Loading...', 'Loading'),
+(2, 'LOADING.PROCESSING', 'Processing...', 'Loading'),
+(2, 'LOADING.UPLOADING', 'Uploading...', 'Loading'),
+(2, 'LOADING.DOWNLOADING', 'Downloading...', 'Loading'),
+(2, 'LOADING.CONVERTING', 'Converting...', 'Loading'),
+
+-- Success Messages
+(2, 'SUCCESS.SAVED', 'Successfully saved', 'Success'),
+(2, 'SUCCESS.UPDATED', 'Successfully updated', 'Success'),
+(2, 'SUCCESS.DELETED', 'Successfully deleted', 'Success'),
+(2, 'SUCCESS.UPLOADED', 'Successfully uploaded', 'Success'),
+(2, 'SUCCESS.CONVERTED', 'Successfully converted', 'Success'),
+
+-- Buttons & Actions
+(2, 'BUTTON.SUBMIT', 'Submit', 'UI'),
+(2, 'BUTTON.CANCEL', 'Cancel', 'UI'),
+(2, 'BUTTON.SAVE', 'Save', 'UI'),
+(2, 'BUTTON.DELETE', 'Delete', 'UI'),
+(2, 'BUTTON.EDIT', 'Edit', 'UI'),
+(2, 'BUTTON.UPLOAD', 'Upload', 'UI'),
+(2, 'BUTTON.DOWNLOAD', 'Download', 'UI'),
+(2, 'BUTTON.CONVERT', 'Convert', 'UI'),
+(2, 'BUTTON.CLOSE', 'Close', 'UI'),
+(2, 'BUTTON.CONFIRM', 'Confirm', 'UI'),
+
+-- Tooltips
+(2, 'TOOLTIP.DRAG_DROP', 'Drag and drop files here', 'UI'),
+(2, 'TOOLTIP.MAX_SIZE', 'Maximum size: {size}', 'UI'),
+(2, 'TOOLTIP.SUPPORTED_FORMATS', 'Supported formats: {formats}', 'UI');
+
+-- Thêm descriptions cho các translations mới
+UPDATE Translations 
+SET Description = 'Thông báo lỗi chung khi có lỗi không xác định'
+WHERE KeyName = 'ERROR.UNEXPECTED';
+
+UPDATE Translations 
+SET Description = 'Trạng thái đang tải mặc định'
+WHERE KeyName = 'LOADING.DEFAULT';
+
+UPDATE Translations 
+SET Description = 'Nút gửi form hoặc dữ liệu'
+WHERE KeyName = 'BUTTON.SUBMIT';
+
+-- Thêm translations cho Theme và Settings
+INSERT INTO Translations (LanguageId, KeyName, Value, Module) VALUES
+-- Vietnamese
+(1, 'THEME.LIGHT', 'Giao diện sáng', 'Theme'),
+(1, 'THEME.DARK', 'Giao diện tối', 'Theme'),
+(1, 'SETTINGS.LANGUAGE', 'Ngôn ngữ', 'Settings'),
+(1, 'SETTINGS.THEME', 'Giao diện', 'Settings'),
+(1, 'SETTINGS.NOTIFICATIONS', 'Thông báo', 'Settings'),
+
+-- English
+(2, 'THEME.LIGHT', 'Light Theme', 'Theme'),
+(2, 'THEME.DARK', 'Dark Theme', 'Theme'),
+(2, 'SETTINGS.LANGUAGE', 'Language', 'Settings'),
+(2, 'SETTINGS.THEME', 'Theme', 'Settings'),
+(2, 'SETTINGS.NOTIFICATIONS', 'Notifications', 'Settings');
+
+6. Tạo Index để tối ưu truy vấn:
+```sql
+CREATE INDEX idx_translations_language_id ON Translations(LanguageId);
+CREATE INDEX idx_translations_key_name ON Translations(KeyName);
+CREATE INDEX idx_languages_code ON Languages(Code);
+```
+
+7. Tạo Function cập nhật timestamp:
+```sql
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.UpdatedAt = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+-- Áp dụng trigger cho bảng Languages
+CREATE TRIGGER update_languages_modtime
+    BEFORE UPDATE ON Languages
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+
+-- Áp dụng trigger cho bảng Translations
+CREATE TRIGGER update_translations_modtime
+    BEFORE UPDATE ON Translations
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+```
+
+Lưu ý quan trọng:
+- Đảm bảo sử dụng encoding UTF8 để hỗ trợ đầy đủ các ký tự đặc biệt
+- Backup database thường xuyên
+- Kiểm tra và tối ưu performance của các câu query
+- Thêm các translations mới khi phát triển tính năng mới
+
+2. BACKEND (.NET 6.0)
+- Cài đặt .NET 6.0 SDK
+- Cài đặt các NuGet packages:
+  + Microsoft.EntityFrameworkCore
+  + Microsoft.EntityFrameworkCore.PostgreSQL
+  + Microsoft.AspNetCore.Mvc.NewtonsoftJson
+
+3. FRONTEND (Angular 17)
+- Cài đặt Node.js và npm
+- Cài đặt Angular CLI: npm install -g @angular/cli
+- Cài đặt các packages:
+  + ng add @angular/localize
+  + npm install @ngx-translate/core
+  + npm install @ngx-translate/http-loader
+
+4. TOOLS VÀ EXTENSIONS CHO DEVELOPMENT
+- Visual Studio 2022 hoặc VS Code
+- pgAdmin 4 (quản lý PostgreSQL)
+- Postman (test API)
+
+5. CẤU TRÚC THƯ MỤC CẦN TẠO
+Backend:
+/Models
+  - Language.cs
+  - Translation.cs
+/Services
+  - ITranslationService.cs
+  - TranslationService.cs
+/Controllers
+  - LanguageController.cs
+
+Frontend:
+/src/assets/i18n/
+  - en.json
+  - vi.json
+/src/app/services/
+  - translation.service.ts
+/src/app/interceptors/
+  - language.interceptor.ts
+/src/app/components/
+  - language-selector.component.ts
+
+6. CẤU HÌNH CẦN THIẾT
+- Connection string trong appsettings.json (Backend)
+- TranslateModule trong app.config.ts (Frontend)
+- CORS policy trong Startup.cs (Backend)
+- HTTP interceptor cho language header
+- Environment variables cho API endpoints
+
+
+
+
+
+
+
+hmm, ví dụ t deploy cái này thì chỉ kiểu xây dựng để test cho có thôi. Nếu t làm hẳn web để sử dụng được thì chắc hẳn là phải có domain, hosting kiểu kiểu thế. 
+Hiện tại dùng firebase để deploy lên thì tớ cảm giác nếu có nhiều lượt truy cập thì không chịu được, hay lag với sập :v. 
+
+OAuth2 bằng Keycloak như một giải pháp login nhanh hơn. 
+Redis thì thấy nói là tạo server dùng bộ nhớ cache để lưu trữ dữ liệu và cơ chế phục hồi dữ liệu nếu có lỗi, vậy nếu sử dụng để xử lý pdf kiểu giảm thời gian xử lý khi load file hay xử lý song song được nhiều người dùng cùng lúc sử dụng một công cụ pdf chả hạn.
+Reverse proxy với load balancer thì t thấy có lẽ nó áp dụng cho hệ thống lớn, của t thì k cần quá nhiều về bảo mât trừ mấy cái như file sau khi xử lý xong thì sau bao lâu xóa hẳn, không lưu lại để tránh vấn đề bảo mật của người dùng, nên chắc là k dùng
+push Notification thì cũng không, kiểu thông báo đẩy nó k có nhiều trường hợp áp dụng, chắc kiểu mấy cái ví dụ như mỗi khi người dùng hoàn thành 1 tác vụ nào đó trên web thì có thông báo hiện lên Nên là không thấy dùng nhiều.
+logging bằng elk(elastic search, logstash, kibana) có vẻ ổn, nhất là khi t dùng nhiều service backend cho nhiều dịch vụ, ví dụ xử lý backend cho các công cụ pdf, hoặc word thì mỗi service có 1 log, nếu có công cụ để quản lý log cho dễ tìm bug, bảo trì các thứ thì có vẻ ổn.
+kafka thì chắc là thôi, không đủ time với đọc thấy chưa hiểu gì =))
+
+Chốt lại là chắc sẽ áp dụng redis(xử lý pdf), Keycloak(auth) với logging(tìm bug nhằm fix dễ hơn)

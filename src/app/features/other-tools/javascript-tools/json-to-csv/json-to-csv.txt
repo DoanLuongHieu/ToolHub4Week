@@ -1,0 +1,154 @@
+Thuật toán chuyển đổi từ JSON sang CSV:
+
+1. Đọc và phân tích dữ liệu JSON:
+- Đọc nội dung JSON từ file hoặc văn bản được dán vào
+- Kiểm tra tính hợp lệ của JSON
+- Phân tích cấu trúc dữ liệu:
+  + Trường hợp là mảng các đối tượng
+  + Trường hợp là đối tượng đơn lẻ
+  + Trường hợp có cấu trúc lồng nhau
+
+2. Thu thập và xử lý headers:
+- Thu thập tất cả các key có thể từ tất cả các đối tượng
+- Xử lý các trường hợp đặc biệt:
+  + Key lồng nhau (dùng dot notation, ví dụ: user.name)
+  + Key chứa ký tự đặc biệt
+  + Key trùng lặp
+- Sắp xếp và chuẩn hóa headers
+- Cho phép người dùng tùy chỉnh thứ tự và lựa chọn headers
+
+3. Xử lý và chuyển đổi dữ liệu:
+- Duyệt qua từng đối tượng trong dữ liệu JSON
+- Với mỗi đối tượng:
+  + Map các giá trị theo thứ tự của headers
+  + Xử lý các kiểu dữ liệu đặc biệt:
+    * Object lồng nhau -> làm phẳng bằng dot notation
+    * Array -> chuyển thành chuỗi hoặc tách thành nhiều cột
+    * Null/undefined -> giá trị mặc định
+    * Boolean -> "true"/"false"
+    * Number -> giữ nguyên định dạng
+    * Date -> định dạng theo yêu cầu
+    * String -> escape các ký tự đặc biệt
+
+4. Tạo nội dung CSV:
+- Tùy chọn định dạng:
+  + Delimiter (dấu phân cách): comma, tab, semicolon,...
+  + Quote character: double quote (") hoặc single quote (')
+  + Escape character: xử lý ký tự đặc biệt
+  + Line endings: \n, \r\n
+  + Encoding: UTF-8, UTF-16,...
+- Tạo dòng header
+- Tạo các dòng dữ liệu
+- Xử lý các trường hợp đặc biệt:
+  + Giá trị chứa delimiter
+  + Giá trị chứa quote character
+  + Giá trị có nhiều dòng
+  + Giá trị chứa ký tự đặc biệt
+
+5. Tối ưu hiệu suất và xử lý file lớn:
+- Xử lý theo chunks:
+  + Chia nhỏ dữ liệu JSON thành các phần
+  + Xử lý từng phần một cách độc lập
+  + Gộp kết quả lại
+- Stream processing:
+  + Đọc JSON theo luồng
+  + Tạo CSV theo luồng
+  + Tiết kiệm bộ nhớ với file lớn
+- Cache và tối ưu:
+  + Cache các key đã xử lý
+  + Tối ưu việc nối chuỗi
+  + Sử dụng buffer cho I/O
+
+6. Xử lý lỗi và validation:
+- Kiểm tra đầu vào:
+  + JSON hợp lệ
+  + Cấu trúc dữ liệu phù hợp
+  + Giới hạn kích thước
+- Xử lý các trường hợp đặc biệt:
+  + Dữ liệu thiếu
+  + Dữ liệu không đồng nhất
+  + Kiểu dữ liệu không hợp lệ
+- Thông báo lỗi chi tiết:
+  + Vị trí lỗi
+  + Nguyên nhân
+  + Gợi ý khắc phục
+
+7. Tính năng nâng cao:
+- Tùy chọn định dạng đầu ra:
+  + Tùy chỉnh delimiter
+  + Tùy chỉnh quote character
+  + Tùy chỉnh escape character
+  + Tùy chỉnh định dạng ngày tháng
+- Xử lý dữ liệu:
+  + Lọc dữ liệu theo điều kiện
+  + Sắp xếp dữ liệu
+  + Gộp nhóm dữ liệu
+  + Tính toán giá trị tổng hợp
+- Tùy chọn xuất file:
+  + Tải xuống file CSV
+  + Copy vào clipboard
+  + Xem trước kết quả
+  + Nén file (ZIP, GZIP)
+
+8. Các trường hợp đặc biệt cần xử lý:
+- JSON có cấu trúc phức tạp:
+```json
+{
+  "user": {
+    "info": {
+      "name": "John",
+      "contacts": [
+        {"type": "email", "value": "john@example.com"},
+        {"type": "phone", "value": "123-456-789"}
+      ]
+    }
+  }
+}
+```
+-> CSV:
+```csv
+user.info.name,user.info.contacts[0].type,user.info.contacts[0].value,user.info.contacts[1].type,user.info.contacts[1].value
+John,email,john@example.com,phone,123-456-789
+```
+
+- Xử lý mảng trong JSON:
+```json
+{
+  "name": "Product",
+  "tags": ["electronics", "gadget"],
+  "prices": [100, 120, 150]
+}
+```
+-> CSV:
+```csv
+name,tags,prices
+Product,"electronics,gadget","100,120,150"
+```
+
+- Xử lý giá trị null và undefined:
+```json
+{
+  "id": 1,
+  "name": null,
+  "description": undefined
+}
+```
+-> CSV:
+```csv
+id,name,description
+1,,
+```
+
+9. Tối ưu hóa và bảo mật:
+- Hiệu suất:
+  + Sử dụng Web Workers cho xử lý nặng
+  + Tối ưu bộ nhớ với file lớn
+  + Xử lý bất đồng bộ
+- Bảo mật:
+  + Kiểm tra và làm sạch dữ liệu đầu vào
+  + Xử lý an toàn với dữ liệu nhạy cảm
+  + Giới hạn kích thước file
+- Tương thích:
+  + Hỗ trợ nhiều trình duyệt
+  + Xử lý các phiên bản JSON khác nhau
+  + Tương thích Unicode 

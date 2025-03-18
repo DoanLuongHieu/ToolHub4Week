@@ -1,0 +1,150 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.2.3
+2 info using node@v18.19.0
+3 timing npm:load:whichnode Completed in 4ms
+4 timing config:load:defaults Completed in 8ms
+5 timing config:load:file:C:\Users\Admin\AppData\Roaming\nvm\v18.19.0\node_modules\npm\npmrc Completed in 3ms
+6 timing config:load:builtin Completed in 4ms
+7 timing config:load:cli Completed in 12ms
+8 timing config:load:env Completed in 2ms
+9 timing config:load:project Completed in 1ms
+10 timing config:load:file:C:\Users\Admin\.npmrc Completed in 4ms
+11 timing config:load:user Completed in 5ms
+12 timing config:load:file:C:\Program Files\nodejs\etc\npmrc Completed in 0ms
+13 timing config:load:global Completed in 1ms
+14 timing config:load:setEnvs Completed in 2ms
+15 timing config:load Completed in 35ms
+16 timing npm:load:configload Completed in 36ms
+17 timing config:load:flatten Completed in 7ms
+18 timing npm:load:mkdirpcache Completed in 1ms
+19 timing npm:load:mkdirplogs Completed in 1ms
+20 verbose title npm install firebase-tools
+21 verbose argv "install" "--global" "firebase-tools"
+22 timing npm:load:setTitle Completed in 3ms
+23 timing npm:load:display Completed in 2ms
+24 verbose logfile logs-max:10 dir:C:\Users\Admin\AppData\Local\npm-cache\_logs\2025-03-14T09_21_43_137Z-
+25 verbose logfile C:\Users\Admin\AppData\Local\npm-cache\_logs\2025-03-14T09_21_43_137Z-debug-0.log
+26 timing npm:load:logFile Completed in 26ms
+27 timing npm:load:timers Completed in 0ms
+28 timing npm:load:configScope Completed in 0ms
+29 timing npm:load Completed in 132ms
+30 timing config:load:flatten Completed in 1ms
+31 timing arborist:ctor Completed in 2ms
+32 silly logfile start cleaning logs, removing 2 files
+33 silly logfile done cleaning log files
+34 timing idealTree:init Completed in 18ms
+35 timing idealTree:userRequests Completed in 10ms
+36 silly idealTree buildDeps
+37 silly fetch manifest firebase-tools@*
+38 http fetch GET 200 https://registry.npmjs.org/firebase-tools 76923ms (cache stale)
+39 silly placeDep ROOT firebase-tools@13.31.2 OK for:  want: *
+40 silly fetch manifest @electric-sql/pglite@^0.2.16
+41 silly fetch manifest @google-cloud/cloud-sql-connector@^1.3.3
+42 silly fetch manifest @google-cloud/pubsub@^4.5.0
+43 silly fetch manifest abort-controller@^3.0.0
+44 silly fetch manifest ajv@^8.17.1
+45 silly fetch manifest ajv-formats@3.0.1
+46 silly fetch manifest archiver@^7.0.0
+47 silly fetch manifest async-lock@1.4.1
+48 silly fetch manifest body-parser@^1.19.0
+49 silly fetch manifest chokidar@^3.6.0
+50 silly fetch manifest cjson@^0.3.1
+51 silly fetch manifest cli-table3@0.6.5
+52 silly fetch manifest colorette@^2.0.19
+53 silly fetch manifest commander@^5.1.0
+54 silly fetch manifest configstore@^5.0.1
+55 silly fetch manifest cors@^2.8.5
+56 silly fetch manifest cross-env@^7.0.3
+57 silly fetch manifest cross-spawn@^7.0.5
+58 silly fetch manifest csv-parse@^5.0.4
+59 silly fetch manifest deep-equal-in-any-order@^2.0.6
+60 silly fetch manifest exegesis@^4.2.0
+61 silly fetch manifest exegesis-express@^4.0.0
+62 silly fetch manifest express@^4.16.4
+63 silly fetch manifest filesize@^6.1.0
+64 silly fetch manifest form-data@^4.0.1
+65 silly fetch manifest fs-extra@^10.1.0
+66 silly fetch manifest fuzzy@^0.1.3
+67 silly fetch manifest gaxios@^6.7.0
+68 silly fetch manifest glob@^10.4.1
+69 silly fetch manifest google-auth-library@^9.11.0
+70 silly fetch manifest inquirer@^8.2.6
+71 silly fetch manifest inquirer-autocomplete-prompt@^2.0.1
+72 silly fetch manifest js-yaml@^3.14.1
+73 silly fetch manifest jsonwebtoken@^9.0.0
+74 silly fetch manifest leven@^3.1.0
+75 silly fetch manifest libsodium-wrappers@^0.7.10
+76 silly fetch manifest lodash@^4.17.21
+77 silly fetch manifest lsofi@1.0.0
+78 silly fetch manifest marked@^13.0.2
+79 silly fetch manifest marked-terminal@^7.0.0
+80 silly fetch manifest mime@^2.5.2
+81 silly fetch manifest minimatch@^3.0.4
+82 silly fetch manifest morgan@^1.10.0
+83 silly fetch manifest node-fetch@^2.6.7
+84 silly fetch manifest open@^6.3.0
+85 silly fetch manifest ora@^5.4.1
+86 silly fetch manifest p-limit@^3.0.1
+87 silly fetch manifest pg@^8.11.3
+88 silly fetch manifest portfinder@^1.0.32
+89 silly fetch manifest progress@^2.0.3
+90 silly fetch manifest proxy-agent@^6.3.0
+91 silly fetch manifest retry@^0.13.1
+92 silly fetch manifest semver@^7.5.2
+93 silly fetch manifest sql-formatter@^15.3.0
+94 silly fetch manifest stream-chain@^2.2.4
+95 silly fetch manifest stream-json@^1.7.3
+96 silly fetch manifest superstatic@^9.2.0
+97 silly fetch manifest tar@^6.1.11
+98 silly fetch manifest tcp-port-used@^1.0.2
+99 silly fetch manifest tmp@^0.2.3
+100 silly fetch manifest triple-beam@^1.3.0
+101 silly fetch manifest universal-analytics@^0.5.3
+102 silly fetch manifest update-notifier-cjs@^5.1.6
+103 silly fetch manifest uuid@^8.3.2
+104 silly fetch manifest winston@^3.0.0
+105 silly fetch manifest winston-transport@^4.4.0
+106 silly fetch manifest ws@^7.5.10
+107 silly fetch manifest yaml@^2.4.1
+108 http fetch GET 200 https://registry.npmjs.org/abort-controller 156871ms (cache stale)
+109 http fetch GET 200 https://registry.npmjs.org/ajv-formats 156872ms (cache stale)
+110 http fetch GET 200 https://registry.npmjs.org/@electric-sql%2fpglite 159136ms (cache stale)
+111 http fetch GET 200 https://registry.npmjs.org/ajv 159134ms (cache stale)
+112 http fetch GET 200 https://registry.npmjs.org/archiver 161396ms (cache stale)
+113 http fetch GET 200 https://registry.npmjs.org/@google-cloud%2fpubsub 161411ms (cache stale)
+114 http fetch GET 200 https://registry.npmjs.org/body-parser 163657ms (cache stale)
+115 http fetch GET 200 https://registry.npmjs.org/chokidar 163660ms (cache stale)
+116 http fetch GET 200 https://registry.npmjs.org/cjson 165925ms (cache stale)
+117 http fetch GET 200 https://registry.npmjs.org/async-lock 165937ms (cache stale)
+118 http fetch GET 200 https://registry.npmjs.org/commander 168201ms (cache stale)
+119 http fetch GET 200 https://registry.npmjs.org/configstore 168209ms (cache stale)
+120 http fetch GET 200 https://registry.npmjs.org/cli-table3 170466ms (cache stale)
+121 http fetch GET 200 https://registry.npmjs.org/cross-spawn 170460ms (cache stale)
+122 http fetch GET 200 https://registry.npmjs.org/cross-env 172718ms (cache stale)
+123 http fetch GET 200 https://registry.npmjs.org/deep-equal-in-any-order 172718ms (cache stale)
+124 http fetch GET 200 https://registry.npmjs.org/cors 174984ms (cache stale)
+125 http fetch GET 200 https://registry.npmjs.org/exegesis 174981ms (cache stale)
+126 http fetch GET 200 https://registry.npmjs.org/gaxios 177219ms (cache stale)
+127 http fetch GET 200 https://registry.npmjs.org/exegesis-express 177242ms (cache stale)
+128 http fetch GET 200 https://registry.npmjs.org/google-auth-library 179489ms (cache stale)
+129 http fetch GET 200 https://registry.npmjs.org/filesize 179515ms (cache stale)
+130 http fetch GET 200 https://registry.npmjs.org/fs-extra 181749ms (cache stale)
+131 http fetch GET 200 https://registry.npmjs.org/@google-cloud%2fcloud-sql-connector 181804ms (cache stale)
+132 http fetch GET 200 https://registry.npmjs.org/fuzzy 184012ms (cache stale)
+133 http fetch GET 200 https://registry.npmjs.org/form-data 184033ms (cache stale)
+134 http fetch GET 200 https://registry.npmjs.org/jsonwebtoken 186285ms (cache stale)
+135 http fetch GET 200 https://registry.npmjs.org/inquirer 186295ms (cache stale)
+136 http fetch GET 200 https://registry.npmjs.org/js-yaml 188530ms (cache stale)
+137 http fetch GET 200 https://registry.npmjs.org/mime 188528ms (cache stale)
+138 http fetch GET 200 https://registry.npmjs.org/libsodium-wrappers 190785ms (cache stale)
+139 http fetch GET 200 https://registry.npmjs.org/leven 190803ms (cache stale)
+140 http fetch GET 200 https://registry.npmjs.org/lodash 193054ms (cache stale)
+141 http fetch GET 200 https://registry.npmjs.org/lsofi 193059ms (cache stale)
+142 http fetch GET 200 https://registry.npmjs.org/node-fetch 195292ms (cache stale)
+143 http fetch GET 200 https://registry.npmjs.org/inquirer-autocomplete-prompt 195347ms (cache stale)
+144 http fetch GET 200 https://registry.npmjs.org/marked 197572ms (cache stale)
+145 http fetch GET 200 https://registry.npmjs.org/p-limit 197596ms (cache stale)
+146 http fetch GET 200 https://registry.npmjs.org/minimatch 199826ms (cache stale)
+147 http fetch GET 200 https://registry.npmjs.org/retry 199832ms (cache stale)
+148 http fetch GET 200 https://registry.npmjs.org/marked-terminal 202095ms (cache stale)
+149 http fetch GET 200 https://registry.npmjs.org/morgan 202133ms (cache stale)

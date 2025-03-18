@@ -1,0 +1,105 @@
+<div class="converter-container">
+  <h1>Image Compression Tool</h1>
+
+  <div
+    class="upload-section"
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop($event)"
+    [class.drag-over]="isDragging"
+  >
+    <label for="fileInput" class="file-input-label">
+      <span>Choose Image File or Drag & Drop</span>
+      <input
+        type="file"
+        id="fileInput"
+        accept=".jpg,.jpeg,.png,.webp"
+        (change)="handleFileInput($event)"
+        [attr.aria-label]="'Choose image file to compress'"
+      />
+    </label>
+    <div class="supported-formats">Supported formats: JPG, PNG, WebP</div>
+  </div>
+
+  <div class="error-message" *ngIf="state().error">
+    {{ state().error }}
+  </div>
+
+  <div class="compression-status" *ngIf="state().isCompressing">
+    Compressing image...
+  </div>
+
+  <div class="compression-options" *ngIf="state().originalImage">
+    <div class="quality-control">
+      <label for="quality">Quality: {{ state().quality }}%</label>
+      <input
+        type="range"
+        id="quality"
+        min="1"
+        max="100"
+        [value]="state().quality"
+        (input)="updateQuality($event)"
+      />
+    </div>
+
+    <div class="format-selection">
+      <h3>Output Format:</h3>
+      <div class="format-buttons">
+        <button
+          *ngFor="let format of supportedFormats"
+          class="format-button"
+          (click)="updateFormat(format)"
+          [class.selected]="state().selectedFormat === format"
+        >
+          {{ format.toUpperCase() }}
+        </button>
+      </div>
+    </div>
+
+    <button
+      class="compress-button"
+      (click)="compressImage()"
+      [disabled]="state().isCompressing"
+    >
+      Compress Image
+    </button>
+  </div>
+
+  <div class="image-preview-container" *ngIf="state().originalImage">
+    <div class="image-preview">
+      <h3>Original Image ({{ state().originalFormat?.toUpperCase() }})</h3>
+      <div class="image-info">Size: {{ state().originalSize }} KB</div>
+      <div class="image-display">
+        <img
+          [src]="state().originalImage!"
+          alt="Original image"
+          class="preview-image"
+        />
+      </div>
+    </div>
+
+    <div class="image-preview" *ngIf="state().compressedImage">
+      <h3>Compressed Image ({{ state().selectedFormat.toUpperCase() }})</h3>
+      <div class="image-info">
+        <div>Size: {{ state().compressedSize }} KB</div>
+        <div>Compression: {{ getCompressionRatio() }}%</div>
+      </div>
+      <div class="image-display">
+        <img
+          [src]="state().compressedImage!"
+          alt="Compressed image"
+          class="preview-image"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="download-container" *ngIf="state().compressedImage">
+    <button
+      class="download-button"
+      (click)="downloadImage()"
+      [attr.aria-label]="'Download compressed image'"
+    >
+      Download Compressed Image
+    </button>
+  </div>
+</div>

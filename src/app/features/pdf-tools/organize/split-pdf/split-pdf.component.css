@@ -1,0 +1,233 @@
+.tool-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--surface-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.tool-header {
+  text-align: center;
+}
+
+.tool-header h2 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.tool-description {
+  color: var(--text-color-secondary);
+  font-size: 1rem;
+}
+
+.upload-section {
+  position: relative;
+  min-height: 200px;
+  border: 2px dashed var(--primary-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.upload-section:hover {
+  border-color: var(--primary-color-darker);
+  background: var(--surface-hover);
+}
+
+.upload-section.has-file {
+  border-style: solid;
+  min-height: auto;
+  padding: 1rem;
+}
+
+.upload-placeholder {
+  text-align: center;
+  color: var(--text-color-secondary);
+}
+
+.upload-placeholder i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+input[type="file"].hidden {
+  display: none;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.split-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.options-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.range-input {
+  flex: 1;
+  min-width: 300px;
+}
+
+.range-input label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.range-input input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--border-radius);
+  background: var(--surface-section);
+  color: var(--text-color);
+}
+
+.error-message {
+  color: var(--red-500);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.selection-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--surface-section);
+  border-radius: var(--border-radius);
+  min-height: 200px;
+}
+
+.page-item {
+  position: relative;
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.page-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow);
+}
+
+.page-item.selected {
+  border-color: var(--primary-color);
+  background: var(--primary-50);
+}
+
+.page-thumbnail {
+  aspect-ratio: 1/1.414;
+  background: var(--surface-ground);
+  border-radius: calc(var(--border-radius) - 2px);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnail-placeholder {
+  color: var(--text-color-secondary);
+  text-align: center;
+}
+
+.page-number {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-color);
+}
+
+.drag-handle {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: var(--text-color-secondary);
+  cursor: move;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--surface-border);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Drag and Drop Styles */
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.pages-grid.cdk-drop-list-dragging .page-item:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
