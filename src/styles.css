@@ -1,3 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import các component tùy chỉnh Tailwind */
+@import './assets/css/tailwind-components.css';
+
 :root {
   /* Light theme */
   --primary-color: #2563eb;
@@ -26,29 +33,32 @@
   --feedback-pattern: rgba(37, 99, 235, 0.05); /* Lighter primary-color */
 }
 
+/* Dark theme */
 [data-theme="dark"] {
-  --bg-color: #0f172a;
-  --bg-alt: #1e293b;
-  --card-bg: #1e293b;
-  --text-color: #f8fafc;
-  --text-secondary: #94a3b8;
-  --border-color: #334155;
-  --shadow-color: rgba(0, 0, 0, 0.3);
-  --hero-gradient: linear-gradient(135deg, #1d4ed8, #4338ca);
-  --cta-gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
-  --card-hover-bg: #2d3748;
-  --feature-icon-bg: #312e81;
-  --button-hover: #3b82f6;
+  --primary-color: #3b82f6;
+  --secondary-color: #6366f1;
+  --bg-color: #000000;
+  --bg-alt: #0a0a0a;
+  --card-bg: #121212;
+  --text-color: #f9fafb;
+  --text-secondary: #a1a1aa;
+  --border-color: #262626;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --hero-gradient: linear-gradient(135deg, #1e3a8a, #312e81);
+  --cta-gradient: linear-gradient(135deg, #1d4ed8, #4f46e5);
+  --card-hover-bg: #1c1c1c;
+  --feature-icon-bg: #18181b;
+  --button-hover: #1e3a8a;
 
-  --feedback-bg: linear-gradient(135deg, #0f172a, #1e293b);
-  --feedback-card-bg: #1e293b;
-  --feedback-text: #f8fafc;
-  --feedback-title: #38e5d7; /* Matching bg-dark from dark theme */
-  --feedback-subtitle: #94a3b8; /* Matching text-secondary */
-  --feedback-border: rgba(56, 229, 215, 0.1); /* Based on bg-dark */
-  --feedback-shadow: rgba(0, 0, 0, 0.3);
-  --feedback-avatar-border: #38e5d7; /* Matching bg-dark */
-  --feedback-pattern: rgba(56, 229, 215, 0.05); /* Lighter bg-dark */
+  --feedback-bg: linear-gradient(135deg, #0a0a0a, #000000);
+  --feedback-card-bg: #121212;
+  --feedback-text: #f9fafb;
+  --feedback-title: #3b82f6;
+  --feedback-subtitle: #a1a1aa;
+  --feedback-border: rgba(59, 130, 246, 0.2);
+  --feedback-shadow: rgba(0, 0, 0, 0.5);
+  --feedback-avatar-border: #3b82f6;
+  --feedback-pattern: rgba(59, 130, 246, 0.1);
 }
 
 body {
@@ -61,7 +71,7 @@ body {
 header {
   border-bottom: 2px solid var(--border-color);
   box-shadow: 0 2px 4px var(--shadow-color);
-  background-color: white;
+  background-color: var(--bg-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -71,12 +81,7 @@ header {
 }
 
 header.scrolled {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    1
-  ); /* Màu nền mới cho header khi cuộn, không trong suốt */
+  background-color: var(--bg-color);
   transition: background-color 0.3s ease;
 }
 

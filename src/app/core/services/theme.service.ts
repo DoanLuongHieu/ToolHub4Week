@@ -7,23 +7,24 @@ export class ThemeService {
   private isDarkTheme = signal<boolean>(this.getInitialTheme());
 
   private getInitialTheme(): boolean {
+    // Kiểm tra theme từ localStorage
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       return savedTheme === 'dark';
     }
+
+    // Hoặc sử dụng tùy chọn màu từ thiết bị
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
   toggleTheme() {
-    this.isDarkTheme.update((value) => !value);
-    this.applyTheme(this.isDarkTheme());
+    const newTheme = !this.isDarkTheme();
+    this.isDarkTheme.set(newTheme);
+    this.applyTheme(newTheme);
   }
 
   private applyTheme(isDark: boolean) {
-    document.documentElement.setAttribute(
-      'data-theme',
-      isDark ? 'dark' : 'light'
-    );
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
 
@@ -33,15 +34,14 @@ export class ThemeService {
 
   initTheme() {
     this.applyTheme(this.isDarkTheme());
-
-    // Listen for system theme changes
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-          this.isDarkTheme.set(e.matches);
-          this.applyTheme(e.matches);
-        }
-      });
+    
+    // Lắng nghe sự thay đổi theme hệ thống
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (localStorage.getItem('theme') === null) {
+        const isDark = e.matches;
+        this.isDarkTheme.set(isDark);
+        this.applyTheme(isDark);
+      }
+    });
   }
 }

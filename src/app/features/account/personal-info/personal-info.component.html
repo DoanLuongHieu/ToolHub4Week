@@ -1,136 +1,148 @@
-<div class="personal-info-container">
-  <div *ngIf="successMessage" class="success-message">
-    {{ successMessage }}
-  </div>
-  
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
-  </div>
-  
+<div class="personal-info">
   <form [formGroup]="personalForm" (ngSubmit)="onSubmit()">
-    <div class="photo-upload-section">
-      <div class="avatar-preview">
-        <img [src]="selectedPhotoURL || user.photoURL || 'assets/images/default-avatar.png'" [alt]="user.username">
-      </div>
-      
-      <div class="upload-controls">
-        <label for="profile-photo" class="upload-btn">
-          <i class="icon-upload"></i>
-          Tải ảnh lên
-        </label>
-        <input 
-          type="file" 
-          id="profile-photo" 
-          accept="image/*" 
-          (change)="onFileSelected($event)" 
-          style="display: none;"
-        >
-        
-        <button 
-          type="button" 
-          class="clear-btn" 
-          *ngIf="selectedPhotoURL" 
-          (click)="clearSelectedPhoto()"
-        >
-          <i class="icon-clear"></i>
-          Xóa ảnh đã chọn
-        </button>
-        
-        <p class="upload-hint">Hỗ trợ JPG, PNG. Kích thước tối đa 2MB.</p>
+    <!-- Avatar section -->
+    <div class="avatar-section">
+      <div class="avatar">
+        <img
+          [src]="
+            selectedPhotoURL ||
+            user.photoURL ||
+            'assets/images/default-avatar.png'
+          "
+          alt="{{ 'USER.ACCOUNT.AVATAR_ALT' | translate }}"
+        />
+        <div class="avatar-actions">
+          <label class="avatar-upload-btn">
+            <input
+              type="file"
+              accept="image/*"
+              (change)="onFileSelected($event)"
+            />
+            <span>{{ "USER.ACCOUNT.CHANGE_PHOTO" | translate }}</span>
+          </label>
+          <button
+            *ngIf="selectedPhotoURL"
+            type="button"
+            class="avatar-clear-btn"
+            (click)="clearSelectedPhoto()"
+          >
+            {{ "USER.ACCOUNT.REMOVE_PHOTO" | translate }}
+          </button>
+        </div>
       </div>
     </div>
-    
-    <div class="form-divider">Thông tin cơ bản</div>
-    
-    <div class="form-group">
-      <label for="fullName">Họ và tên</label>
-      <input 
-        type="text" 
-        id="fullName" 
-        formControlName="fullName" 
-        placeholder="Nhập họ và tên"
-      >
-    </div>
-    
-    <div class="form-row">
+
+    <!-- Personal details -->
+    <div class="form-section">
+      <h3>{{ "USER.ACCOUNT.PERSONAL_DETAILS" | translate }}</h3>
+
       <div class="form-group">
-        <label for="birthDate">Ngày sinh</label>
-        <input 
-          type="date" 
-          id="birthDate" 
-          formControlName="birthDate"
-        >
+        <label for="email">{{ "USER.ACCOUNT.EMAIL" | translate }}</label>
+        <input type="email" id="email" [value]="user.email" disabled />
+        <small>{{ "USER.ACCOUNT.EMAIL_CANNOT_CHANGE" | translate }}</small>
       </div>
-      
+
       <div class="form-group">
-        <label for="gender">Giới tính</label>
+        <label for="fullName">{{ "USER.ACCOUNT.FULL_NAME" | translate }}</label>
+        <input type="text" id="fullName" formControlName="fullName" />
+      </div>
+
+      <div class="form-group">
+        <label for="birthDate">{{
+          "USER.ACCOUNT.BIRTH_DATE" | translate
+        }}</label>
+        <input type="date" id="birthDate" formControlName="birthDate" />
+      </div>
+
+      <div class="form-group">
+        <label for="gender">{{ "USER.ACCOUNT.GENDER" | translate }}</label>
         <select id="gender" formControlName="gender">
-          <option value="">-- Chọn giới tính --</option>
-          <option value="male">Nam</option>
-          <option value="female">Nữ</option>
-          <option value="other">Khác</option>
+          <option value="">
+            {{ "USER.ACCOUNT.SELECT_GENDER" | translate }}
+          </option>
+          <option value="male">
+            {{ "USER.ACCOUNT.GENDER_MALE" | translate }}
+          </option>
+          <option value="female">
+            {{ "USER.ACCOUNT.GENDER_FEMALE" | translate }}
+          </option>
+          <option value="other">
+            {{ "USER.ACCOUNT.GENDER_OTHER" | translate }}
+          </option>
         </select>
       </div>
     </div>
-    
-    <div class="form-divider">Liên kết mạng xã hội</div>
-    
-    <div class="form-group">
-      <label for="facebookUrl">Facebook</label>
-      <div class="input-with-icon">
-        <i class="icon-facebook"></i>
-        <input 
-          type="url" 
-          id="facebookUrl" 
-          formControlName="facebookUrl" 
-          placeholder="URL trang Facebook của bạn"
-        >
+
+    <!-- Social media links -->
+    <div class="form-section">
+      <h3>{{ "USER.ACCOUNT.SOCIAL_LINKS" | translate }}</h3>
+
+      <div class="form-group">
+        <label for="facebookUrl">{{
+          "USER.ACCOUNT.FACEBOOK" | translate
+        }}</label>
+        <input
+          type="url"
+          id="facebookUrl"
+          formControlName="facebookUrl"
+          placeholder="https://facebook.com/your-profile"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="youtubeUrl">{{ "USER.ACCOUNT.YOUTUBE" | translate }}</label>
+        <input
+          type="url"
+          id="youtubeUrl"
+          formControlName="youtubeUrl"
+          placeholder="https://youtube.com/@your-channel"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="twitterUrl">{{ "USER.ACCOUNT.TWITTER" | translate }}</label>
+        <input
+          type="url"
+          id="twitterUrl"
+          formControlName="twitterUrl"
+          placeholder="https://twitter.com/your-handle"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="instagramUrl">{{
+          "USER.ACCOUNT.INSTAGRAM" | translate
+        }}</label>
+        <input
+          type="url"
+          id="instagramUrl"
+          formControlName="instagramUrl"
+          placeholder="https://instagram.com/your-handle"
+        />
       </div>
     </div>
-    
-    <div class="form-group">
-      <label for="youtubeUrl">YouTube</label>
-      <div class="input-with-icon">
-        <i class="icon-youtube"></i>
-        <input 
-          type="url" 
-          id="youtubeUrl" 
-          formControlName="youtubeUrl" 
-          placeholder="URL kênh YouTube của bạn"
-        >
+
+    <!-- Error and success messages -->
+    <div class="messages">
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="success-message">
+        {{ successMessage }}
       </div>
     </div>
-    
-    <div class="form-group">
-      <label for="twitterUrl">Twitter</label>
-      <div class="input-with-icon">
-        <i class="icon-twitter"></i>
-        <input 
-          type="url" 
-          id="twitterUrl" 
-          formControlName="twitterUrl" 
-          placeholder="URL trang Twitter của bạn"
-        >
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <label for="instagramUrl">Instagram</label>
-      <div class="input-with-icon">
-        <i class="icon-instagram"></i>
-        <input 
-          type="url" 
-          id="instagramUrl" 
-          formControlName="instagramUrl" 
-          placeholder="URL trang Instagram của bạn"
-        >
-      </div>
-    </div>
-    
+
+    <!-- Submit button -->
     <div class="form-actions">
-      <button type="submit" class="save-btn" [disabled]="isSubmitting">
-        <span *ngIf="!isSubmitting">Lưu thay đổi</span>
-        <span *ngIf="isSubmitting">Đang lưu...</span>
+      <button
+        type="submit"
+        [disabled]="isSubmitting || personalForm.invalid"
+        class="btn-save"
+      >
+        <span *ngIf="!isSubmitting">{{
+          "USER.ACCOUNT.SAVE_BUTTON" | translate
+        }}</span>
+        <span *ngIf="isSubmitting">{{
+          "USER.ACCOUNT.PROCESSING" | translate
+        }}</span>
       </button>
     </div>
   </form>

@@ -17,6 +17,25 @@
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Dark Mode */
+:host-context([data-theme="dark"]) {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-accent: #282828;
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --border-color: #404040;
+  --primary-color: #4f46e5;
+  --primary-hover: #6366f1;
+  --success-color: #22c55e;
+  --success-hover: #16a34a;
+  --error-bg: #450a0a;
+  --error-border: #dc2626;
+  --error-text: #fca5a5;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
 /* Container Styles */
 .converter-container {
   max-width: 1200px;
@@ -227,20 +246,7 @@ h1 {
   transform: translateY(0);
 }
 
-/* Animations */
-@keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Dark Mode - Cập nhật màu sắc cho phù hợp với app chính */
+/* Dark Mode */
 :host-context([data-theme="dark"]) {
   --bg-primary: #121212;
   --bg-secondary: #1e1e1e;
@@ -255,101 +261,26 @@ h1 {
   --error-bg: #450a0a;
   --error-border: #dc2626;
   --error-text: #fca5a5;
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --info-bg: #082f49;
+  --info-border: #0c4a6e;
+  --info-color: #7dd3fc;
+  --success-bg: #132e1f;
+  --success-border: #166534;
+  --success-text: #4ade80;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* Các styles khác giữ nguyên, chỉ cập nhật một số hiệu ứng cho dark mode */
-:host-context([data-theme="dark"]) .converter-container {
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-color);
-}
-
-:host-context([data-theme="dark"]) .upload-section {
-  background-color: var(--bg-secondary);
-  border: 2px dashed var(--border-color);
-}
-
-:host-context([data-theme="dark"]) .upload-section:hover {
-  border-color: var(--primary-color);
-  background-color: var(--bg-accent);
-}
-
-:host-context([data-theme="dark"]) .image-preview,
-:host-context([data-theme="dark"]) .format-selection {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-}
-
-:host-context([data-theme="dark"]) .image-display {
-  background-color: var(--bg-accent);
-  border: 1px solid var(--border-color);
-}
-
-:host-context([data-theme="dark"]) .format-button {
-  background-color: var(--bg-accent);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-}
-
-:host-context([data-theme="dark"]) .format-button:hover {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: white;
-  box-shadow: var(--shadow-sm);
-}
-
-:host-context([data-theme="dark"]) .format-button.selected {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: white;
-  box-shadow: var(--shadow-sm);
-}
-
-:host-context([data-theme="dark"]) .download-button {
-  background-color: var(--success-color);
-  box-shadow: var(--shadow-sm);
-}
-
-:host-context([data-theme="dark"]) .download-button:hover {
-  background-color: var(--success-hover);
-  box-shadow: var(--shadow-md);
-}
-
-/* Cập nhật màu text và borders cho dark mode */
-:host-context([data-theme="dark"]) {
-  h1,
-  h3 {
-    color: var(--text-primary);
+/* Animations */
+@keyframes pulse {
+  0% {
+    opacity: 1;
   }
-
-  .supported-formats {
-    color: var(--text-secondary);
+  50% {
+    opacity: 0.7;
   }
-
-  .error-message {
-    background-color: var(--error-bg);
-    border-color: var(--error-border);
-    color: var(--error-text);
-  }
-
-  .conversion-status {
-    color: var(--primary-color);
-    background-color: var(--bg-accent);
-  }
-
-  /* Thêm hiệu ứng hover cho các elements */
-  .image-preview:hover,
-  .format-selection:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-md);
-  }
-
-  /* Cải thiện hiển thị cho focus states */
-  .format-button:focus,
-  .download-button:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+  100% {
+    opacity: 1;
   }
 }
 

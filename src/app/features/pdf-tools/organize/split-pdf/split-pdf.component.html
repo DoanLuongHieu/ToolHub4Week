@@ -1,9 +1,8 @@
 <div class="tool-container">
   <div class="tool-header">
-    <h2>Split PDF</h2>
+    <h2>{{ 'PDF_TOOLS.PDF_ORGANIZERS.SPLIT.TITLE' | translate }}</h2>
     <p class="tool-description">
-      Split your PDF into multiple files or extract specific pages. Drag and
-      drop pages to reorder them.
+      {{ 'PDF_TOOLS.PDF_ORGANIZERS.SPLIT.DESCRIPTION' | translate }}
     </p>
   </div>
 
@@ -19,7 +18,7 @@
       />
       <div class="upload-placeholder" *ngIf="!selectedFile">
         <i class="fas fa-file-pdf"></i>
-        <p>Drop your PDF here or click to browse</p>
+        <p>{{ 'PDF_TOOLS.PDF_ORGANIZERS.SPLIT.SELECT_FILE' | translate }}</p>
       </div>
       <div class="file-info" *ngIf="selectedFile">
         <span>{{ selectedFile.name }}</span>
@@ -33,7 +32,7 @@
     <div class="split-options" *ngIf="selectedFile && !isProcessing">
       <div class="options-header">
         <div class="range-input">
-          <label>Enter page ranges (e.g., 1-3, 5, 7-9):</label>
+          <label>{{ 'PDF_TOOLS.PDF_ORGANIZERS.SPLIT.PAGE_RANGES' | translate }}</label>
           <input
             type="text"
             [(ngModel)]="pageRangeInput"
@@ -46,10 +45,10 @@
         </div>
         <div class="selection-actions">
           <button class="btn-secondary" (click)="selectAllPages()">
-            Select All
+            {{ 'PDF_TOOLS.PDF_ORGANIZERS.SPLIT.SELECT_ALL' | translate }}
           </button>
           <button class="btn-secondary" (click)="deselectAllPages()">
-            Deselect All
+            {{ 'PDF_TOOLS.PDF_ORGANIZERS.SPLIT.DESELECT_ALL' | translate }}
           </button>
         </div>
       </div>
@@ -70,7 +69,7 @@
               [alt]="'Page ' + page.pageNumber"
             />
             <div class="thumbnail-placeholder" *ngIf="!page.dataUrl">
-              Loading page {{ page.pageNumber }}...
+              {{ 'PDF_TOOLS.PDF_ORGANIZERS.SPLIT.LOADING_PAGE' | translate: {pageNumber: page.pageNumber} }}
             </div>
           </div>
           <div class="page-number">{{ page.pageNumber }}</div>
@@ -87,7 +86,7 @@
           (click)="splitPdf()"
           [disabled]="!splitConfigs.length || isProcessing"
         >
-          Split PDF
+          {{ 'PDF_TOOLS.PDF_ORGANIZERS.SPLIT.SPLIT_BUTTON' | translate }}
         </button>
       </div>
     </div>
@@ -95,7 +94,7 @@
     <!-- Loading State -->
     <div class="loading-state" *ngIf="isProcessing">
       <div class="spinner"></div>
-      <p>Processing your PDF...</p>
+      <p>{{ 'PDF_TOOLS.PDF_ORGANIZERS.SPLIT.PROCESSING' | translate }}</p>
     </div>
 
     <!-- Preview Modal -->

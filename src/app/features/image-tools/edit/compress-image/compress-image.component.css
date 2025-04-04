@@ -287,45 +287,6 @@ h1 {
   transform: translateY(0);
 }
 
-/* Dark Mode */
-:host-context([data-theme="dark"]) {
-  --bg-primary: #121212;
-  --bg-secondary: #1e1e1e;
-  --bg-accent: #282828;
-  --text-primary: #ffffff;
-  --text-secondary: #aaaaaa;
-  --border-color: #404040;
-  --primary-color: #4f46e5;
-  --primary-hover: #6366f1;
-  --success-color: #22c55e;
-  --success-hover: #16a34a;
-  --error-bg: #450a0a;
-  --error-border: #dc2626;
-  --error-text: #fca5a5;
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-}
-
-:host-context([data-theme="dark"]) .compression-options,
-:host-context([data-theme="dark"]) .image-preview {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-}
-
-:host-context([data-theme="dark"]) .quality-control input[type="range"] {
-  background-color: var(--bg-accent);
-}
-
-:host-context([data-theme="dark"]) .format-button {
-  background-color: var(--bg-accent);
-  border-color: var(--border-color);
-}
-
-:host-context([data-theme="dark"]) .image-display {
-  background-color: var(--bg-accent);
-  border: 1px solid var(--border-color);
-}
-
 /* Animations */
 @keyframes pulse {
   0% {

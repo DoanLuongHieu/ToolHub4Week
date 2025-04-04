@@ -1,8 +1,11 @@
 <div class="gmail-registration-container">
   <div class="gmail-registration-card">
     <div class="gmail-registration-header">
-      <h1>Hoàn thành đăng ký</h1>
-      <p>Vui lòng cung cấp tên đăng nhập cho tài khoản <strong>{{ email }}</strong></p>
+      <h1>{{ "AUTH.COMPLETE_GMAIL_REGISTRATION.TITLE" | translate }}</h1>
+      <p>
+        {{ "AUTH.COMPLETE_GMAIL_REGISTRATION.SUBTITLE" | translate }}
+        <strong>{{ email }}</strong>
+      </p>
     </div>
 
     <div *ngIf="errorMessage" class="error-message">
@@ -11,61 +14,104 @@
 
     <div class="user-info" *ngIf="photoURL || displayName">
       <div class="user-avatar" *ngIf="photoURL">
-        <img [src]="photoURL" alt="Google avatar">
+        <img [src]="photoURL" alt="Google avatar" />
       </div>
       <div class="user-name" *ngIf="displayName">
-        Xin chào, <strong>{{ displayName }}</strong>
+        {{ "AUTH.COMPLETE_GMAIL_REGISTRATION.HELLO" | translate }},
+        <strong>{{ displayName }}</strong>
       </div>
     </div>
 
-    <form [formGroup]="completeRegistrationForm" (ngSubmit)="onSubmit()" class="gmail-registration-form">
+    <form
+      [formGroup]="completeRegistrationForm"
+      (ngSubmit)="onSubmit()"
+      class="gmail-registration-form"
+    >
       <div class="form-group">
-        <label for="username">Tên đăng nhập <span class="required">*</span></label>
-        <input 
-          type="text" 
-          id="username" 
-          formControlName="username" 
-          placeholder="Chọn tên đăng nhập" 
-          [class.invalid]="completeRegistrationForm.get('username')?.touched && completeRegistrationForm.get('username')?.invalid"
+        <label for="username"
+          >{{ "AUTH.COMPLETE_GMAIL_REGISTRATION.USERNAME" | translate }}
+          <span class="required">*</span></label
         >
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          placeholder="{{
+            'AUTH.COMPLETE_GMAIL_REGISTRATION.USERNAME_PLACEHOLDER' | translate
+          }}"
+          [class.invalid]="
+            completeRegistrationForm.get('username')?.touched &&
+            completeRegistrationForm.get('username')?.invalid
+          "
+        />
         <div class="error-hint" *ngIf="getErrorForControl('username')">
-          {{ getErrorForControl('username') }}
+          {{ getErrorForControl("username") }}
         </div>
         <div class="username-hint">
-          Bạn sẽ sử dụng tên đăng nhập này để đăng nhập vào hệ thống
+          {{ "AUTH.COMPLETE_GMAIL_REGISTRATION.USERNAME_HINT" | translate }}
         </div>
       </div>
 
       <div class="form-group">
-        <label for="password">Mật khẩu <span class="required">*</span></label>
+        <label for="password"
+          >{{ "AUTH.COMPLETE_GMAIL_REGISTRATION.PASSWORD" | translate }}
+          <span class="required">*</span></label
+        >
         <div class="password-input">
-          <input 
-            [type]="showPassword ? 'text' : 'password'" 
-            id="password" 
-            formControlName="password" 
-            placeholder="Tạo mật khẩu" 
-            [class.invalid]="completeRegistrationForm.get('password')?.touched && completeRegistrationForm.get('password')?.invalid"
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            placeholder="{{
+              'AUTH.COMPLETE_GMAIL_REGISTRATION.PASSWORD_PLACEHOLDER'
+                | translate
+            }}"
+            [class.invalid]="
+              completeRegistrationForm.get('password')?.touched &&
+              completeRegistrationForm.get('password')?.invalid
+            "
+          />
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="togglePasswordVisibility()"
           >
-          <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
-            <i class="fa" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
+            <i
+              class="fa"
+              [class.fa-eye]="!showPassword"
+              [class.fa-eye-slash]="showPassword"
+            ></i>
           </button>
         </div>
         <div class="error-hint" *ngIf="getErrorForControl('password')">
-          {{ getErrorForControl('password') }}
+          {{ getErrorForControl("password") }}
         </div>
         <div class="password-hint">
-          Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số
+          {{ "AUTH.COMPLETE_GMAIL_REGISTRATION.PASSWORD_HINT" | translate }}
         </div>
       </div>
 
-      <button type="submit" class="btn-complete" [disabled]="isSubmitting">
-        <span *ngIf="!isSubmitting">Hoàn thành đăng ký</span>
-        <span *ngIf="isSubmitting">Đang xử lý...</span>
+      <button
+        type="submit"
+        class="btn-complete"
+        [disabled]="isSubmitting || completeRegistrationForm.invalid"
+      >
+        <span *ngIf="!isSubmitting">{{
+          "AUTH.COMPLETE_GMAIL_REGISTRATION.COMPLETE_BUTTON" | translate
+        }}</span>
+        <span *ngIf="isSubmitting">{{
+          "AUTH.COMPLETE_GMAIL_REGISTRATION.PROCESSING" | translate
+        }}</span>
       </button>
 
       <div class="form-footer">
-        <p>Đã có tài khoản? <a routerLink="/features/authentication/login">Đăng nhập</a></p>
+        <p>
+          {{ "AUTH.REGISTER.HAVE_ACCOUNT" | translate }}
+          <a routerLink="/features/authentication/login">{{
+            "AUTH.REGISTER.LOGIN_LINK" | translate
+          }}</a>
+        </p>
       </div>
     </form>
   </div>
-</div> 
+</div>

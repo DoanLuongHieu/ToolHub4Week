@@ -1,5 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import exifr from 'exifr';
 
 interface ExifState {
@@ -18,7 +20,7 @@ interface ExifGroup {
 @Component({
   selector: 'app-read-image-exif',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './read-image-exif.component.html',
   styleUrl: './read-image-exif.component.css',
 })

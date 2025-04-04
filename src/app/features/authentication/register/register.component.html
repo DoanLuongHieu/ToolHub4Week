@@ -1,103 +1,162 @@
 <div class="register-container">
   <div class="register-card">
     <div class="register-header">
-      <h1>Đăng ký tài khoản</h1>
-      <p>Đã có tài khoản? <a routerLink="/features/authentication/login">Đăng nhập</a></p>
+      <h1>{{ "AUTH.REGISTER.TITLE" | translate }}</h1>
+      <p>
+        {{ "AUTH.REGISTER.HAVE_ACCOUNT" | translate }}
+        <a routerLink="/features/authentication/login">{{
+          "AUTH.REGISTER.LOGIN_LINK" | translate
+        }}</a>
+      </p>
     </div>
 
     <div *ngIf="errorMessage" class="error-message">
       {{ errorMessage }}
     </div>
 
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      class="register-form"
+    >
       <div class="form-group">
-        <label for="email">Email <span class="required">*</span></label>
-        <input 
-          type="email" 
-          id="email" 
-          formControlName="email" 
-          placeholder="Nhập địa chỉ email" 
-          [class.invalid]="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+        <label for="email"
+          >{{ "AUTH.REGISTER.EMAIL" | translate }}
+          <span class="required">*</span></label
         >
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="{{ 'AUTH.REGISTER.EMAIL_PLACEHOLDER' | translate }}"
+          [class.invalid]="
+            registerForm.get('email')?.touched &&
+            registerForm.get('email')?.invalid
+          "
+        />
         <div class="error-hint" *ngIf="getErrorForControl('email')">
-          {{ getErrorForControl('email') }}
+          {{ getErrorForControl("email") }}
         </div>
       </div>
 
       <div class="form-group">
-        <label for="username">Tên đăng nhập <span class="required">*</span></label>
-        <input 
-          type="text" 
-          id="username" 
-          formControlName="username" 
-          placeholder="Chọn tên đăng nhập" 
-          [class.invalid]="registerForm.get('username')?.touched && registerForm.get('username')?.invalid"
+        <label for="username"
+          >{{ "AUTH.REGISTER.USERNAME" | translate }}
+          <span class="required">*</span></label
         >
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          placeholder="{{ 'AUTH.REGISTER.USERNAME_PLACEHOLDER' | translate }}"
+          [class.invalid]="
+            registerForm.get('username')?.touched &&
+            registerForm.get('username')?.invalid
+          "
+        />
         <div class="error-hint" *ngIf="getErrorForControl('username')">
-          {{ getErrorForControl('username') }}
+          {{ getErrorForControl("username") }}
         </div>
       </div>
 
       <div class="form-group">
-        <label for="password">Mật khẩu <span class="required">*</span></label>
+        <label for="password"
+          >{{ "AUTH.REGISTER.PASSWORD" | translate }}
+          <span class="required">*</span></label
+        >
         <div class="password-input">
-          <input 
-            [type]="showPassword ? 'text' : 'password'" 
-            id="password" 
-            formControlName="password" 
-            placeholder="Tạo mật khẩu" 
-            [class.invalid]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            placeholder="{{ 'AUTH.REGISTER.PASSWORD_PLACEHOLDER' | translate }}"
+            [class.invalid]="
+              registerForm.get('password')?.touched &&
+              registerForm.get('password')?.invalid
+            "
+          />
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="togglePasswordVisibility()"
           >
-          <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
-            <i class="fa" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
+            <i
+              class="fa"
+              [class.fa-eye]="!showPassword"
+              [class.fa-eye-slash]="showPassword"
+            ></i>
           </button>
         </div>
         <div class="error-hint" *ngIf="getErrorForControl('password')">
-          {{ getErrorForControl('password') }}
+          {{ getErrorForControl("password") }}
         </div>
       </div>
 
       <div class="form-group">
-        <label for="confirmPassword">Xác nhận mật khẩu <span class="required">*</span></label>
+        <label for="confirmPassword"
+          >{{ "AUTH.REGISTER.CONFIRM_PASSWORD" | translate }}
+          <span class="required">*</span></label
+        >
         <div class="password-input">
-          <input 
-            [type]="showConfirmPassword ? 'text' : 'password'" 
-            id="confirmPassword" 
-            formControlName="confirmPassword" 
-            placeholder="Nhập lại mật khẩu" 
-            [class.invalid]="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid"
+          <input
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            placeholder="{{
+              'AUTH.REGISTER.CONFIRM_PASSWORD_PLACEHOLDER' | translate
+            }}"
+            [class.invalid]="
+              registerForm.get('confirmPassword')?.touched &&
+              registerForm.get('confirmPassword')?.invalid
+            "
+          />
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="toggleConfirmPasswordVisibility()"
           >
-          <button type="button" class="toggle-password" (click)="toggleConfirmPasswordVisibility()">
-            <i class="fa" [class.fa-eye]="!showConfirmPassword" [class.fa-eye-slash]="showConfirmPassword"></i>
+            <i
+              class="fa"
+              [class.fa-eye]="!showConfirmPassword"
+              [class.fa-eye-slash]="showConfirmPassword"
+            ></i>
           </button>
         </div>
         <div class="error-hint" *ngIf="getErrorForControl('confirmPassword')">
-          {{ getErrorForControl('confirmPassword') }}
+          {{ getErrorForControl("confirmPassword") }}
         </div>
       </div>
 
       <div class="form-group">
-        <label for="invitationCode">Mã mời (không bắt buộc)</label>
-        <input 
-          type="text" 
-          id="invitationCode" 
-          formControlName="invitationCode" 
-          placeholder="Nhập mã mời nếu có"
-        >
+        <label for="invitationCode">{{
+          "AUTH.REGISTER.INVITATION_CODE" | translate
+        }}</label>
+        <input
+          type="text"
+          id="invitationCode"
+          formControlName="invitationCode"
+          placeholder="{{
+            'AUTH.REGISTER.INVITATION_CODE_PLACEHOLDER' | translate
+          }}"
+        />
       </div>
 
       <button type="submit" class="btn-register" [disabled]="isSubmitting">
-        <span *ngIf="!isSubmitting">Đăng ký</span>
-        <span *ngIf="isSubmitting">Đang xử lý...</span>
+        <span *ngIf="!isSubmitting">{{
+          "AUTH.REGISTER.REGISTER_BUTTON" | translate
+        }}</span>
+        <span *ngIf="isSubmitting">{{
+          "AUTH.REGISTER.PROCESSING" | translate
+        }}</span>
       </button>
 
       <div class="separator">
-        <span>hoặc</span>
+        <span>{{ "AUTH.REGISTER.OR" | translate }}</span>
       </div>
 
       <button type="button" class="btn-google" (click)="registerWithGoogle()">
-        <img src="assets/images/google-icon.svg" alt="Google">
-        Tiếp tục với Google
+        <img src="assets/images/google-icon.svg" alt="Google" />
+        {{ "AUTH.REGISTER.GOOGLE_REGISTER" | translate }}
       </button>
     </form>
   </div>

@@ -1,0 +1,115 @@
+<div class="about-container">
+  <section class="about-header">
+    <h1>{{ "ABOUT.HEADER.TITLE" | translate }}</h1>
+    <p class="about-description">
+      {{ "ABOUT.HEADER.DESCRIPTION" | translate }}
+    </p>
+  </section>
+
+  <section class="mission-section">
+    <div class="mission-content">
+      <h2>{{ "ABOUT.MISSION.TITLE" | translate }}</h2>
+      <p>
+        {{ "ABOUT.MISSION.PARAGRAPH1" | translate }}
+      </p>
+      <p>
+        {{ "ABOUT.MISSION.PARAGRAPH2" | translate }}
+      </p>
+    </div>
+    <div class="mission-image">
+      <img
+        src="assets/images/about/mission.jpg"
+        alt="ToolHub4Week mission illustration"
+      />
+    </div>
+  </section>
+
+  <section class="values-section">
+    <h2>{{ "ABOUT.VALUES.TITLE" | translate }}</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+        <h3>{{ "ABOUT.VALUES.PRIVACY_SECURITY.TITLE" | translate }}</h3>
+        <p>
+          {{ "ABOUT.VALUES.PRIVACY_SECURITY.DESCRIPTION" | translate }}
+        </p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h3>{{ "ABOUT.VALUES.SPEED_EFFICIENCY.TITLE" | translate }}</h3>
+        <p>
+          {{ "ABOUT.VALUES.SPEED_EFFICIENCY.DESCRIPTION" | translate }}
+        </p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <i class="fas fa-universal-access"></i>
+        </div>
+        <h3>{{ "ABOUT.VALUES.ACCESSIBILITY.TITLE" | translate }}</h3>
+        <p>
+          {{ "ABOUT.VALUES.ACCESSIBILITY.DESCRIPTION" | translate }}
+        </p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3>{{ "ABOUT.VALUES.INNOVATION.TITLE" | translate }}</h3>
+        <p>
+          {{ "ABOUT.VALUES.INNOVATION.DESCRIPTION" | translate }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <h2>{{ "ABOUT.TEAM.TITLE" | translate }}</h2>
+    <p class="team-intro">
+      {{ "ABOUT.TEAM.INTRO" | translate }}
+    </p>
+    <div class="team-grid">
+      <div class="team-member" *ngFor="let member of teamMembers">
+        <div class="member-image">
+          <img [src]="member.image" [alt]="member.name" />
+        </div>
+        <h3>{{ member.name }}</h3>
+        <p class="member-role">{{ member.role }}</p>
+        <p class="member-bio">{{ member.bio }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="timeline-section">
+    <h2>{{ "ABOUT.JOURNEY.TITLE" | translate }}</h2>
+    <div class="timeline">
+      <div
+        class="timeline-item"
+        *ngFor="let milestone of milestones; let i = index"
+        [ngClass]="{ right: i % 2 !== 0 }"
+      >
+        <div class="timeline-content">
+          <div class="timeline-year">{{ milestone.year }}</div>
+          <h3>{{ milestone.title }}</h3>
+          <p>{{ milestone.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>{{ "ABOUT.CTA.TITLE" | translate }}</h2>
+    <p>{{ "ABOUT.CTA.DESCRIPTION" | translate }}</p>
+    <div class="cta-buttons">
+      <a routerLink="/features/all-tools" class="btn-primary">
+        {{ "ABOUT.CTA.EXPLORE" | translate }}
+      </a>
+      <a routerLink="/features/contact" class="btn-secondary">
+        {{ "ABOUT.CTA.CONTACT" | translate }}
+      </a>
+    </div>
+  </section>
+</div>

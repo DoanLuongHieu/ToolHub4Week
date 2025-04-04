@@ -1,32 +1,42 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ValidationService } from '../../../services/validation.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-forgot-password',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, TranslateModule],
   templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.css']
+  styleUrls: ['./forgot-password.component.css'],
 })
 export class ForgotPasswordComponent {
   forgotPasswordForm!: FormGroup;
   isSubmitting = false;
   messageSuccess = '';
   messageError = '';
-  
+
   constructor(
     private formBuilder: FormBuilder,
-    private validationService: ValidationService
+    private validationService: ValidationService,
+    private translateService: TranslateService
   ) {
     this.initForm();
   }
 
   initForm(): void {
     this.forgotPasswordForm = this.formBuilder.group({
-      email: ['', [Validators.required, this.validationService.emailValidator()]]
+      email: [
+        '',
+        [Validators.required, this.validationService.emailValidator()],
+      ],
     });
   }
 
@@ -36,11 +46,13 @@ export class ForgotPasswordComponent {
     }
 
     this.isSubmitting = true;
-    
+
     // Mô phỏng gửi email khôi phục mật khẩu
     setTimeout(() => {
       this.isSubmitting = false;
-      this.messageSuccess = 'Hướng dẫn đặt lại mật khẩu đã được gửi đến email của bạn.';
+      this.messageSuccess = this.translateService.instant(
+        'AUTH.FORGOT_PASSWORD.SUCCESS_MESSAGE'
+      );
       this.forgotPasswordForm.reset();
     }, 1500);
   }
@@ -52,4 +64,4 @@ export class ForgotPasswordComponent {
     }
     return '';
   }
-} 
+}

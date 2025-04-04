@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
             one place
           </p>
           <div class="cta-buttons">
-            <a routerLink="/auth/login" class="cta-primary">Get Started</a>
+            <a routerLink="/features/authentication/login" class="cta-primary">Get Started</a>
             <a routerLink="/features/all-tools" class="cta-secondary"
               >Learn More</a
             >
@@ -160,7 +160,7 @@ import { CommonModule } from '@angular/common';
       <section class="cta-section">
         <h2>Ready to Get Started?</h2>
         <p>Transform your first document in seconds</p>
-        <a routerLink="/pdf" class="cta-primary">Try Now</a>
+        <a routerLink="features/pdf-tools/convert-from-pdf/pdf-to-word" class="cta-primary">Try Now</a>
       </section>
     </main>
   `,

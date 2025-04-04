@@ -1,59 +1,86 @@
 <div class="converter-container">
-  <h1>Word to PDF Converter</h1>
+  <h1>{{ "PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.TITLE" | translate }}</h1>
+
+  <div class="api-status" *ngIf="!state.call().apiAvailable">
+    <div class="error-message">
+      {{ state.call().error }}
+    </div>
+  </div>
 
   <div
     class="upload-section"
     (dragover)="onDragOver($event)"
     (drop)="onDrop($event)"
     [class.drag-over]="isDragging"
+    [class.disabled]="!state.call().apiAvailable"
   >
     <label for="fileInput" class="file-input-label">
-      <span>Choose Word File or Drag & Drop</span>
+      <span>{{
+        "PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.SELECT_FILE" | translate
+      }}</span>
       <input
         type="file"
         id="fileInput"
         accept=".doc,.docx"
         (change)="handleFileInput($event)"
-        [attr.aria-label]="'Choose Word file to convert'"
+        [attr.aria-label]="
+          'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.SELECT_BUTTON' | translate
+        "
+        [disabled]="!state.call().apiAvailable"
       />
     </label>
-    <div class="supported-formats">Supported formats: DOC, DOCX</div>
+    <div class="supported-formats">
+      {{
+        "PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.SUPPORTED_FORMATS" | translate
+      }}
+    </div>
   </div>
 
-  <div class="error-message" *ngIf="state().error">
-    {{ state().error }}
+  <div class="error-message" *ngIf="state.call().error">
+    {{ state.call().error }}
   </div>
 
-  <div class="file-info" *ngIf="state().originalFile">
-    <h3>Selected File:</h3>
-    <p>{{ state().originalFile?.name }}</p>
+  <div class="file-info" *ngIf="state.call().originalFile">
+    <h3>
+      {{ "PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.SELECTED_FILE" | translate }}:
+    </h3>
+    <p>{{ state.call().originalFile?.name }}</p>
     <button
       class="convert-button"
       (click)="convertToPdf()"
-      [disabled]="state().isConverting"
+      [disabled]="state.call().isConverting || !state.call().apiAvailable"
     >
-      Convert to PDF
+      {{ "PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.CONVERT_BUTTON" | translate }}
     </button>
   </div>
 
-  <div class="progress-container" *ngIf="state().isConverting">
+  <div class="progress-container" *ngIf="state.call().isConverting">
     <div class="progress-bar">
-      <div class="progress-fill" [style.width.%]="state().progress"></div>
+      <div class="progress-fill" [style.width.%]="state.call().progress"></div>
     </div>
-    <div class="progress-text">Converting... {{ state().progress }}%</div>
+    <div class="progress-text">
+      {{
+        "PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.PROGRESS.TITLE"
+          | translate : { progress: state.call().progress }
+      }}
+    </div>
   </div>
 
-  <div class="result-container" *ngIf="state().convertedUrl">
-    <h3>Conversion Complete!</h3>
+  <div class="result-container" *ngIf="state.call().convertedUrl">
+    <h3>
+      {{
+        "PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.PROGRESS.COMPLETE" | translate
+      }}
+    </h3>
     <div class="preview-container">
       <iframe
-        [src]="state().convertedUrl || '' | safe : 'resourceUrl'"
+        [src]="state.call().convertedUrl || '' | safe : 'resourceUrl'"
         frameborder="0"
         class="pdf-preview"
       ></iframe>
     </div>
     <button class="download-button" (click)="downloadPdf()">
-      Download PDF
+      {{ "PDF_TOOLS.COMMON.DOWNLOAD" | translate }}
     </button>
   </div>
 </div>

@@ -1,0 +1,38 @@
+<div class="sitemap-container">
+  <div class="sitemap-header">
+    <h1>{{ "SITEMAP.TITLE" | translate }}</h1>
+    <p>{{ "SITEMAP.DESCRIPTION" | translate }}</p>
+  </div>
+
+  <div class="sitemap-content">
+    <!-- Iterate through each section in the sitemap -->
+    <div class="sitemap-section" *ngFor="let section of siteMap">
+      <h2>
+        {{
+          "SITEMAP.SECTIONS." + section.title.replace(" ", "_").toUpperCase()
+            | translate
+        }}
+      </h2>
+
+      <ul class="sitemap-list">
+        <!-- Handle direct links -->
+        <li *ngFor="let link of section.links">
+          <!-- If this is a simple link -->
+          <a *ngIf="!isNestedLink(link)" [routerLink]="link.url">{{
+            link.title
+          }}</a>
+
+          <!-- If this is a section with sub-links -->
+          <ng-container *ngIf="isNestedLink(link)">
+            <span class="section-title">{{ link.title }}</span>
+            <ul class="sitemap-sublist">
+              <li *ngFor="let subLink of link.links">
+                <a [routerLink]="subLink.url">{{ subLink.title }}</a>
+              </li>
+            </ul>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

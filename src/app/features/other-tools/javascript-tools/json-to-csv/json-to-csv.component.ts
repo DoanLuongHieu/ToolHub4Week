@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { Signal } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 interface CsvOutputOptions {
   delimiter: string;
@@ -22,7 +23,7 @@ interface CsvOutputOptions {
 @Component({
   selector: 'app-json-to-csv',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './json-to-csv.component.html',
   styleUrl: './json-to-csv.component.css',
 })
@@ -30,6 +31,8 @@ export class JsonToCsvComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
   private themeService = inject(ThemeService);
+  private translateService = inject(TranslateService);
+  
   isDarkTheme: Signal<boolean> = this.themeService.getCurrentTheme();
 
   // File & Upload variables

@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { Signal } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 interface JsonOutputOptions {
   detectDataTypes: boolean;
@@ -21,7 +22,7 @@ interface JsonOutputOptions {
 @Component({
   selector: 'app-csv-to-json',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './csv-to-json.component.html',
   styleUrl: './csv-to-json.component.css',
 })
@@ -29,6 +30,8 @@ export class CsvToJsonComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
   private themeService = inject(ThemeService);
+  private translateService = inject(TranslateService);
+  
   isDarkTheme: Signal<boolean> = this.themeService.getCurrentTheme();
 
   // File & Upload variables

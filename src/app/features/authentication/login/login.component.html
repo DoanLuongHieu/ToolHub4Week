@@ -3,8 +3,13 @@
 <div class="login-container">
   <div class="login-card">
     <div class="login-header">
-      <h1>Đăng nhập</h1>
-      <p>Chưa có tài khoản? <a routerLink="/features/authentication/register">Đăng ký</a></p>
+      <h1>{{ "AUTH.LOGIN.TITLE" | translate }}</h1>
+      <p>
+        {{ "AUTH.LOGIN.NO_ACCOUNT" | translate }}
+        <a routerLink="/features/authentication/register">{{
+          "AUTH.LOGIN.SIGNUP_LINK" | translate
+        }}</a>
+      </p>
     </div>
 
     <div *ngIf="successMessage" class="success-message">
@@ -17,58 +22,100 @@
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
       <div class="form-group">
-        <label for="usernameOrEmail">Tên đăng nhập hoặc Email</label>
-        <input 
-          type="text" 
-          id="usernameOrEmail" 
-          formControlName="usernameOrEmail" 
-          placeholder="Nhập tên đăng nhập hoặc email" 
-          [class.invalid]="loginForm.get('usernameOrEmail')?.invalid && loginForm.get('usernameOrEmail')?.touched"
+        <label for="usernameOrEmail">{{
+          "AUTH.LOGIN.EMAIL" | translate
+        }}</label>
+        <input
+          type="text"
+          id="usernameOrEmail"
+          formControlName="usernameOrEmail"
+          placeholder="{{ 'AUTH.LOGIN.EMAIL_PLACEHOLDER' | translate }}"
+          [class.invalid]="
+            loginForm.get('usernameOrEmail')?.invalid &&
+            loginForm.get('usernameOrEmail')?.touched
+          "
+        />
+        <div
+          class="error-hint"
+          *ngIf="
+            loginForm.get('usernameOrEmail')?.invalid &&
+            loginForm.get('usernameOrEmail')?.touched
+          "
         >
-        <div class="error-hint" *ngIf="loginForm.get('usernameOrEmail')?.invalid && loginForm.get('usernameOrEmail')?.touched">
-          Vui lòng nhập tên đăng nhập hoặc email
+          {{ "AUTH.LOGIN.EMAIL" | translate }}
         </div>
       </div>
 
       <div class="form-group">
-        <label for="password">Mật khẩu</label>
+        <label for="password">{{ "AUTH.LOGIN.PASSWORD" | translate }}</label>
         <div class="password-input">
-          <input 
-            [type]="showPassword ? 'text' : 'password'" 
-            id="password" 
-            formControlName="password" 
-            placeholder="Nhập mật khẩu" 
-            [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+            placeholder="{{ 'AUTH.LOGIN.PASSWORD_PLACEHOLDER' | translate }}"
+            [class.invalid]="
+              loginForm.get('password')?.invalid &&
+              loginForm.get('password')?.touched
+            "
+          />
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="togglePasswordVisibility()"
           >
-          <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
-            <i class="fa" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
+            <i
+              class="fa"
+              [class.fa-eye]="!showPassword"
+              [class.fa-eye-slash]="showPassword"
+            ></i>
           </button>
         </div>
-        <div class="error-hint" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-          Vui lòng nhập mật khẩu
+        <div
+          class="error-hint"
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+        >
+          {{ "AUTH.LOGIN.PASSWORD" | translate }}
         </div>
       </div>
 
       <div class="login-options">
         <div class="remember-me">
-          <input type="checkbox" id="rememberMe" formControlName="rememberMe">
-          <label for="rememberMe">Ghi nhớ đăng nhập</label>
+          <input type="checkbox" id="rememberMe" formControlName="rememberMe" />
+          <label for="rememberMe">{{
+            "AUTH.LOGIN.REMEMBER_ME" | translate
+          }}</label>
         </div>
-        <a routerLink="/features/authentication/forgot-password" class="forgot-password">Quên mật khẩu?</a>
+        <a
+          routerLink="/features/authentication/forgot-password"
+          class="forgot-password"
+          >{{ "AUTH.LOGIN.FORGOT_PASSWORD" | translate }}</a
+        >
       </div>
 
-      <button type="submit" class="btn-login" [disabled]="isSubmitting || loginForm.invalid">
-        <span *ngIf="!isSubmitting">Đăng nhập</span>
-        <span *ngIf="isSubmitting">Đang xử lý...</span>
+      <button
+        type="submit"
+        class="btn-login"
+        [disabled]="isSubmitting || loginForm.invalid"
+      >
+        <span *ngIf="!isSubmitting">{{
+          "AUTH.LOGIN.LOGIN_BUTTON" | translate
+        }}</span>
+        <span *ngIf="isSubmitting">{{
+          "AUTH.LOGIN.PROCESSING" | translate
+        }}</span>
       </button>
 
       <div class="separator">
-        <span>hoặc</span>
+        <span>{{ "AUTH.LOGIN.OR" | translate }}</span>
       </div>
 
       <button type="button" class="btn-google" (click)="loginWithGoogle()">
-        <img src="assets/images/google-icon.svg" alt="Google">
-        Đăng nhập với Google
+        <img src="assets/images/google-icon.svg" alt="Google" />
+        {{ "AUTH.LOGIN.GOOGLE_LOGIN" | translate }}
       </button>
     </form>
   </div>

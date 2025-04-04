@@ -10,35 +10,35 @@
       <!-- PDF Tools Dropdown -->
       <div class="dropdown" clickOutside (clickOutside)="closeDropdown('pdf')">
         <button class="dropdown-btn" (click)="toggleDropdown('pdf')">
-          PDF Tools
+          {{ 'PDF_TOOLS.TITLE' | translate }}
           <i [class]="isDropdownOpen.pdf ? 'arrow-up' : 'arrow-down'"></i>
         </button>
         <div class="dropdown-content" [class.show]="isDropdownOpen.pdf">
           <div class="dropdown-group">
-            <h3>Convert from PDF</h3>
+            <h3>{{ 'PDF_TOOLS.CONVERT_FROM_PDF' | translate }}</h3>
             <a routerLink="/features/pdf-tools/convert-from-pdf/pdf-to-word"
-              >PDF to Word</a
+              >{{ 'PDF_TOOLS.PDF_TO_WORD' | translate }}</a
             >
             <a routerLink="/features/pdf-tools/convert-from-pdf/pdf-to-excel"
-              >PDF to Excel</a
+              >{{ 'PDF_TOOLS.PDF_TO_EXCEL' | translate }}</a
             >
           </div>
           <div class="dropdown-group">
-            <h3>Convert to PDF</h3>
+            <h3>{{ 'PDF_TOOLS.CONVERT_TO_PDF' | translate }}</h3>
             <a routerLink="/features/pdf-tools/convert-to-pdf/word-to-pdf"
-              >Word to PDF</a
+              >{{ 'PDF_TOOLS.WORD_TO_PDF' | translate }}</a
             >
             <a routerLink="/features/pdf-tools/convert-to-pdf/excel-to-pdf"
-              >Excel to PDF</a
+              >{{ 'PDF_TOOLS.EXCEL_TO_PDF' | translate }}</a
             >
           </div>
           <div class="dropdown-group">
-            <h3>Organize PDF</h3>
+            <h3>{{ 'PDF_TOOLS.ORGANIZE_PDF' | translate }}</h3>
             <a routerLink="/features/pdf-tools/organize/compress-pdf"
-              >Compress PDF</a
+              >{{ 'PDF_TOOLS.COMPRESS_PDF' | translate }}</a
             >
-            <a routerLink="/features/pdf-tools/organize/split-pdf">Split PDF</a>
-            <a routerLink="/features/pdf-tools/organize/merge-pdf">Merge PDF</a>
+            <a routerLink="/features/pdf-tools/organize/split-pdf">{{ 'PDF_TOOLS.SPLIT_PDF' | translate }}</a>
+            <a routerLink="/features/pdf-tools/organize/merge-pdf">{{ 'PDF_TOOLS.MERGE_PDF' | translate }}</a>
           </div>
         </div>
       </div>
@@ -50,28 +50,25 @@
         (clickOutside)="closeDropdown('image')"
       >
         <button class="dropdown-btn" (click)="toggleDropdown('image')">
-          Image Tools
+          {{ 'IMAGE_TOOLS.TITLE' | translate }}
           <i [class]="isDropdownOpen.image ? 'arrow-up' : 'arrow-down'"></i>
         </button>
         <div class="dropdown-content" [class.show]="isDropdownOpen.image">
           <div class="dropdown-group">
-            <h3>Convert Images</h3>
+            <h3>{{ 'IMAGE_TOOLS.CONVERT' | translate }}</h3>
             <a routerLink="/features/image-tools/convert/image-converter"
-              >Image Converter</a
+              >{{ 'IMAGE_TOOLS.IMAGE_CONVERTER.TITLE' | translate }}</a
             >
           </div>
           <div class="dropdown-group">
-            <h3>Edit Images</h3>
+            <h3>{{ 'IMAGE_TOOLS.EDIT' | translate }}</h3>
             <a routerLink="/features/image-tools/edit/compress-image"
-              >Compress Image</a
+              >{{ 'IMAGE_TOOLS.COMPRESS_IMAGE.TITLE' | translate }}</a
             >
             <a routerLink="/features/image-tools/edit/read-image-exif"
-              >Read Image EXIF</a
+              >{{ 'IMAGE_TOOLS.READ_EXIF.TITLE' | translate }}</a
             >
-            <a routerLink="/features/image-tools/edit/frame-image"
-              >Frame Image</a
-            >
-            <a routerLink="/features/image-tools/edit/crop-image">Crop Image</a>
+            <a routerLink="/features/image-tools/edit/crop-image">{{ 'IMAGE_TOOLS.CROP_IMAGE.TITLE' | translate }}</a>
           </div>
         </div>
       </div>
@@ -83,34 +80,34 @@
         (clickOutside)="closeDropdown('others')"
       >
         <button class="dropdown-btn" (click)="toggleDropdown('others')">
-          Other Tools
+          {{ 'OTHER_TOOLS.TITLE' | translate }}
           <i [class]="isDropdownOpen.others ? 'arrow-up' : 'arrow-down'"></i>
         </button>
         <div class="dropdown-content" [class.show]="isDropdownOpen.others">
           <div class="dropdown-group">
-            <h3>Generate Tools</h3>
+            <h3>{{ 'OTHER_TOOLS.GENERATE' | translate }}</h3>
             <a
               routerLink="/features/other-tools/generate-tools/password-generator"
-              >Password Generator</a
+              >{{ 'OTHER_TOOLS.PASSWORD_GENERATOR.TITLE' | translate }}</a
             >
             <a routerLink="/features/other-tools/generate-tools/lorem-ipsum"
-              >Lorem Ipsum</a
+              >{{ 'OTHER_TOOLS.LOREM_IPSUM.TITLE' | translate }}</a
             >
           </div>
           <div class="dropdown-group">
-            <h3>Javascript Tools</h3>
+            <h3>{{ 'OTHER_TOOLS.JAVASCRIPT' | translate }}</h3>
             <a routerLink="/features/other-tools/javascript-tools/json-to-csv"
-              >JSON to CSV</a
+              >{{ 'OTHER_TOOLS.JSON_TO_CSV.TITLE' | translate }}</a
             >
             <a routerLink="/features/other-tools/javascript-tools/csv-to-json"
-              >CSV to JSON</a
+              >{{ 'OTHER_TOOLS.CSV_TO_JSON.TITLE' | translate }}</a
             >
           </div>
           <div class="dropdown-group">
-            <h3>Mathematics Tools</h3>
+            <h3>{{ 'OTHER_TOOLS.MATHEMATICS' | translate }}</h3>
             <a
               routerLink="/features/other-tools/mathematics-tools/numerical-analysis"
-              >Numerical Analysis</a
+              >{{ 'OTHER_TOOLS.NUMERICAL_ANALYSIS.TITLE' | translate }}</a
             >
           </div>
         </div>
@@ -119,32 +116,27 @@
 
     <!-- Right side -->
     <div class="header-right">
-      <div class="social-links">
-        <a href="#" class="social-icon" aria-label="Facebook">
-          <i class="facebook-icon"></i>
-        </a>
-        <a href="#" class="social-icon" aria-label="Twitter">
-          <i class="twitter-icon"></i>
-        </a>
-        <a href="#" class="social-icon" aria-label="LinkedIn">
-          <i class="linkedin-icon"></i>
-        </a>
-      </div>
-      <button class="theme-toggle" (click)="toggleTheme()">
-        <i [class]="isDark() ? 'moon-icon' : 'sun-icon'"></i>
+      <!-- Theme Toggle Icon -->
+      <button class="icon-button theme-toggle" (click)="toggleTheme()">
+        <ng-container *ngIf="isDarkMode(); else lightIcon">
+          <div class="light-mode-icon"></div>
+        </ng-container>
+        <ng-template #lightIcon>
+          <div class="dark-mode-icon"></div>
+        </ng-template>
       </button>
-      <select
-        class="language-select"
-        [value]="currentLang()"
-        (change)="onLanguageChange($event)"
-      >
-        <option value="vi">Tiếng Việt</option>
-        <option value="en">English</option>
-      </select>
+      
+      <!-- Language Dropdown -->
+      <div class="language-dropdown">
+        <select (change)="onLanguageChange($event)" [value]="languageService.getCurrentLang()()">
+          <option value="vi">Tiếng Việt</option>
+          <option value="en">English</option>
+        </select>
+      </div>
       
       <!-- Hiển thị nút đăng nhập khi chưa đăng nhập -->
       <div class="login-container" *ngIf="!currentUser">
-        <button routerLink="/features/authentication/login" class="login-btn">Đăng nhập</button>
+        <button routerLink="/features/authentication/login" class="login-btn">{{ 'COMMON.LOGIN' | translate }}</button>
       </div>
       
       <!-- Hiển thị avatar và dropdown khi đã đăng nhập -->
@@ -174,15 +166,15 @@
           <div class="user-menu">
             <a routerLink="/features/account/profile" class="user-menu-item">
               <i class="user-icon"></i>
-              <span>Thông tin tài khoản</span>
+              <span>{{ 'USER.PROFILE' | translate }}</span>
             </a>
             <a routerLink="/features/help" class="user-menu-item">
               <i class="help-icon"></i>
-              <span>Trợ giúp</span>
+              <span>{{ 'USER.HELP' | translate }}</span>
             </a>
             <button (click)="logout()" class="user-menu-item logout-item">
               <i class="logout-icon"></i>
-              <span>Đăng xuất</span>
+              <span>{{ 'COMMON.LOGOUT' | translate }}</span>
             </button>
           </div>
         </div>

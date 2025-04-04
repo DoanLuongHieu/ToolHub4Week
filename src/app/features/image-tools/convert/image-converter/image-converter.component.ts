@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ImageConversionService } from '../../services/image-conversion.service';
 import { ThemeService } from '../../../../core/services/theme.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface ConversionState {
   isConverting: boolean;
@@ -18,15 +19,13 @@ type ImageFormat = 'jpg' | 'png' | 'webp';
 @Component({
   selector: 'app-image-converter',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './image-converter.component.html',
   styleUrl: './image-converter.component.css',
 })
 export class ImageConverterComponent {
   private imageService = inject(ImageConversionService);
   private themeService = inject(ThemeService);
-
-  isDarkTheme = this.themeService.getCurrentTheme();
 
   state = signal<ConversionState>({
     isConverting: false,

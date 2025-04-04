@@ -1,0 +1,775 @@
+{
+  "NAV": {
+    "ALL_TOOLS": "Tất cả công cụ",
+    "FEATURES": "Tính năng",
+    "AUTHENTICATION": "Xác thực"
+  },
+  "PDF_TOOLS": {
+    "TITLE": "Công cụ PDF",
+    "CONVERT_FROM_PDF": "Chuyển từ PDF",
+    "CONVERT_TO_PDF": "Chuyển sang PDF",
+    "PDF_TO_WORD": "PDF sang Word",
+    "PDF_TO_EXCEL": "PDF sang Excel",
+    "WORD_TO_PDF": "Word sang PDF",
+    "EXCEL_TO_PDF": "Excel sang PDF",
+    "COMPRESS_PDF": "Nén PDF",
+    "SPLIT_PDF": "Tách PDF",
+    "MERGE_PDF": "Ghép PDF",
+    "ORGANIZE PDF": "Sắp xếp PDF",
+    "HOME": {
+      "TITLE": "Công cụ PDF",
+      "DESCRIPTION": "Chuyển đổi tài liệu PDF của bạn với bộ công cụ mạnh mẽ của chúng tôi",
+      "FEATURES": "Tính năng chính"
+    },
+    "COMMON": {
+      "DRAG_DROP": "Chọn tệp PDF hoặc kéo thả vào đây",
+      "SUPPORTED_FORMAT": "Định dạng hỗ trợ: PDF",
+      "SELECTED_FILE": "Tệp đã chọn",
+      "FILE_SIZE": "Kích thước tệp",
+      "REPLACE_FILE": "Thay tệp khác",
+      "CLEAR_ALL": "Xóa tất cả",
+      "PROCESSING": "Đang xử lý...",
+      "DOWNLOAD": "Tải xuống",
+      "ERROR": "Lỗi",
+      "SUCCESS": "Thành công",
+      "NOTE": "Lưu ý",
+      "SECURITY_NOTE": "Tất cả quá trình xử lý diễn ra cục bộ trên trình duyệt của bạn. Tệp của bạn không được tải lên bất kỳ máy chủ nào.",
+      "MAX_SIZE": "Kích thước tệp tối đa: {{size}}MB"
+    },
+    "PDF_CONVERTERS": {
+      "TO_EXCEL": {
+        "TITLE": "Công cụ chuyển đổi PDF sang Excel",
+        "DESCRIPTION": "Chuyển đổi bảng dữ liệu từ file PDF sang định dạng Excel (XLSX) hoặc CSV một cách nhanh chóng.",
+        "FEATURES": {
+          "FEATURE1": "Xử lý mọi văn bản trong PDF",
+          "FEATURE2": "Xử lý nhiều trang",
+          "FEATURE3": "Hỗ trợ xuất XLSX và CSV",
+          "FEATURE4": "Xử lý hoàn toàn trên trình duyệt - không cần tải lên máy chủ"
+        },
+        "SELECT_FILE": "Chọn file PDF hoặc kéo thả tại đây",
+        "SUPPORTED_FORMATS": "Định dạng hỗ trợ: PDF",
+        "CONVERTING": "Đang chuyển đổi PDF sang Excel...",
+        "PROCESS_TIME": "Quá trình có thể mất vài giây tùy thuộc vào độ phức tạp của file PDF",
+        "OPTIONS": {
+          "TITLE": "Tùy chọn chuyển đổi",
+          "FORMAT": "Định dạng đầu ra",
+          "XLSX": "Excel (XLSX)",
+          "CSV": "CSV",
+          "TABLE_DETECTION": "Phát hiện bảng",
+          "AUTO": "Tự động",
+          "MANUAL": "Thủ công (Chính xác hơn)",
+          "SHEET_NAME": "Tên sheet",
+          "FIRST_ROW_HEADER": "Sử dụng hàng đầu tiên làm tiêu đề"
+        },
+        "DOWNLOAD_BUTTON": "Tải xuống file Excel"
+      },
+      "TO_WORD": {
+        "TITLE": "Công cụ chuyển đổi PDF sang Word",
+        "DESCRIPTION": "Chuyển đổi tài liệu PDF sang định dạng Word (DOCX) có thể chỉnh sửa với độ chính xác cao.",
+        "FEATURES": {
+          "FEATURE1": "Giữ nguyên định dạng văn bản, phông chữ và bố cục",
+          "FEATURE2": "Chuyển đổi hình ảnh, bảng, và đồ họa",
+          "FEATURE3": "Hỗ trợ các tài liệu PDF phức tạp nhiều trang",
+          "FEATURE4": "Xử lý hoàn toàn trên trình duyệt - không cần tải lên máy chủ"
+        },
+        "SELECT_FILE": "Chọn file PDF hoặc kéo thả tại đây",
+        "SUPPORTED_FORMATS": "Định dạng hỗ trợ: PDF",
+        "CONVERTING": "Đang chuyển đổi PDF sang Word...",
+        "PROCESS_TIME": "Quá trình có thể mất vài giây tùy thuộc vào độ phức tạp của file PDF",
+        "OPTIONS": {
+          "TITLE": "Tùy chọn chuyển đổi",
+          "FORMAT": "Định dạng đầu ra",
+          "DOCX": "Word (DOCX)",
+          "RTF": "Rich Text Format (RTF)",
+          "LAYOUT": "Tùy chọn bố cục",
+          "PRESERVE_LAYOUT": "Giữ nguyên bố cục",
+          "FLOWING_TEXT": "Văn bản liền mạch"
+        },
+        "DOWNLOAD_BUTTON": "Tải xuống file Word",
+        "API_ERRORS": {
+          "SERVER_UNAVAILABLE": "Máy chủ chuyển đổi PDF hiện không khả dụng. Vui lòng thử lại sau.",
+          "CONVERSION_ERROR": "Lỗi chuyển đổi file. Vui lòng thử lại."
+        }
+      },
+      "TO_JPG": {
+        "TITLE": "Công cụ chuyển đổi PDF sang JPG",
+        "DESCRIPTION": "Chuyển đổi các trang PDF của bạn thành hình ảnh JPG chất lượng cao.",
+        "FEATURES": {
+          "FEATURE1": "Chuyển đổi các trang PDF thành hình ảnh JPG",
+          "FEATURE2": "Trích xuất trang cụ thể",
+          "FEATURE3": "Tùy chỉnh cài đặt chất lượng",
+          "FEATURE4": "Chuyển đổi hàng loạt cho tất cả các trang"
+        },
+        "SELECT_FILE": "Chọn file PDF hoặc kéo thả tại đây",
+        "CONVERTING": "Đang chuyển đổi PDF sang JPG...",
+        "OPTIONS": {
+          "TITLE": "Tùy chọn chuyển đổi",
+          "QUALITY": "Chất lượng hình ảnh",
+          "DPI": "DPI",
+          "PAGE_RANGE": "Phạm vi trang",
+          "ALL_PAGES": "Tất cả các trang",
+          "CUSTOM_RANGE": "Phạm vi tùy chỉnh",
+          "RANGE_EXAMPLE": "ví dụ: 1-3, 5, 7-9"
+        },
+        "DOWNLOAD_BUTTON": "Tải xuống hình ảnh JPG"
+      }
+    },
+    "TO_PDF_CONVERTERS": {
+      "FROM_EXCEL": {
+        "TITLE": "Chuyển đổi Excel sang PDF",
+        "DESCRIPTION": "Công cụ này hỗ trợ chuyển đổi các tệp Excel (xlsx, csv, xls, xlsm, txt) sang định dạng PDF. Kích thước tệp tối đa: 50MB.",
+        "FEATURES": {
+          "TITLE": "Tính năng hỗ trợ:",
+          "FEATURE1": "Giữ nguyên định dạng Excel: màu sắc, văn bản định dạng, đường viền",
+          "FEATURE2": "Hỗ trợ công thức, hyperlink và văn bản có định dạng phức tạp",
+          "FEATURE3": "Xử lý được file Excel có macro (VBA) và pivot table",
+          "FEATURE4": "Tự động điều chỉnh độ rộng cột dựa trên dữ liệu gốc",
+          "FEATURE5": "Xử lý nhiều sheet trong một workbook thành các trang PDF riêng biệt",
+          "FEATURE6": "Hỗ trợ đa dạng định dạng: xlsx, csv, xls, xlsm, txt"
+        },
+        "SELECT_FILE": "Kéo và thả tệp Excel vào đây",
+        "SELECT_ALT": "hoặc",
+        "SELECT_BUTTON": "Chọn tệp Excel",
+        "SUPPORTED_FORMATS": "Định dạng hỗ trợ: XLSX, CSV, XLS, XLSM, TXT",
+        "SELECTED_FILE": "Tệp đã chọn",
+        "REPLACE_FILE": "Đổi tệp khác",
+        "CONVERT_BUTTON": "Chuyển đổi sang PDF",
+        "PROCESSING": "Đang xử lý...",
+        "PROGRESS": {
+          "TITLE": "Tiến trình: {{progress}}%",
+          "READING": "Đang đọc file Excel...",
+          "ANALYZING": "Đang phân tích định dạng và cấu trúc dữ liệu...",
+          "CREATING": "Đang tạo và định dạng PDF...",
+          "FINALIZING": "Đang hoàn thiện và chuẩn bị tải xuống...",
+          "COMPLETE": "Chuyển đổi hoàn tất! PDF của bạn đã được tải xuống."
+        },
+        "NOTE": "Lưu ý: Tất cả quá trình xử lý diễn ra cục bộ trên trình duyệt của bạn.",
+        "SECURITY_NOTE": "Tệp của bạn không được tải lên máy chủ, đảm bảo an toàn và bảo mật dữ liệu."
+      },
+      "FROM_WORD": {
+        "TITLE": "Chuyển đổi Word sang PDF",
+        "DESCRIPTION": "Chuyển đổi tài liệu Word (DOCX, DOC, RTF) sang định dạng PDF với độ chính xác cao. Kích thước tệp tối đa: 50MB.",
+        "FEATURES": {
+          "TITLE": "Tính năng hỗ trợ:",
+          "FEATURE1": "Giữ nguyên định dạng văn bản, phông chữ và bố cục",
+          "FEATURE2": "Chuyển đổi hình ảnh và bảng biểu",
+          "FEATURE3": "Hỗ trợ mục lục và liên kết nội bộ",
+          "FEATURE4": "Tự động điều chỉnh trang",
+          "FEATURE5": "Tạo PDF được đánh dấu, có thể tìm kiếm",
+          "FEATURE6": "Hỗ trợ nhiều định dạng: DOCX, DOC, RTF"
+        },
+        "SELECT_FILE": "Kéo và thả tệp Word vào đây",
+        "SELECT_ALT": "hoặc",
+        "SELECT_BUTTON": "Chọn tệp Word",
+        "SUPPORTED_FORMATS": "Định dạng hỗ trợ: DOCX, DOC, RTF",
+        "SELECTED_FILE": "Tệp đã chọn",
+        "REPLACE_FILE": "Đổi tệp khác",
+        "CONVERT_BUTTON": "Chuyển đổi sang PDF",
+        "PROCESSING": "Đang xử lý...",
+        "PROGRESS": {
+          "TITLE": "Tiến trình: {{progress}}%",
+          "READING": "Đang đọc file Word...",
+          "ANALYZING": "Đang phân tích định dạng và nội dung...",
+          "CREATING": "Đang tạo và định dạng PDF...",
+          "FINALIZING": "Đang hoàn thiện và chuẩn bị tải xuống...",
+          "COMPLETE": "Chuyển đổi hoàn tất! PDF của bạn đã được tải xuống."
+        },
+        "NOTE": "Lưu ý: Tất cả quá trình xử lý diễn ra cục bộ trên trình duyệt của bạn.",
+        "SECURITY_NOTE": "Tệp của bạn không được tải lên máy chủ, đảm bảo an toàn và bảo mật dữ liệu.",
+        "API_ERRORS": {
+          "SERVER_UNAVAILABLE": "Máy chủ chuyển đổi Word hiện không khả dụng. Vui lòng thử lại sau.",
+          "CONVERSION_ERROR": "Lỗi chuyển đổi file. Vui lòng thử lại."
+        }
+      }
+    },
+    "PDF_ORGANIZERS": {
+      "SPLIT": {
+        "TITLE": "Tách PDF",
+        "DESCRIPTION": "Tách PDF của bạn thành nhiều tệp hoặc trích xuất các trang cụ thể. Kéo và thả các trang để sắp xếp lại.",
+        "SELECT_FILE": "Thả PDF của bạn tại đây hoặc nhấp để duyệt",
+        "PAGE_RANGES": "Nhập phạm vi trang (ví dụ: 1-3, 5, 7-9):",
+        "SELECT_ALL": "Chọn tất cả",
+        "DESELECT_ALL": "Bỏ chọn tất cả",
+        "LOADING_PAGE": "Đang tải trang {{pageNumber}}...",
+        "SPLIT_BUTTON": "Tách PDF",
+        "PROCESSING": "Đang xử lý PDF của bạn..."
+      },
+      "COMPRESS": {
+        "TITLE": "Công cụ nén PDF",
+        "DESCRIPTION": "Giảm kích thước tệp PDF của bạn trong khi vẫn duy trì chất lượng",
+        "SELECT_FILE": "Chọn tệp PDF hoặc kéo thả vào đây",
+        "COMPRESSION_LEVEL": "Mức độ nén: {{quality}}%",
+        "REMOVE_METADATA": "Xóa metadata PDF (Khuyến nghị để giảm kích thước)",
+        "COMPRESS_BUTTON": "Nén PDF",
+        "COMPRESSING": "Đang nén PDF...",
+        "ORIGINAL_PDF": "PDF gốc",
+        "COMPRESSED_PDF": "PDF đã nén",
+        "SIZE": "Kích thước: {{size}} KB",
+        "COMPRESSION_RATIO": "Tỷ lệ nén: {{ratio}}%",
+        "DOWNLOAD_BUTTON": "Tải xuống PDF đã nén"
+      },
+      "MERGE": {
+        "TITLE": "Ghép tệp PDF",
+        "DESCRIPTION": "Kết hợp nhiều tệp PDF thành một tài liệu PDF duy nhất",
+        "SELECT_FILES": "Kéo và thả các tệp PDF vào đây hoặc",
+        "SELECT_BUTTON": "Chọn tệp",
+        "SELECTED_FILES": "Các tệp đã chọn ({{count}})",
+        "MERGE_BUTTON": "Ghép PDF",
+        "MERGING": "Đang ghép PDF...",
+        "REORDER_HINT": "Kéo các tệp để sắp xếp lại trước khi ghép"
+      }
+    },
+    "TOOL_DESCRIPTIONS": {
+      "PDF_TO_WORD": "Chuyển đổi PDF thành tài liệu Word có thể chỉnh sửa",
+      "PDF_TO_EXCEL": "Chuyển đổi PDF thành bảng tính Excel có thể chỉnh sửa",
+      "WORD_TO_PDF": "Chuyển đổi tài liệu Word thành file PDF",
+      "EXCEL_TO_PDF": "Chuyển đổi bảng tính Excel thành tài liệu PDF",
+      "COMPRESS_PDF": "Giảm kích thước file PDF mà không làm mất chất lượng",
+      "SPLIT_PDF": "Trích xuất trang từ PDF hoặc lưu từng trang thành PDF riêng biệt",
+      "MERGE_PDF": "Kết hợp nhiều PDF thành một tài liệu thống nhất"
+    }
+  },
+  "IMAGE_TOOLS": {
+    "TITLE": "Công cụ hình ảnh",
+    "CONVERT": "Chuyển đổi ảnh",
+    "IMAGE_CONVERTER": {
+      "TITLE": "Công cụ chuyển đổi định dạng ảnh",
+      "DESCRIPTION": "Chuyển đổi giữa các định dạng hình ảnh phổ biến như JPG, PNG và WebP",
+      "SELECT_FILE": "Chọn hình ảnh hoặc kéo thả vào đây",
+      "SUPPORTED_FORMATS": "Định dạng hỗ trợ: JPG, PNG, WebP",
+      "CONVERTING": "Đang chuyển đổi hình ảnh...",
+      "ORIGINAL_IMAGE": "Hình ảnh gốc",
+      "CONVERT_TO": "Chuyển đổi sang",
+      "CONVERTED_IMAGE": "Hình ảnh đã chuyển đổi",
+      "DOWNLOAD_BUTTON": "Tải xuống"
+    },
+    "COMPRESS_IMAGE": {
+      "TITLE": "Công cụ nén hình ảnh",
+      "DESCRIPTION": "Giảm kích thước file hình ảnh trong khi vẫn duy trì chất lượng tốt",
+      "SELECT_FILE": "Chọn hình ảnh hoặc kéo thả vào đây",
+      "SUPPORTED_FORMATS": "Định dạng hỗ trợ: JPG, PNG, WebP",
+      "COMPRESSING": "Đang nén hình ảnh...",
+      "QUALITY": "Chất lượng",
+      "OUTPUT_FORMAT": "Định dạng đầu ra",
+      "COMPRESS_BUTTON": "Nén hình ảnh",
+      "ORIGINAL_IMAGE": "Hình ảnh gốc",
+      "COMPRESSED_IMAGE": "Hình ảnh đã nén",
+      "SIZE": "Kích thước",
+      "COMPRESSION_RATIO": "Tỷ lệ nén",
+      "DOWNLOAD_BUTTON": "Tải xuống hình ảnh đã nén"
+    },
+    "CROP_IMAGE": {
+      "TITLE": "Công cụ cắt hình ảnh",
+      "DESCRIPTION": "Cắt, xoay và điều chỉnh kích thước hình ảnh",
+      "SELECT_FILE": "Chọn hình ảnh hoặc kéo thả vào đây",
+      "SUPPORTED_FORMATS": "Định dạng hỗ trợ: JPG, PNG, WebP",
+      "ASPECT_RATIO": "Tỷ lệ khung hình",
+      "ROTATION": "Xoay",
+      "ROTATE_LEFT": "Xoay trái",
+      "ROTATE_RIGHT": "Xoay phải",
+      "OUTPUT_FORMAT": "Định dạng đầu ra",
+      "CROP_BUTTON": "Cắt hình ảnh",
+      "ORIGINAL_IMAGE": "Hình ảnh gốc",
+      "CROPPED_IMAGE": "Hình ảnh đã cắt",
+      "DOWNLOAD_BUTTON": "Tải xuống hình ảnh đã cắt"
+    },
+    "READ_EXIF": {
+      "TITLE": "Công cụ đọc thông tin EXIF",
+      "DESCRIPTION": "Đọc và hiển thị metadata EXIF từ các file hình ảnh",
+      "SELECT_FILE": "Chọn hình ảnh hoặc kéo thả vào đây",
+      "SUPPORTED_FORMATS": "Định dạng hỗ trợ: JPG, PNG, WebP, TIFF, HEIC",
+      "LOADING": "Đang đọc dữ liệu EXIF...",
+      "IMAGE_PREVIEW": "Xem trước hình ảnh",
+      "ORIGINAL_IMAGE": "Hình ảnh gốc",
+      "NO_EXIF_DATA": "Không tìm thấy dữ liệu EXIF trong hình ảnh này",
+      "EXIF_DATA": "Dữ liệu EXIF",
+      "CAMERA_INFO": "Thông tin máy ảnh",
+      "IMAGE_INFO": "Thông tin hình ảnh",
+      "GPS_INFO": "Thông tin GPS",
+      "OTHER_INFO": "Thông tin khác"
+    },
+    "FRAME_IMAGE": "Khung ảnh",
+    "EDIT": "Chỉnh sửa ảnh",
+    "TOOL_DESCRIPTIONS": {
+      "IMAGE_CONVERTER": "Chuyển đổi giữa các định dạng ảnh JPG, PNG, WEBP",
+      "COMPRESS_IMAGE": "Nén ảnh để giảm kích thước file",
+      "READ_EXIF": "Đọc thông tin EXIF của ảnh",
+      "CROP_IMAGE": "Cắt và xoay hình ảnh"
+    }
+  },
+  "OTHER_TOOLS": {
+    "TITLE": "Công cụ khác",
+    "PASSWORD_GENERATOR": {
+      "TITLE": "Tạo Mật Khẩu",
+      "LENGTH": "Độ dài",
+      "OPTIONS": "Tùy chọn",
+      "INCLUDE_LOWERCASE": "Chữ thường (a-z)",
+      "INCLUDE_UPPERCASE": "Chữ hoa (A-Z)",
+      "INCLUDE_NUMBERS": "Số (0-9)",
+      "INCLUDE_SYMBOLS": "Ký tự đặc biệt",
+      "EXCLUDE_SIMILAR": "Loại bỏ ký tự dễ nhầm lẫn",
+      "EXCLUDE_AMBIGUOUS": "Tránh ký tự lặp lại",
+      "AVOID_SEQUENTIAL": "Tránh ký tự tuần tự",
+      "ENSURE_ALL_TYPES": "Đảm bảo đủ các loại ký tự",
+      "GENERATE_BUTTON": "Tạo Mật Khẩu",
+      "COPY_BUTTON": "Sao Chép",
+      "PASSWORD_HISTORY": "Lịch sử mật khẩu",
+      "CLEAR_HISTORY": "Xóa lịch sử",
+      "EXPORT_PASSWORDS": "Xuất mật khẩu",
+      "CHECK_PASSWORD_STRENGTH": "Kiểm tra mật khẩu",
+      "ENTER_PASSWORD_TO_CHECK": "Nhập mật khẩu cần kiểm tra",
+      "TIME_TO_CRACK": "Thời gian để crack: ",
+      "IMPROVEMENT_SUGGESTIONS": "Gợi ý cải thiện"
+    },
+    "LOREM_IPSUM": {
+      "TITLE": "Tạo văn bản mẫu",
+      "DESCRIPTION": "Tạo văn bản giữ chỗ cho bố cục, thiết kế và bản mẫu",
+      "METHOD": "Phương pháp tạo",
+      "VIETNAMESE_TEXT": "Văn bản tiếng Việt",
+      "PATTERN_BASED": "Mẫu cấu trúc",
+      "SYLLABLE_COMBINATION": "Kết hợp âm tiết",
+      "CLASSIC_LOREM_IPSUM": "Lorem Ipsum cổ điển",
+      "VIETNAMESE_DESCRIPTION": "Tạo văn bản tiếng Việt sử dụng các từ phổ biến và mẫu âm tiết, hoặc dùng mẫu văn bản tiếng Việt cổ điển.",
+      "PATTERN_DESCRIPTION": "Tạo văn bản sử dụng mẫu phụ âm-nguyên âm để tạo từ có thể phát âm được.",
+      "SYLLABLE_DESCRIPTION": "Kết hợp tiền tố, gốc từ và hậu tố để tạo từ có cấu trúc.",
+      "CLASSIC_DESCRIPTION": "Sử dụng văn bản Lorem Ipsum truyền thống từ những năm 1500.",
+      "WORD_COUNT": "Số lượng từ",
+      "PARAGRAPH_COUNT": "Số lượng đoạn văn",
+      "GENERATE_BUTTON": "Tạo văn bản",
+      "COPY_BUTTON": "Sao chép",
+      "GENERATED_TEXT": "Văn bản đã tạo"
+    },
+    "JSON_TO_CSV": {
+      "TITLE": "Chuyển đổi JSON sang CSV",
+      "DESCRIPTION": "Chuyển đổi dữ liệu JSON (JavaScript Object Notation) sang định dạng CSV (Comma-Separated Values) với nhiều tùy chọn tùy chỉnh",
+      "INPUT_JSON": "Dán dữ liệu JSON vào đây",
+      "OUTPUT_CSV": "Kết quả CSV",
+      "OPTIONS": "Tùy chọn chuyển đổi",
+      "DELIMITER": "Ký tự phân cách",
+      "COMMA": "Dấu phẩy (,)",
+      "SEMICOLON": "Dấu chấm phẩy (;)",
+      "TAB": "Tab (\\t)",
+      "VERTICAL_BAR": "Đường dọc (|)",
+      "CUSTOM": "Tùy chỉnh",
+      "ENTER_DELIMITER": "Nhập ký tự phân cách",
+      "QUOTE_CHAR": "Ký tự bao quanh",
+      "DOUBLE_QUOTE": "Dấu nháy kép (\")",
+      "SINGLE_QUOTE": "Dấu nháy đơn (')",
+      "NONE": "Không sử dụng",
+      "INCLUDE_HEADERS": "Bao gồm tiêu đề",
+      "FLATTEN_OBJECTS": "Làm phẳng object lồng nhau (user.name)",
+      "EXPAND_ARRAYS": "Mở rộng mảng thành nhiều cột",
+      "INCLUDE_NULLS": "Bao gồm giá trị null/undefined",
+      "FORMAT_DATES": "Định dạng ngày tháng",
+      "SELECT_COLUMNS": "Chọn và sắp xếp cột",
+      "SELECT_FILES": "Kéo thả file JSON vào đây hoặc nhấp để chọn file",
+      "SUPPORTED_FORMATS": "Hỗ trợ các file JSON với kích thước tối đa 50MB",
+      "HIDE_EDITOR": "Ẩn text editor",
+      "SHOW_EDITOR": "Hiển thị/Chỉnh sửa JSON",
+      "INPUT_PLACEHOLDER": "Nhập dữ liệu JSON của bạn vào đây (ví dụ: [{'name': 'John', 'age': 30}])",
+      "CONVERT_BUTTON": "Chuyển đổi sang CSV",
+      "DOWNLOAD_BUTTON": "Tải xuống file CSV",
+      "COPY_BUTTON": "Sao chép CSV",
+      "ROWS_CONVERTED": "dòng được chuyển đổi"
+    },
+    "CSV_TO_JSON": {
+      "TITLE": "Chuyển đổi CSV sang JSON",
+      "DESCRIPTION": "Chuyển đổi dữ liệu CSV (Comma-Separated Values) sang định dạng JSON (JavaScript Object Notation) dễ dàng với nhiều tùy chọn tùy chỉnh",
+      "INPUT_CSV": "Dán dữ liệu CSV vào đây",
+      "OUTPUT_JSON": "Kết quả JSON",
+      "OPTIONS": "Tùy chọn chuyển đổi",
+      "DELIMITER": "Ký tự phân cách",
+      "COMMA": "Dấu phẩy (,)",
+      "SEMICOLON": "Dấu chấm phẩy (;)",
+      "TAB": "Tab (\\t)",
+      "VERTICAL_BAR": "Đường dọc (|)",
+      "CUSTOM": "Tùy chỉnh",
+      "ENTER_DELIMITER": "Nhập ký tự phân cách",
+      "OUTPUT_FORMAT": "Định dạng đầu ra",
+      "PRETTY": "Định dạng đẹp (Pretty)",
+      "COMPACT": "Nén (Compact)",
+      "FIRST_ROW_HEADER": "Dòng đầu tiên là tiêu đề",
+      "DETECT_DATA_TYPES": "Tự động phát hiện kiểu dữ liệu",
+      "NESTED_OBJECTS": "Xử lý cấu trúc lồng nhau (ví dụ: \"user.name\")",
+      "NESTED_ARRAYS": "Xử lý mảng lồng nhau (ví dụ: \"items[0]\")",
+      "SELECT_FILES": "Kéo thả file CSV vào đây hoặc nhấp để chọn file",
+      "SUPPORTED_FORMATS": "Hỗ trợ các file CSV với kích thước tối đa 50MB",
+      "HIDE_EDITOR": "Ẩn text editor",
+      "SHOW_EDITOR": "Hiển thị/Chỉnh sửa CSV",
+      "INPUT_PLACEHOLDER": "Nhập dữ liệu CSV của bạn vào đây (ví dụ: name,age,email)",
+      "CONVERT_BUTTON": "Chuyển đổi sang JSON",
+      "DOWNLOAD_BUTTON": "Tải xuống file JSON",
+      "COPY_BUTTON": "Sao chép JSON",
+      "ROWS_CONVERTED": "dòng được chuyển đổi"
+    },
+    "NUMERICAL_ANALYSIS": {
+      "TITLE": "Phân Tích Số Học",
+      "DESCRIPTION": "Công cụ này sẽ tìm biểu thức toán học biểu diễn năm sinh (c) thông qua ngày sinh (a) và tháng sinh (b) chỉ sử dụng các phép toán cơ bản (+, -, *, /).",
+      "DAY_OF_BIRTH": "Ngày sinh",
+      "MONTH_OF_BIRTH": "Tháng sinh",
+      "YEAR_OF_BIRTH": "Năm sinh",
+      "SEARCH_METHOD": "Phương pháp tìm kiếm",
+      "BFS_METHOD": "BFS (Tìm kiếm theo chiều rộng)",
+      "PRIME_FACTORIZATION": "Phân tích số nguyên tố",
+      "DECIMAL_ANALYSIS": "Phân tích thập phân",
+      "MODULO_METHOD": "Phương pháp đồng dư",
+      "MEET_IN_MIDDLE": "Gặp giữa",
+      "LADDER_METHOD": "Phương pháp bậc thang",
+      "DIVIDE_CONQUER": "Chia để trị",
+      "MAX_DEPTH": "Độ sâu tối đa",
+      "SHOW_STEPS": "Hiển thị các bước trung gian",
+      "FIND_EXPRESSION": "Tìm Biểu Thức",
+      "STEPS": "Các bước thực hiện",
+      "RESULT": "Kết quả",
+      "ERROR_EMPTY_VALUES": "Vui lòng nhập đầy đủ các giá trị",
+      "ERROR_DAY_RANGE": "Ngày sinh phải từ 1 đến 31",
+      "ERROR_MONTH_RANGE": "Tháng sinh phải từ 1 đến 12",
+      "ERROR_YEAR_RANGE": "Năm sinh phải từ 1900 đến 2099",
+      "ERROR_CALCULATION": "Có lỗi xảy ra khi tính toán",
+      "NO_EXPRESSION_FOUND": "Không tìm thấy biểu thức phù hợp",
+      "PRIME_FACTOR_STEP": "Phân tích {{target}} thành tích các số nguyên tố: {{factors}}",
+      "DECIMAL_STEP": "Phân tích {{target}} theo hệ thập phân:"
+    },
+    "GENERATE": "Công cụ tạo mẫu",
+    "JAVASCRIPT": "Công cụ Javascript",
+    "MATHEMATICS": "Công cụ Toán học",
+    "TOOL_DESCRIPTIONS": {
+      "PASSWORD_GENERATOR": "Tạo mật khẩu ngẫu nhiên",
+      "LOREM_IPSUM": "Tạo văn bản lorem ipsum",
+      "JSON_TO_CSV": "Chuyển đổi JSON thành CSV",
+      "CSV_TO_JSON": "Chuyển đổi CSV thành JSON",
+      "NUMERICAL_ANALYSIS": "Phân tích số học"
+    }
+  },
+  "ERROR": {
+    "UNEXPECTED": "Đã xảy ra lỗi không mong muốn",
+    "NOT_FOUND": "Không tìm thấy tài nguyên",
+    "ACCESS_DENIED": "Truy cập bị từ chối",
+    "SERVER_ERROR": "Lỗi máy chủ",
+    "NETWORK_ERROR": "Lỗi kết nối mạng",
+    "VALIDATION_ERROR": "Lỗi xác thực dữ liệu",
+    "COPY_FAILED": "Không thể sao chép văn bản. Vui lòng thử lại."
+  },
+  "LOADING": {
+    "DEFAULT": "Đang tải...",
+    "PROCESSING": "Đang xử lý...",
+    "UPLOADING": "Đang tải lên...",
+    "DOWNLOADING": "Đang tải xuống...",
+    "CONVERTING": "Đang chuyển đổi...",
+    "TEXT": "Đang tải..."
+  },
+  "SUCCESS": {
+    "SAVED": "Đã lưu thành công",
+    "UPDATED": "Đã cập nhật thành công",
+    "DELETED": "Đã xóa thành công",
+    "UPLOADED": "Đã tải lên thành công",
+    "CONVERTED": "Đã chuyển đổi thành công",
+    "COPIED": "Đã sao chép vào bộ nhớ tạm!"
+  },
+  "BUTTON": {
+    "SUBMIT": "Gửi",
+    "CANCEL": "Hủy",
+    "SAVE": "Lưu",
+    "DELETE": "Xóa",
+    "EDIT": "Sửa",
+    "UPLOAD": "Tải lên",
+    "DOWNLOAD": "Tải xuống",
+    "CONVERT": "Chuyển đổi",
+    "CLOSE": "Đóng",
+    "CONFIRM": "Xác nhận"
+  },
+  "COMMON": {
+    "WELCOME": "Chào mừng",
+    "LOGIN": "Đăng nhập",
+    "REGISTER": "Đăng ký",
+    "LOGOUT": "Đăng xuất"
+  },
+  "MENU": {
+    "HOME": "Trang chủ",
+    "ABOUT": "Giới thiệu",
+    "CONTACT": "Liên hệ"
+  },
+  "TOOLTIP": {
+    "DRAG_DROP": "Kéo và thả file vào đây",
+    "MAX_SIZE": "Kích thước tối đa: {{size}}",
+    "SUPPORTED_FORMATS": "Định dạng hỗ trợ: {{formats}}"
+  },
+  "THEME": {
+    "LIGHT": "Giao diện sáng",
+    "DARK": "Giao diện tối"
+  },
+  "SETTINGS": {
+    "LANGUAGE": "Ngôn ngữ",
+    "THEME": "Giao diện",
+    "NOTIFICATIONS": "Thông báo"
+  },
+  "USER": {
+    "PROFILE": "Hồ sơ",
+    "SETTINGS": "Cài đặt",
+    "HELP": "Trợ giúp",
+    "ACCOUNT_INFO": "Thông tin tài khoản",
+    "ACCOUNT": {
+      "PERSONAL_INFO": "Thông tin cá nhân",
+      "CHANGE_PASSWORD": "Đổi mật khẩu",
+      "LOGIN_REQUIRED": "Vui lòng đăng nhập để xem thông tin tài khoản",
+      "LOGIN_BUTTON": "Đăng nhập",
+      "PERSONAL_DETAILS": "Thông tin cơ bản",
+      "EMAIL": "Email",
+      "EMAIL_CANNOT_CHANGE": "Email không thể thay đổi",
+      "FULL_NAME": "Họ và tên",
+      "BIRTH_DATE": "Ngày sinh",
+      "GENDER": "Giới tính",
+      "SELECT_GENDER": "-- Chọn giới tính --",
+      "GENDER_MALE": "Nam",
+      "GENDER_FEMALE": "Nữ",
+      "GENDER_OTHER": "Khác",
+      "SOCIAL_LINKS": "Liên kết mạng xã hội",
+      "FACEBOOK": "Facebook",
+      "YOUTUBE": "YouTube",
+      "TWITTER": "Twitter",
+      "INSTAGRAM": "Instagram",
+      "SAVE_BUTTON": "Lưu thay đổi",
+      "PROCESSING": "Đang lưu...",
+      "UPDATE_SUCCESS": "Cập nhật thông tin thành công",
+      "UPDATE_ERROR": "Cập nhật thông tin thất bại: ",
+      "CHANGE_PHOTO": "Thay đổi ảnh",
+      "REMOVE_PHOTO": "Xóa ảnh đã chọn",
+      "AVATAR_ALT": "Ảnh đại diện",
+      "FILE_TOO_LARGE": "File quá lớn. Kích thước tối đa là 2MB."
+    },
+    "PASSWORD": {
+      "CURRENT_PASSWORD": "Mật khẩu hiện tại",
+      "CURRENT_PASSWORD_PLACEHOLDER": "Nhập mật khẩu hiện tại",
+      "CURRENT_PASSWORD_REQUIRED": "Vui lòng nhập mật khẩu hiện tại",
+      "NEW_PASSWORD": "Mật khẩu mới",
+      "NEW_PASSWORD_PLACEHOLDER": "Nhập mật khẩu mới",
+      "NEW_PASSWORD_REQUIRED": "Vui lòng nhập mật khẩu mới",
+      "NEW_PASSWORD_LENGTH": "Mật khẩu phải có ít nhất 8 ký tự",
+      "NEW_PASSWORD_PATTERN": "Mật khẩu phải có ít nhất một chữ cái viết hoa, một chữ cái viết thường, một chữ số và một ký tự đặc biệt",
+      "CONFIRM_PASSWORD": "Xác nhận mật khẩu mới",
+      "CONFIRM_PASSWORD_PLACEHOLDER": "Nhập lại mật khẩu mới",
+      "PASSWORDS_MISMATCH": "Mật khẩu xác nhận không khớp",
+      "REQUIREMENTS_TITLE": "Yêu cầu mật khẩu:",
+      "REQUIREMENT_LENGTH": "Ít nhất 8 ký tự",
+      "REQUIREMENT_UPPERCASE": "Ít nhất một chữ cái viết hoa",
+      "REQUIREMENT_LOWERCASE": "Ít nhất một chữ cái viết thường",
+      "REQUIREMENT_NUMBER": "Ít nhất một chữ số",
+      "REQUIREMENT_SPECIAL": "Ít nhất một ký tự đặc biệt (@, $, !, %, *, ?, &)",
+      "CHANGE_BUTTON": "Đổi mật khẩu",
+      "PROCESSING": "Đang xử lý...",
+      "CHANGE_SUCCESS": "Đổi mật khẩu thành công. Vui lòng đăng nhập lại.",
+      "CHANGE_ERROR": "Đổi mật khẩu thất bại: "
+    }
+  },
+  "HEADER": {
+    "HOME": "Trang chủ",
+    "ALL_TOOLS": "Tất cả công cụ",
+    "PDF_TOOLS": "Công cụ PDF",
+    "IMAGE_TOOLS": "Công cụ hình ảnh",
+    "OTHER_TOOLS": "Công cụ khác",
+    "LOGIN": "Đăng nhập",
+    "SIGNUP": "Đăng ký",
+    "PROFILE": "Hồ sơ",
+    "LOGOUT": "Đăng xuất",
+    "LANGUAGE": "Ngôn ngữ"
+  },
+  "HOME": {
+    "HERO": {
+      "BADGE": "Công cụ #1",
+      "TITLE": "Chuyển đổi tài liệu của bạn với",
+      "SUBTITLE": "Công cụ chuyên nghiệp để chuyển đổi PDF, hình ảnh và các công cụ khác - tất cả trong một nơi",
+      "FEATURE1": "Xử lý nhanh",
+      "FEATURE2": "Chất lượng cao",
+      "FEATURE3": "Bảo mật tệp",
+      "GET_STARTED": "Bắt đầu",
+      "LEARN_MORE": "Tìm hiểu thêm",
+      "STAT1_NUMBER": "1000+",
+      "STAT1_TEXT": "Tệp đã xử lý",
+      "STAT2_NUMBER": "10+",
+      "STAT2_TEXT": "Người dùng hài lòng",
+      "STAT3_NUMBER": "15+",
+      "STAT3_TEXT": "Công cụ mạnh mẽ"
+    },
+    "TOOLS_SECTION": {
+      "BADGE": "Giải pháp của chúng tôi",
+      "TITLE": "Các",
+      "TITLE_HIGHLIGHT": "Công cụ mạnh mẽ",
+      "TITLE_SUFFIX": "của chúng tôi",
+      "SUBTITLE": "Khám phá bộ công cụ mạnh mẽ của chúng tôi được thiết kế để làm cho việc xử lý tài liệu và hình ảnh trở nên dễ dàng",
+      "PDF_DESCRIPTION": "Chuyển đổi tài liệu PDF của bạn một cách dễ dàng với bộ công cụ PDF toàn diện của chúng tôi. Chuyển đổi PDF sang Word, Excel và các định dạng khác.",
+      "IMAGE_DESCRIPTION": "Chỉnh sửa, chuyển đổi và tối ưu hóa hình ảnh của bạn với các công cụ mạnh mẽ của chúng tôi. Nén hình ảnh, chuyển đổi định dạng và thêm khung chuyên nghiệp.",
+      "OTHER_DESCRIPTION": "Bộ sưu tập các công cụ tiện ích của chúng tôi hỗ trợ các tác vụ khác nhau từ tạo mật khẩu đến chuyển đổi định dạng dữ liệu và phân tích số.",
+      "EXPLORE_PDF": "Khám phá công cụ PDF",
+      "EXPLORE_IMAGE": "Khám phá công cụ hình ảnh",
+      "EXPLORE_OTHER": "Khám phá công cụ khác"
+    },
+    "WHY_CHOOSE_US": {
+      "BADGE": "Tại sao chọn chúng tôi",
+      "TITLE": "Tại sao ToolHub4Week",
+      "TITLE_HIGHLIGHT": "nổi bật",
+      "SUBTITLE": "ToolHub4Week nổi bật với những lợi thế chính sau",
+      "REASON1_TITLE": "Nhanh chóng & Hiệu quả",
+      "REASON1_DESCRIPTION": "Xử lý tệp của bạn trong vài giây với động cơ chuyển đổi được tối ưu hóa. Các công cụ của chúng tôi được thiết kế để đạt hiệu suất tối đa.",
+      "REASON2_TITLE": "An toàn & Riêng tư",
+      "REASON2_DESCRIPTION": "Tệp của bạn tự động bị xóa sau khi xử lý để đảm bảo quyền riêng tư. Chúng tôi không bao giờ lưu trữ tài liệu của bạn lâu hơn mức cần thiết.",
+      "REASON3_TITLE": "Dễ sử dụng",
+      "REASON3_DESCRIPTION": "Giao diện trực quan được thiết kế để chuyển đổi tệp nhanh chóng với các bước tối thiểu. Thiết kế thân thiện với người dùng cho mọi người.",
+      "REASON4_TITLE": "Truy cập miễn phí",
+      "REASON4_DESCRIPTION": "Truy cập các công cụ thiết yếu mà không mất phí, nâng cấp cho các tính năng cao cấp. Các chức năng cơ bản có sẵn miễn phí."
+    },
+    "FEEDBACK": {
+      "TITLE": "Người dùng nói gì",
+      "SUBTITLE": "Khám phá lý do tại sao hàng nghìn người dùng tin tưởng ToolHub4Week cho nhu cầu tài liệu và hình ảnh của họ"
+    },
+    "CTA": {
+      "TITLE": "Sẵn sàng bắt đầu?",
+      "SUBTITLE": "Chuyển đổi tài liệu đầu tiên của bạn chỉ với vài cú nhấp chuột",
+      "GET_STARTED": "Bắt đầu ngay",
+      "EXPLORE_TOOLS": "Khám phá công cụ"
+    }
+  },
+  "FOOTER": {
+    "DESCRIPTION": "ToolHub4Week cung cấp bộ công cụ miễn phí, chất lượng cao để xử lý tài liệu PDF, hình ảnh và nhiều hơn nữa. Sứ mệnh của chúng tôi là làm cho việc xử lý tài liệu dễ tiếp cận với tất cả mọi người.",
+    "QUICK_LINKS": "Liên kết nhanh",
+    "ABOUT_US": "Về chúng tôi",
+    "PRIVACY_POLICY": "Chính sách bảo mật",
+    "TERMS": "Điều khoản sử dụng",
+    "SITEMAP": "Sơ đồ trang",
+    "FOLLOW_US": "Theo dõi chúng tôi",
+    "COPYRIGHT": "ToolHub4Week. Đã đăng ký bản quyền."
+  },
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "Đăng nhập",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Nhập email của bạn",
+      "PASSWORD": "Mật khẩu",
+      "PASSWORD_PLACEHOLDER": "Nhập mật khẩu",
+      "REMEMBER_ME": "Ghi nhớ đăng nhập",
+      "FORGOT_PASSWORD": "Quên mật khẩu?",
+      "LOGIN_BUTTON": "Đăng nhập",
+      "NO_ACCOUNT": "Chưa có tài khoản?",
+      "SIGNUP_LINK": "Đăng ký",
+      "OR": "hoặc",
+      "GOOGLE_LOGIN": "Đăng nhập với Google",
+      "FACEBOOK_LOGIN": "Đăng nhập với Facebook",
+      "GITHUB_LOGIN": "Đăng nhập với GitHub",
+      "ERROR_MESSAGE": "Tên đăng nhập hoặc mật khẩu không đúng",
+      "PROCESSING": "Đang xử lý...",
+      "SUCCESS_REGISTRATION": "Đăng ký thành công! Vui lòng đăng nhập để tiếp tục.",
+      "GOOGLE_LOGIN_ERROR": "Đăng nhập với Google thất bại: "
+    },
+    "REGISTER": {
+      "TITLE": "Đăng ký",
+      "FULL_NAME": "Họ và tên",
+      "FULL_NAME_PLACEHOLDER": "Nhập họ và tên của bạn",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Nhập email của bạn",
+      "USERNAME": "Tên đăng nhập",
+      "USERNAME_PLACEHOLDER": "Chọn tên đăng nhập",
+      "PASSWORD": "Mật khẩu",
+      "PASSWORD_PLACEHOLDER": "Nhập mật khẩu",
+      "CONFIRM_PASSWORD": "Xác nhận mật khẩu",
+      "CONFIRM_PASSWORD_PLACEHOLDER": "Nhập lại mật khẩu",
+      "INVITATION_CODE": "Mã mời (không bắt buộc)",
+      "INVITATION_CODE_PLACEHOLDER": "Nhập mã mời nếu có",
+      "AGREE_TERMS": "Tôi đồng ý với ",
+      "TERMS_LINK": "Điều khoản dịch vụ",
+      "AND": " và ",
+      "PRIVACY_LINK": "Chính sách bảo mật",
+      "REGISTER_BUTTON": "Đăng ký",
+      "HAVE_ACCOUNT": "Đã có tài khoản?",
+      "LOGIN_LINK": "Đăng nhập",
+      "OR": "hoặc",
+      "GOOGLE_REGISTER": "Tiếp tục với Google",
+      "FACEBOOK_REGISTER": "Tiếp tục với Facebook",
+      "GITHUB_REGISTER": "Tiếp tục với GitHub",
+      "REQUIRED": "Bắt buộc",
+      "PROCESSING": "Đang xử lý...",
+      "EMAIL_TAKEN": "Email này đã được sử dụng",
+      "USERNAME_TAKEN": "Tên đăng nhập này đã được sử dụng",
+      "REGISTRATION_FAILED": "Đăng ký thất bại: ",
+      "GOOGLE_REGISTER_ERROR": "Đăng ký với Google thất bại: "
+    },
+    "COMPLETE_GMAIL_REGISTRATION": {
+      "TITLE": "Hoàn thành đăng ký",
+      "SUBTITLE": "Vui lòng cung cấp tên đăng nhập cho tài khoản",
+      "HELLO": "Xin chào",
+      "USERNAME": "Tên đăng nhập",
+      "USERNAME_PLACEHOLDER": "Chọn tên đăng nhập",
+      "USERNAME_HINT": "Bạn sẽ sử dụng tên đăng nhập này để đăng nhập vào hệ thống",
+      "PASSWORD": "Mật khẩu",
+      "PASSWORD_PLACEHOLDER": "Tạo mật khẩu",
+      "PASSWORD_HINT": "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số",
+      "COMPLETE_BUTTON": "Hoàn thành đăng ký",
+      "PROCESSING": "Đang xử lý...",
+      "USERNAME_TAKEN": "Tên đăng nhập này đã được sử dụng",
+      "REGISTRATION_FAILED": "Đăng ký thất bại: "
+    },
+    "FORGOT_PASSWORD": {
+      "TITLE": "Quên mật khẩu",
+      "SUBTITLE": "Nhập email của bạn để nhận hướng dẫn đặt lại mật khẩu",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Nhập địa chỉ email của bạn",
+      "SUBMIT_BUTTON": "Gửi hướng dẫn",
+      "BACK_TO_LOGIN": "Quay lại đăng nhập",
+      "PROCESSING": "Đang gửi...",
+      "SUCCESS_MESSAGE": "Hướng dẫn đặt lại mật khẩu đã được gửi đến email của bạn.",
+      "ERROR_MESSAGE": "Lỗi khi gửi hướng dẫn đặt lại mật khẩu."
+    }
+  },
+  "ABOUT": {
+    "HEADER": {
+      "TITLE": "Về ToolHub4Week",
+      "DESCRIPTION": "Chúng tôi đang xây dựng tương lai của các công cụ chuyển đổi tài liệu và phương tiện - làm cho chúng dễ tiếp cận, hiệu quả và thân thiện với người dùng dành cho tất cả mọi người."
+    },
+    "MISSION": {
+      "TITLE": "Sứ mệnh của chúng tôi",
+      "PARAGRAPH1": "Tại ToolHub4Week, sứ mệnh của chúng tôi là dân chủ hóa việc tiếp cận các công cụ xử lý tài liệu mạnh mẽ. Chúng tôi tin rằng tất cả mọi người nên có quyền truy cập vào các công cụ chuyển đổi, chỉnh sửa và tối ưu hóa chất lượng cao mà không cần phần mềm chuyên dụng hoặc kiến thức kỹ thuật.",
+      "PARAGRAPH2": "Bằng cách cung cấp một bộ công cụ toàn diện trên trình duyệt, chúng tôi nhằm mục đích trao quyền cho cá nhân, doanh nghiệp nhỏ, sinh viên và chuyên gia làm việc hiệu quả hơn với các tài liệu và tệp phương tiện của họ."
+    },
+    "VALUES": {
+      "TITLE": "Giá trị của chúng tôi",
+      "PRIVACY_SECURITY": {
+        "TITLE": "Bảo mật & An toàn",
+        "DESCRIPTION": "Chúng tôi ưu tiên bảo mật thông tin tệp và thông tin cá nhân của bạn. Các tệp được xử lý trong trình duyệt của bạn khi có thể và xóa khỏi máy chủ của chúng tôi ngay sau khi xử lý."
+      },
+      "SPEED_EFFICIENCY": {
+        "TITLE": "Tốc độ & Hiệu quả",
+        "DESCRIPTION": "Chúng tôi liên tục tối ưu hóa các công cụ để đảm bảo thời gian xử lý nhanh, làm cho quy trình làm việc của bạn hiệu quả nhất có thể."
+      },
+      "ACCESSIBILITY": {
+        "TITLE": "Khả năng tiếp cận",
+        "DESCRIPTION": "Chúng tôi cam kết làm cho các công cụ của mình dễ tiếp cận với mọi người, bất kể chuyên môn kỹ thuật hoặc nguồn lực tài chính."
+      },
+      "INNOVATION": {
+        "TITLE": "Đổi mới",
+        "DESCRIPTION": "Chúng tôi liên tục cải thiện các công cụ hiện có và phát triển các công cụ mới để đáp ứng nhu cầu đang phát triển của người dùng và tiến bộ công nghệ."
+      }
+    },
+    "TEAM": {
+      "TITLE": "Đội ngũ của chúng tôi",
+      "INTRO": "Gặp gỡ những cá nhân đam mê đằng sau ToolHub4Week, những người nỗ lực mang đến trải nghiệm tốt nhất cho người dùng của chúng tôi."
+    },
+    "JOURNEY": {
+      "TITLE": "Hành trình của chúng tôi"
+    },
+    "CTA": {
+      "TITLE": "Tham gia sứ mệnh với chúng tôi",
+      "DESCRIPTION": "Hãy bắt đầu sử dụng công cụ của chúng tôi ngay hôm nay và trải nghiệm sự khác biệt.",
+      "EXPLORE": "Khám phá công cụ của chúng tôi",
+      "CONTACT": "Liên hệ với chúng tôi"
+    }
+  },
+  "SITEMAP": {
+    "TITLE": "Sơ đồ trang",
+    "DESCRIPTION": "Tìm tất cả các trang trên ToolHub4Week",
+    "SECTIONS": {
+      "MAIN_PAGES": "Trang chính",
+      "PDF_TOOLS": "Công cụ PDF",
+      "IMAGE_TOOLS": "Công cụ Hình ảnh",
+      "OTHER_TOOLS": "Công cụ khác",
+      "USER_ACCOUNT": "Tài khoản người dùng"
+    }
+  }
+}

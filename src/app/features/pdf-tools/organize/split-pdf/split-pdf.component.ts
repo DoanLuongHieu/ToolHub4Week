@@ -8,6 +8,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { PDFDocument } from 'pdf-lib';
 import * as pdfjsLib from 'pdfjs-dist';
+import { TranslateModule } from '@ngx-translate/core';
 
 // Initialize PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/pdf/pdf.worker.min.js';
@@ -27,7 +28,7 @@ interface PageRange {
 @Component({
   selector: 'app-split-pdf',
   standalone: true,
-  imports: [CommonModule, FormsModule, DragDropModule],
+  imports: [CommonModule, FormsModule, DragDropModule, TranslateModule],
   templateUrl: './split-pdf.component.html',
   styleUrl: './split-pdf.component.css',
 })

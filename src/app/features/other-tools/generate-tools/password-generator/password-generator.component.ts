@@ -9,11 +9,13 @@ import {
 } from './interfaces/password-state.interface';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { LanguageService } from '../../../../core/services/language.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-password-generator',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './password-generator.component.html',
   styleUrl: './password-generator.component.css',
 })
@@ -22,7 +24,6 @@ export class PasswordGeneratorComponent implements OnInit {
   private themeService = inject(ThemeService);
   private languageService = inject(LanguageService);
 
-  isDarkTheme = this.themeService.getCurrentTheme();
   currentLang = this.languageService.getCurrentLang();
 
   state = signal<PasswordState>({

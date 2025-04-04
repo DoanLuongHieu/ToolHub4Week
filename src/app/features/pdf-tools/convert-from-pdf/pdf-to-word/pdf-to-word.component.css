@@ -1,26 +1,77 @@
+/* Light Mode - Default Theme */
+:host {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9f9f9;
+  --bg-accent: #f0f0f0;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #cccccc;
+  --primary-color: #2196f3;
+  --primary-hover: #1976d2;
+  --success-color: #4caf50;
+  --success-hover: #388e3c;
+  --error-bg: #ffebee;
+  --error-border: #ffcdd2;
+  --error-text: #c62828;
+  --pdf-color: #f44336;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Theme */
+:host-context([data-theme="dark"]) {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-accent: #282828;
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --border-color: #404040;
+  --primary-color: #4f46e5;
+  --primary-hover: #6366f1;
+  --success-color: #22c55e;
+  --success-hover: #16a34a;
+  --error-bg: #450a0a;
+  --error-border: #dc2626;
+  --error-text: #fca5a5;
+  --pdf-color: #ef5350;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
 .pdf-to-word {
   padding: 2rem;
+  position: relative;
+  z-index: 1;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .tool-header {
   text-align: center;
   margin-bottom: 2rem;
+  padding-top: 2rem;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 1;
+  background-color: var(--bg-primary);
 }
 
 .tool-header h1 {
   font-size: 2rem;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .description {
   font-size: 1rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .alert {
@@ -33,14 +84,14 @@
 }
 
 .alert-error {
-  background-color: #ffebee;
-  color: #c62828;
-  border: 1px solid #ffcdd2;
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-border);
 }
 
 .upload-section {
-  background-color: #f9f9f9;
-  border: 2px dashed #ccc;
+  background-color: var(--bg-secondary);
+  border: 2px dashed var(--border-color);
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
@@ -49,8 +100,8 @@
 }
 
 .upload-section.drag-over {
-  background-color: #e3f2fd;
-  border-color: #2196f3;
+  background-color: rgba(33, 150, 243, 0.1);
+  border-color: var(--primary-color);
 }
 
 .upload-prompt {
@@ -62,21 +113,22 @@
 
 .upload-prompt i {
   font-size: 3rem;
-  color: #2196f3;
+  color: var(--primary-color);
 }
 
 .upload-prompt h3 {
   font-size: 1.25rem;
   margin: 0;
+  color: var(--text-primary);
 }
 
 .file-requirements {
   font-size: 0.875rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .btn-primary {
-  background-color: #2196f3;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 4px;
@@ -90,18 +142,18 @@
 }
 
 .btn-primary:hover {
-  background-color: #1976d2;
+  background-color: var(--primary-hover);
 }
 
 .btn-primary:disabled {
-  background-color: #bbdefb;
+  background-color: rgba(33, 150, 243, 0.4);
   cursor: not-allowed;
 }
 
 .btn-icon {
   background: none;
   border: none;
-  color: #f44336;
+  color: var(--pdf-color);
   cursor: pointer;
   font-size: 1.25rem;
 }
@@ -110,10 +162,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
+  background-color: var(--bg-primary);
   border-radius: 4px;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
 }
 
 .file-info {
@@ -124,11 +177,11 @@
 
 .file-info i {
   font-size: 1.5rem;
-  color: #f44336;
+  color: var(--pdf-color);
 }
 
 .file-size {
-  color: #757575;
+  color: var(--text-secondary);
   font-size: 0.875rem;
 }
 
@@ -144,7 +197,7 @@
 
 .progress-bar {
   height: 8px;
-  background-color: #e0e0e0;
+  background-color: var(--bg-accent);
   border-radius: 4px;
   overflow: hidden;
   margin-bottom: 0.5rem;
@@ -152,7 +205,7 @@
 
 .progress-fill {
   height: 100%;
-  background-color: #4caf50;
+  background-color: var(--success-color);
   width: 0%;
   transition: width 0.3s ease;
 }
@@ -160,21 +213,27 @@
 .progress-text {
   text-align: center;
   font-size: 0.875rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .info-section {
-  background-color: #f9f9f9;
+  background-color: var(--bg-secondary);
   border-radius: 8px;
   padding: 1.5rem;
   margin-top: 2rem;
+  border: 1px solid var(--border-color);
 }
 
 .info-section h3 {
   font-size: 1.25rem;
   margin-top: 0;
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text-primary);
+}
+
+.info-section p {
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .features {
@@ -192,7 +251,11 @@
 
 .feature i {
   font-size: 2rem;
-  color: #2196f3;
+  color: var(--primary-color);
+}
+
+.feature span {
+  color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {

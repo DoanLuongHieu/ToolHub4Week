@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PdfConversionService } from '../../services/pdf-conversion.service';
 import { ThemeService } from '../../../../core/services/theme.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface ConversionState {
   isConverting: boolean;
@@ -16,7 +17,7 @@ interface ConversionState {
 @Component({
   selector: 'app-pdf-to-excel',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './pdf-to-excel.component.html',
   styleUrl: './pdf-to-excel.component.css',
 })
@@ -45,7 +46,7 @@ export class PdfToExcelComponent {
     if (!file) {
       this.state.update((state) => ({
         ...state,
-        error: 'Please select a file',
+        error: 'Vui lòng chọn một file',
       }));
       return;
     }
@@ -53,7 +54,7 @@ export class PdfToExcelComponent {
     if (!file.type.includes('pdf')) {
       this.state.update((state) => ({
         ...state,
-        error: 'Please select a valid PDF file',
+        error: 'Vui lòng chọn file PDF hợp lệ',
       }));
       return;
     }
@@ -91,8 +92,9 @@ export class PdfToExcelComponent {
       this.state.update((state) => ({
         ...state,
         isConverting: false,
-        error: 'Error converting file. Please try again.',
+        error: 'Lỗi khi chuyển đổi file. Vui lòng thử lại.',
       }));
+      console.error('Lỗi chuyển đổi:', error);
     }
   }
 
@@ -106,12 +108,13 @@ export class PdfToExcelComponent {
 
   downloadFile(): void {
     const file = this.state().convertedFile;
-    if (!file) return;
+    const originalFile = this.state().originalFile;
+    if (!file || !originalFile) return;
 
     const url = URL.createObjectURL(file);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `converted-file.${this.state().outputFormat}`;
+    link.download = `${originalFile.name.replace('.pdf', '')}_converted.${this.state().outputFormat}`;
     link.click();
 
     URL.revokeObjectURL(url);
@@ -143,6 +146,19 @@ export class PdfToExcelComponent {
       } as unknown as Event;
       await this.handleFileInput(fakeEvent);
     }
+  }
+
+  getFormattedFileSize(file: File | null): string {
+    if (!file) return '0 B';
+    
+    const bytes = file.size;
+    if (bytes === 0) return '0 B';
+    
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   }
 
   ngOnDestroy(): void {

@@ -1,17 +1,46 @@
 /* Font Awesome Icons */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+/* Light mode variables */
+:host {
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --text-primary: #333;
+  --text-secondary: #6c757d;
+  --border-color: #e0e0e0;
+  --card-bg: #ffffff;
+  --card-hover-shadow: rgba(0, 0, 0, 0.1);
+  --group-title-color: #333;
+  --group-border-color: #e9ecef;
+  --subgroup-title-color: #495057;
+}
+
+/* Dark mode variables */
+:host-context([data-theme="dark"]) {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #282828;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --border-color: #404040;
+  --card-bg: #282828;
+  --card-hover-shadow: rgba(0, 0, 0, 0.3);
+  --group-title-color: #ffffff;
+  --group-border-color: #404040;
+  --subgroup-title-color: #a0a0a0;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f8f9fa;
+  background-color: var(--bg-primary);
   text-align: center;
-}
-
-:host {
-  display: block;
-  min-height: 100vh;
+  color: var(--text-primary);
 }
 
 /* Add smooth scrolling to the whole page */
@@ -27,7 +56,7 @@ html {
 
 /* Add scroll margin to tool groups */
 .tool-group {
-  scroll-margin-top: 80px; /* Điều chỉnh giá trị này tùy theo chiều cao của navigation bar */
+  scroll-margin-top: 80px;
   margin-bottom: 3rem;
   text-align: left;
 }
@@ -35,20 +64,21 @@ html {
 h1 {
   font-size: 2.5em;
   margin-bottom: 10px;
+  color: var(--text-primary);
 }
 
 p {
   font-size: 1.2em;
-  color: #6c757d;
+  color: var(--text-secondary);
   margin-bottom: 40px;
 }
 
 .group-title {
   font-size: 1.8em;
-  color: #333;
+  color: var(--group-title-color);
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e9ecef;
+  border-bottom: 2px solid var(--group-border-color);
 }
 
 .subgroup {
@@ -57,7 +87,7 @@ p {
 
 .subgroup-title {
   font-size: 1.4em;
-  color: #495057;
+  color: var(--subgroup-title-color);
   margin-bottom: 1rem;
 }
 
@@ -69,18 +99,19 @@ p {
 }
 
 .tool-card {
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 20px;
   display: flex;
   align-items: center;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .tool-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--card-hover-shadow);
+  transform: translateY(-2px);
 }
 
 .tool-icon {
@@ -102,19 +133,19 @@ p {
   font-size: 1.1em;
   font-weight: 700;
   margin: 0;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .tool-description {
   font-size: 0.9em;
-  color: #6c757d;
+  color: var(--text-secondary);
   margin: 5px 0 0;
   line-height: 1.4;
 }
 
 .tool-arrow {
   font-size: 1.2em;
-  color: #6c757d;
+  color: var(--text-secondary);
   opacity: 0;
   transition: opacity 0.3s ease;
 }

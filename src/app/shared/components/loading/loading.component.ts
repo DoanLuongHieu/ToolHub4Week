@@ -1,13 +1,15 @@
 import { Component, Input } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-loading',
   standalone: true,
+  imports: [TranslateModule],
   template: `
     <div class="loading-overlay" [class.show]="show">
       <div class="loading-spinner">
         <div class="spinner"></div>
-        <div class="loading-text">{{ message }}</div>
+        <div class="loading-text">{{ message || ('LOADING.DEFAULT' | translate) }}</div>
       </div>
     </div>
   `,
@@ -15,5 +17,5 @@ import { Component, Input } from '@angular/core';
 })
 export class LoadingComponent {
   @Input() show = false;
-  @Input() message = 'Loading...';
+  @Input() message = '';
 }

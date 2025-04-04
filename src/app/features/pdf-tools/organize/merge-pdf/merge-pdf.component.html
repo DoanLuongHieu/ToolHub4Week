@@ -1,8 +1,8 @@
 <div class="container">
   <div class="header">
-    <h2>Merge PDF Files</h2>
+    <h2>{{ 'PDF_TOOLS.PDF_ORGANIZERS.MERGE.TITLE' | translate }}</h2>
     <p class="description">
-      Combine multiple PDF files into a single PDF document
+      {{ 'PDF_TOOLS.PDF_ORGANIZERS.MERGE.DESCRIPTION' | translate }}
     </p>
   </div>
 
@@ -15,9 +15,9 @@
   >
     <div class="upload-content">
       <i class="fas fa-file-pdf"></i>
-      <p>Drag & drop PDF files here or</p>
+      <p>{{ 'PDF_TOOLS.PDF_ORGANIZERS.MERGE.SELECT_FILES' | translate }}</p>
       <button class="btn-select" (click)="fileInput.click()">
-        Select Files
+        {{ 'PDF_TOOLS.PDF_ORGANIZERS.MERGE.SELECT_BUTTON' | translate }}
       </button>
       <input
         #fileInput
@@ -32,8 +32,8 @@
 
   <div class="files-list" *ngIf="selectedFiles.length > 0">
     <div class="files-header">
-      <h3>Selected Files ({{ selectedFiles.length }})</h3>
-      <button class="btn-clear" (click)="clearFiles()">Clear All</button>
+      <h3>{{ 'PDF_TOOLS.PDF_ORGANIZERS.MERGE.SELECTED_FILES' | translate: { count: selectedFiles.length } }}</h3>
+      <button class="btn-clear" (click)="clearFiles()">{{ 'PDF_TOOLS.COMMON.CLEAR_ALL' | translate }}</button>
     </div>
 
     <div cdkDropList class="file-items" (cdkDropListDropped)="drop($event)">
@@ -60,12 +60,12 @@
   <div class="actions" *ngIf="selectedFiles.length > 0">
     <button class="btn-merge" [disabled]="isProcessing()" (click)="mergePDFs()">
       <i class="fas fa-object-group"></i>
-      {{ isProcessing() ? "Merging..." : "Merge PDFs" }}
+      {{ isProcessing() ? ('PDF_TOOLS.PDF_ORGANIZERS.MERGE.MERGING' | translate) : ('PDF_TOOLS.PDF_ORGANIZERS.MERGE.MERGE_BUTTON' | translate) }}
     </button>
   </div>
 
   <div class="loading-overlay" *ngIf="isProcessing()">
     <div class="spinner"></div>
-    <p>Merging PDFs...</p>
+    <p>{{ 'PDF_TOOLS.PDF_ORGANIZERS.MERGE.MERGING' | translate }}</p>
   </div>
 </div>

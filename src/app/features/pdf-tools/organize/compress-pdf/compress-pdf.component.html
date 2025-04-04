@@ -1,5 +1,5 @@
 <div class="converter-container">
-  <h1>PDF Compression Tool</h1>
+  <h1>{{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.TITLE' | translate }}</h1>
 
   <div
     class="upload-section"
@@ -8,7 +8,7 @@
     [class.drag-over]="isDragging"
   >
     <label for="fileInput" class="file-input-label">
-      <span>Choose PDF File or Drag & Drop</span>
+      <span>{{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.SELECT_FILE' | translate }}</span>
       <input
         type="file"
         id="fileInput"
@@ -17,7 +17,7 @@
         [attr.aria-label]="'Choose PDF file to compress'"
       />
     </label>
-    <div class="supported-formats">Supported format: PDF</div>
+    <div class="supported-formats">{{ 'PDF_TOOLS.COMMON.SUPPORTED_FORMAT' | translate }}</div>
   </div>
 
   <div class="error-message" *ngIf="state().error">
@@ -25,12 +25,12 @@
   </div>
 
   <div class="compression-status" *ngIf="state().isCompressing">
-    Compressing PDF...
+    {{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.COMPRESSING' | translate }}
   </div>
 
   <div class="compression-options" *ngIf="state().originalFile">
     <div class="quality-control">
-      <label for="quality">Compression Level: {{ state().quality }}%</label>
+      <label for="quality">{{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.COMPRESSION_LEVEL' | translate: { quality: state().quality } }}</label>
       <input
         type="range"
         id="quality"
@@ -48,7 +48,7 @@
           [checked]="state().removeMetadata"
           (change)="toggleMetadata()"
         />
-        Remove PDF Metadata (Recommended for smaller size)
+        {{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.REMOVE_METADATA' | translate }}
       </label>
     </div>
 
@@ -57,24 +57,24 @@
       (click)="compressPDF()"
       [disabled]="state().isCompressing"
     >
-      Compress PDF
+      {{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.COMPRESS_BUTTON' | translate }}
     </button>
   </div>
 
   <div class="file-info-container" *ngIf="state().originalFile">
     <div class="file-info">
-      <h3>Original PDF</h3>
+      <h3>{{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.ORIGINAL_PDF' | translate }}</h3>
       <div class="info-details">
-        <p>Size: {{ state().originalSize ?? 0 }} KB</p>
-        <p>Name: {{ state().originalFile?.name ?? "Unknown" }}</p>
+        <p>{{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.SIZE' | translate: { size: state().originalSize ?? 0 } }}</p>
+        <p>{{ 'PDF_TOOLS.COMMON.SELECTED_FILE' | translate }}: {{ state().originalFile?.name ?? "Unknown" }}</p>
       </div>
     </div>
 
     <div class="file-info" *ngIf="state().compressedFile">
-      <h3>Compressed PDF</h3>
+      <h3>{{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.COMPRESSED_PDF' | translate }}</h3>
       <div class="info-details">
-        <p>Size: {{ state().compressedSize ?? 0 }} KB</p>
-        <p>Compression: {{ getCompressionRatio() }}%</p>
+        <p>{{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.SIZE' | translate: { size: state().compressedSize ?? 0 } }}</p>
+        <p>{{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.COMPRESSION_RATIO' | translate: { ratio: getCompressionRatio() } }}</p>
       </div>
     </div>
   </div>
@@ -85,7 +85,7 @@
       (click)="downloadPDF()"
       [attr.aria-label]="'Download compressed PDF'"
     >
-      Download Compressed PDF
+      {{ 'PDF_TOOLS.PDF_ORGANIZERS.COMPRESS.DOWNLOAD_BUTTON' | translate }}
     </button>
   </div>
 </div>

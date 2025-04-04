@@ -9,6 +9,7 @@ import {
   Language,
 } from '../../../core/services/language.service';
 import { AuthService, User } from '../../../services/auth.service';
+import { TranslateModule } from '@ngx-translate/core';
 // import { MobileMenuComponent } from '../mobile-menu/mobile-menu.component';
 
 interface DropdownState {
@@ -22,7 +23,12 @@ interface DropdownState {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLink, ClickOutsideDirective],
+  imports: [
+    CommonModule, 
+    RouterLink, 
+    ClickOutsideDirective,
+    TranslateModule
+  ],
   templateUrl: './header.component.html',
   styleUrls: [
     './header.component.css',
@@ -32,13 +38,13 @@ interface DropdownState {
 })
 export class HeaderComponent {
   private themeService = inject(ThemeService);
-  private languageService = inject(LanguageService);
   private authService = inject(AuthService);
+  protected languageService = inject(LanguageService);
   private router = inject(Router);
   
-  isDark = this.themeService.getCurrentTheme();
   currentLang = this.languageService.getCurrentLang();
   currentUser: User | null = null;
+  isDarkMode = this.themeService.getCurrentTheme();
   
   isDropdownOpen: DropdownState = {
     pdf: false,
@@ -70,6 +76,10 @@ export class HeaderComponent {
     this.languageService.setLanguage(select.value as Language);
   }
 
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
+
   toggleDropdown(type: keyof DropdownState) {
     Object.keys(this.isDropdownOpen).forEach((key) => {
       if (key !== type) {
@@ -83,10 +93,6 @@ export class HeaderComponent {
     this.isDropdownOpen[type] = false;
   }
 
-  toggleTheme() {
-    this.themeService.toggleTheme();
-  }
-  
   logout() {
     this.authService.logout().subscribe({
       next: () => {

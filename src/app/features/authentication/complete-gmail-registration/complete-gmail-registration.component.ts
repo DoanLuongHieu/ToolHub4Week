@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { ValidationService } from '../../../services/validation.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-complete-gmail-registration',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, TranslateModule],
   templateUrl: './complete-gmail-registration.component.html',
-  styleUrls: ['./complete-gmail-registration.component.css']
+  styleUrls: ['./complete-gmail-registration.component.css'],
 })
 export class CompleteGmailRegistrationComponent implements OnInit {
   completeRegistrationForm!: FormGroup;
@@ -27,29 +33,39 @@ export class CompleteGmailRegistrationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private validationService: ValidationService
-  ) { }
+    private validationService: ValidationService,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.email = params['email'] || '';
       this.uid = params['uid'] || '';
       this.photoURL = params['photo'] || null;
       this.displayName = params['name'] || null;
-      
+
       if (!this.email || !this.uid) {
         this.router.navigate(['/features/authentication/register']);
         return;
       }
-      
+
       this.initForm();
     });
   }
 
   initForm(): void {
     this.completeRegistrationForm = this.formBuilder.group({
-      username: ['', [Validators.required, this.validationService.usernameValidator()]],
-      password: ['', [Validators.required, this.validationService.passwordStrengthValidator()]]
+      username: [
+        '',
+        [Validators.required, this.validationService.usernameValidator()],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          this.validationService.passwordStrengthValidator(),
+        ],
+      ],
     });
   }
 
@@ -62,7 +78,9 @@ export class CompleteGmailRegistrationComponent implements OnInit {
     // Kiểm tra username đã tồn tại
     const { username } = this.completeRegistrationForm.value;
     if (this.authService.isUsernameTaken(username)) {
-      this.errorMessage = 'Tên đăng nhập này đã được sử dụng';
+      this.errorMessage = this.translateService.instant(
+        'AUTH.COMPLETE_GMAIL_REGISTRATION.USERNAME_TAKEN'
+      );
       return;
     }
 
@@ -72,20 +90,23 @@ export class CompleteGmailRegistrationComponent implements OnInit {
       email: this.email,
       username: this.completeRegistrationForm.value.username,
       ...(this.photoURL && { photoURL: this.photoURL }),
-      ...(this.displayName && { displayName: this.displayName })
+      ...(this.displayName && { displayName: this.displayName }),
     };
 
     this.authService.completeGoogleRegistration(registrationData).subscribe({
       next: () => {
         this.isSubmitting = false;
-        this.router.navigate(['/features/authentication/login'], { 
-          queryParams: { registered: 'true' } 
+        this.router.navigate(['/features/authentication/login'], {
+          queryParams: { registered: 'true' },
         });
       },
       error: (error: Error) => {
         this.isSubmitting = false;
-        this.errorMessage = 'Đăng ký thất bại: ' + error.message;
-      }
+        this.errorMessage =
+          this.translateService.instant(
+            'AUTH.COMPLETE_GMAIL_REGISTRATION.REGISTRATION_FAILED'
+          ) + error.message;
+      },
     });
   }
 
@@ -103,11 +124,11 @@ export class CompleteGmailRegistrationComponent implements OnInit {
 
   // Đánh dấu tất cả các control là đã touched
   private markFormGroupTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach(control => {
+    Object.values(formGroup.controls).forEach((control) => {
       control.markAsTouched();
       if ((control as any).controls) {
         this.markFormGroupTouched(control as FormGroup);
       }
     });
   }
-} 
+}

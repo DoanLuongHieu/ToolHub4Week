@@ -17,37 +17,35 @@
   </div>
 
   <div class="control-panel">
-    <h2>Text Generator</h2>
+    <h2>{{ 'OTHER_TOOLS.LOREM_IPSUM.TITLE' | translate }}</h2>
 
     <div class="method-selector">
-      <label for="method">Generation Method:</label>
+      <label for="method">{{ 'OTHER_TOOLS.LOREM_IPSUM.METHOD' | translate }}:</label>
       <select id="method" [(ngModel)]="selectedMethod">
-        <option value="vietnamese">Vietnamese Text</option>
-        <option value="pattern">Pattern-Based</option>
-        <option value="syllable">Syllable Combination</option>
-        <option value="classic">Classic Lorem Ipsum</option>
+        <option value="vietnamese">{{ 'OTHER_TOOLS.LOREM_IPSUM.VIETNAMESE_TEXT' | translate }}</option>
+        <option value="pattern">{{ 'OTHER_TOOLS.LOREM_IPSUM.PATTERN_BASED' | translate }}</option>
+        <option value="syllable">{{ 'OTHER_TOOLS.LOREM_IPSUM.SYLLABLE_COMBINATION' | translate }}</option>
+        <option value="classic">{{ 'OTHER_TOOLS.LOREM_IPSUM.CLASSIC_LOREM_IPSUM' | translate }}</option>
       </select>
     </div>
 
     <div class="method-description" [ngSwitch]="selectedMethod">
       <p *ngSwitchCase="'vietnamese'">
-        Generates Vietnamese text using common words and syllable patterns, or
-        uses classic Vietnamese text samples.
+        {{ 'OTHER_TOOLS.LOREM_IPSUM.VIETNAMESE_DESCRIPTION' | translate }}
       </p>
       <p *ngSwitchCase="'pattern'">
-        Generates text using consonant-vowel patterns to create pronounceable
-        words.
+        {{ 'OTHER_TOOLS.LOREM_IPSUM.PATTERN_DESCRIPTION' | translate }}
       </p>
       <p *ngSwitchCase="'syllable'">
-        Combines prefixes, roots, and suffixes to create structured words.
+        {{ 'OTHER_TOOLS.LOREM_IPSUM.SYLLABLE_DESCRIPTION' | translate }}
       </p>
       <p *ngSwitchCase="'classic'">
-        Uses the traditional Lorem Ipsum text from the 1500s.
+        {{ 'OTHER_TOOLS.LOREM_IPSUM.CLASSIC_DESCRIPTION' | translate }}
       </p>
     </div>
 
     <div class="input-group">
-      <label for="wordCount">Number of Words:</label>
+      <label for="wordCount">{{ 'OTHER_TOOLS.LOREM_IPSUM.WORD_COUNT' | translate }}:</label>
       <input
         type="number"
         id="wordCount"
@@ -58,7 +56,7 @@
     </div>
 
     <div class="input-group">
-      <label for="paragraphCount">Number of Paragraphs:</label>
+      <label for="paragraphCount">{{ 'OTHER_TOOLS.LOREM_IPSUM.PARAGRAPH_COUNT' | translate }}:</label>
       <input
         type="number"
         id="paragraphCount"
@@ -70,20 +68,20 @@
 
     <div class="button-group">
       <button (click)="generateText()" class="generate-btn">
-        Generate Text
+        {{ 'OTHER_TOOLS.LOREM_IPSUM.GENERATE_BUTTON' | translate }}
       </button>
       <button
         (click)="copyToClipboard()"
         class="copy-btn"
         [disabled]="!generatedText"
       >
-        Copy to Clipboard
+        {{ 'OTHER_TOOLS.LOREM_IPSUM.COPY_BUTTON' | translate }}
       </button>
     </div>
   </div>
 
   <div class="output-panel" *ngIf="generatedText">
-    <h3>Generated Text:</h3>
+    <h3>{{ 'OTHER_TOOLS.LOREM_IPSUM.GENERATED_TEXT' | translate }}:</h3>
     <div class="text-output">
       {{ generatedText }}
     </div>

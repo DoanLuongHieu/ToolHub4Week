@@ -1,10 +1,52 @@
+/* Light Mode - Default Theme */
+:host {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-accent: #e9ecef;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #dddddd;
+  --primary-color: #2196f3;
+  --primary-hover: #1976d2;
+  --success-color: #4caf50;
+  --success-hover: #45a049;
+  --error-color: #f44336;
+  --error-hover: #d32f2f;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --notification-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode */
+:host-context([data-theme="dark"]) {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-accent: #282828;
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --border-color: #404040;
+  --primary-color: #4f46e5;
+  --primary-hover: #6366f1;
+  --success-color: #22c55e;
+  --success-hover: #16a34a;
+  --error-color: #dc2626;
+  --error-hover: #b91c1c;
+  --card-bg: #1e1e1e;
+  --input-bg: #282828;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --notification-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .lorem-ipsum-container {
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #ffffff;
+  background-color: var(--bg-primary);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   position: relative;
 }
 
@@ -28,7 +70,7 @@
   gap: 1rem;
   min-width: 300px;
   animation: slideIn 0.3s ease-out;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--notification-shadow);
 }
 
 @keyframes slideIn {
@@ -43,11 +85,11 @@
 }
 
 .notification.success {
-  background-color: #4caf50;
+  background-color: var(--success-color);
 }
 
 .notification.error {
-  background-color: #f44336;
+  background-color: var(--error-color);
 }
 
 .close-notification {
@@ -71,14 +113,14 @@
 }
 
 h2 {
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
   text-align: center;
 }
 
 h3 {
-  color: #444;
+  color: var(--text-primary);
   margin-bottom: 1rem;
   font-size: 1.4rem;
 }
@@ -92,24 +134,25 @@ h3 {
 
 .method-selector select {
   padding: 0.5rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 1rem;
   min-width: 200px;
-  background-color: white;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
 }
 
 .method-description {
-  background-color: #f5f5f5;
+  background-color: var(--bg-secondary);
   padding: 1rem;
   border-radius: 4px;
   margin-bottom: 1.5rem;
-  border-left: 4px solid #2196f3;
+  border-left: 4px solid var(--primary-color);
 }
 
 .method-description p {
   margin: 0;
-  color: #666;
+  color: var(--text-secondary);
   line-height: 1.4;
   font-size: 0.95rem;
 }
@@ -123,16 +166,18 @@ h3 {
 
 label {
   font-weight: 500;
-  color: #555;
+  color: var(--text-secondary);
   min-width: 160px;
 }
 
 input[type="number"] {
   padding: 0.5rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   width: 100px;
   font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
 }
 
 .button-group {
@@ -153,46 +198,46 @@ button {
 }
 
 .generate-btn {
-  background-color: #4caf50;
+  background-color: var(--success-color);
   color: white;
 }
 
 .generate-btn:hover {
-  background-color: #45a049;
+  background-color: var(--success-hover);
 }
 
 .copy-btn {
-  background-color: #2196f3;
+  background-color: var(--primary-color);
   color: white;
 }
 
 .copy-btn:hover {
-  background-color: #1976d2;
+  background-color: var(--primary-hover);
 }
 
 .copy-btn:disabled {
-  background-color: #cccccc;
+  background-color: var(--border-color);
   cursor: not-allowed;
 }
 
 .output-panel {
-  background-color: #f9f9f9;
+  background-color: var(--bg-secondary);
   padding: 1.5rem;
   border-radius: 4px;
-  border: 1px solid #eee;
+  border: 1px solid var(--border-color);
   margin-top: 2rem;
 }
 
 .text-output {
   line-height: 1.6;
-  color: #333;
+  color: var(--text-primary);
   font-size: 1rem;
   white-space: pre-wrap;
   word-wrap: break-word;
   padding: 1rem;
-  background-color: white;
+  background-color: var(--bg-primary);
   border-radius: 4px;
-  border: 1px solid #eee;
+  border: 1px solid var(--border-color);
 }
 
 .text-output p {

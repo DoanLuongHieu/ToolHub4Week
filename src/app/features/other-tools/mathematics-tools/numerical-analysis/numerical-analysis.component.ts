@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-numerical-analysis',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, TranslateModule],
   templateUrl: './numerical-analysis.component.html',
   styleUrl: './numerical-analysis.component.css',
 })
 export class NumericalAnalysisComponent implements OnInit {
+  private translate = inject(TranslateService);
+
   a: number = 0;
   b: number = 0;
   c: number = 0;
@@ -29,19 +32,27 @@ export class NumericalAnalysisComponent implements OnInit {
 
   validateInput(): boolean {
     if (!this.a || !this.b || !this.c) {
-      this.error = 'Vui lòng nhập đầy đủ các giá trị';
+      this.error = this.translate.instant(
+        'OTHER_TOOLS.NUMERICAL_ANALYSIS.ERROR_EMPTY_VALUES'
+      );
       return false;
     }
     if (this.a < 1 || this.a > 31) {
-      this.error = 'Ngày sinh phải từ 1 đến 31';
+      this.error = this.translate.instant(
+        'OTHER_TOOLS.NUMERICAL_ANALYSIS.ERROR_DAY_RANGE'
+      );
       return false;
     }
     if (this.b < 1 || this.b > 12) {
-      this.error = 'Tháng sinh phải từ 1 đến 12';
+      this.error = this.translate.instant(
+        'OTHER_TOOLS.NUMERICAL_ANALYSIS.ERROR_MONTH_RANGE'
+      );
       return false;
     }
     if (this.c < 1900 || this.c > 2099) {
-      this.error = 'Năm sinh phải từ 1900 đến 2099';
+      this.error = this.translate.instant(
+        'OTHER_TOOLS.NUMERICAL_ANALYSIS.ERROR_YEAR_RANGE'
+      );
       return false;
     }
     this.error = '';
@@ -99,14 +110,22 @@ export class NumericalAnalysisComponent implements OnInit {
       }
 
       if (!expression) {
-        this.result = 'Không tìm thấy biểu thức phù hợp';
+        this.result = this.translate.instant(
+          'OTHER_TOOLS.NUMERICAL_ANALYSIS.NO_EXPRESSION_FOUND'
+        );
       }
 
       if (this.showSteps && this.result) {
-        this.addStep(`Kết quả: ${this.result}`);
+        this.addStep(
+          `${this.translate.instant(
+            'OTHER_TOOLS.NUMERICAL_ANALYSIS.RESULT'
+          )}: ${this.result}`
+        );
       }
     } catch (err) {
-      this.error = 'Có lỗi xảy ra khi tính toán';
+      this.error = this.translate.instant(
+        'OTHER_TOOLS.NUMERICAL_ANALYSIS.ERROR_CALCULATION'
+      );
     } finally {
       this.isLoading = false;
     }
@@ -189,9 +208,13 @@ export class NumericalAnalysisComponent implements OnInit {
     if (primeFactors.length === 0) return null;
 
     this.addStep(
-      `Phân tích ${target} thành tích các số nguyên tố: ${primeFactors.join(
-        ' × '
-      )}`
+      this.translate.instant(
+        'OTHER_TOOLS.NUMERICAL_ANALYSIS.PRIME_FACTOR_STEP',
+        {
+          target: target,
+          factors: primeFactors.join(' × '),
+        }
+      )
     );
 
     // Tìm biểu thức cho từng số nguyên tố
@@ -232,7 +255,11 @@ export class NumericalAnalysisComponent implements OnInit {
       Math.pow(10, digits.length - i - 1)
     );
 
-    this.addStep(`Phân tích ${target} theo hệ thập phân:`);
+    this.addStep(
+      this.translate.instant('OTHER_TOOLS.NUMERICAL_ANALYSIS.DECIMAL_STEP', {
+        target: target,
+      })
+    );
     this.addStep(digits.map((d, i) => `${d}×${powers[i]}`).join(' + '));
 
     const expressions: string[] = [];

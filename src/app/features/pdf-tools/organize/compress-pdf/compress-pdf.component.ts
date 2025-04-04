@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PDFDocument, PDFName, PDFDict, PDFRef, PDFObject } from 'pdf-lib';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface CompressionState {
   isCompressing: boolean;
@@ -17,7 +18,7 @@ interface CompressionState {
 @Component({
   selector: 'app-compress-pdf',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './compress-pdf.component.html',
   styleUrl: './compress-pdf.component.css',
 })

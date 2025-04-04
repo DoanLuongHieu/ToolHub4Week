@@ -1,9 +1,8 @@
 <div class="tool-container">
   <div class="tool-header">
-    <h2>CSV to JSON Converter</h2>
+    <h2>{{ 'OTHER_TOOLS.CSV_TO_JSON.TITLE' | translate }}</h2>
     <p class="tool-description">
-      Chuyển đổi dữ liệu CSV (Comma-Separated Values) sang định dạng JSON
-      (JavaScript Object Notation) dễ dàng với nhiều tùy chọn tùy chỉnh.
+      {{ 'OTHER_TOOLS.CSV_TO_JSON.DESCRIPTION' | translate }}
     </p>
   </div>
 
@@ -26,9 +25,9 @@
       />
       <div class="upload-placeholder" *ngIf="!csvData">
         <i class="fas fa-file-csv"></i>
-        <p>Kéo thả file CSV vào đây hoặc nhấp để chọn file</p>
+        <p>{{ 'OTHER_TOOLS.CSV_TO_JSON.SELECT_FILES' | translate }}</p>
         <p class="file-requirements">
-          Hỗ trợ các file CSV với kích thước tối đa 50MB
+          {{ 'OTHER_TOOLS.CSV_TO_JSON.SUPPORTED_FORMATS' | translate }}
         </p>
       </div>
       <div class="file-info" *ngIf="csvData && fileName">
@@ -46,10 +45,10 @@
     <!-- Paste CSV Section -->
     <div class="paste-section" *ngIf="!csvData || showTextArea">
       <div class="section-header">
-        <h3>Hoặc dán dữ liệu CSV vào đây</h3>
+        <h3>{{ 'OTHER_TOOLS.CSV_TO_JSON.INPUT_CSV' | translate }}</h3>
         <div class="toggle-raw" *ngIf="csvData">
           <button class="btn-link" (click)="toggleRawInput()">
-            {{ showTextArea ? "Ẩn text editor" : "Hiển thị/Chỉnh sửa CSV" }}
+            {{ showTextArea ? ('OTHER_TOOLS.CSV_TO_JSON.HIDE_EDITOR' | translate) : ('OTHER_TOOLS.CSV_TO_JSON.SHOW_EDITOR' | translate) }}
           </button>
         </div>
       </div>
@@ -57,39 +56,39 @@
         *ngIf="!csvData || showTextArea"
         [(ngModel)]="csvInput"
         (input)="onCsvInputChange()"
-        placeholder="Nhập dữ liệu CSV của bạn vào đây (ví dụ: name,age,email)"
+        placeholder="{{ 'OTHER_TOOLS.CSV_TO_JSON.INPUT_PLACEHOLDER' | translate }}"
       ></textarea>
     </div>
 
     <!-- Conversion Options -->
     <div class="conversion-options" *ngIf="csvData || csvInput">
-      <h3>Tùy chọn chuyển đổi</h3>
+      <h3>{{ 'OTHER_TOOLS.CSV_TO_JSON.OPTIONS' | translate }}</h3>
 
       <div class="options-grid">
         <div class="option-group">
-          <label>Ký tự phân cách:</label>
+          <label>{{ 'OTHER_TOOLS.CSV_TO_JSON.DELIMITER' | translate }}:</label>
           <select [(ngModel)]="delimiter" (change)="parseCSV()">
-            <option value=",">Dấu phẩy (,)</option>
-            <option value=";">Dấu chấm phẩy (;)</option>
-            <option value="\t">Tab (\t)</option>
-            <option value="|">Đường dọc (|)</option>
-            <option value="custom">Tùy chỉnh</option>
+            <option value=",">{{ 'OTHER_TOOLS.CSV_TO_JSON.COMMA' | translate }}</option>
+            <option value=";">{{ 'OTHER_TOOLS.CSV_TO_JSON.SEMICOLON' | translate }}</option>
+            <option value="\t">{{ 'OTHER_TOOLS.CSV_TO_JSON.TAB' | translate }}</option>
+            <option value="|">{{ 'OTHER_TOOLS.CSV_TO_JSON.VERTICAL_BAR' | translate }}</option>
+            <option value="custom">{{ 'OTHER_TOOLS.CSV_TO_JSON.CUSTOM' | translate }}</option>
           </select>
           <input
             *ngIf="delimiter === 'custom'"
             type="text"
             [(ngModel)]="customDelimiter"
             (change)="parseCSV()"
-            placeholder="Nhập ký tự phân cách"
+            placeholder="{{ 'OTHER_TOOLS.CSV_TO_JSON.ENTER_DELIMITER' | translate }}"
             maxlength="1"
           />
         </div>
 
         <div class="option-group">
-          <label>Định dạng đầu ra:</label>
+          <label>{{ 'OTHER_TOOLS.CSV_TO_JSON.OUTPUT_FORMAT' | translate }}:</label>
           <select [(ngModel)]="outputFormat" (change)="generateJSON()">
-            <option value="pretty">Định dạng đẹp (Pretty)</option>
-            <option value="compact">Nén (Compact)</option>
+            <option value="pretty">{{ 'OTHER_TOOLS.CSV_TO_JSON.PRETTY' | translate }}</option>
+            <option value="compact">{{ 'OTHER_TOOLS.CSV_TO_JSON.COMPACT' | translate }}</option>
           </select>
         </div>
 
@@ -100,7 +99,7 @@
               [(ngModel)]="hasHeader"
               (change)="parseCSV()"
             />
-            Dòng đầu tiên là tiêu đề
+            {{ 'OTHER_TOOLS.CSV_TO_JSON.FIRST_ROW_HEADER' | translate }}
           </label>
         </div>
 
@@ -111,7 +110,7 @@
               [(ngModel)]="detectDataTypes"
               (change)="generateJSON()"
             />
-            Tự động phát hiện kiểu dữ liệu
+            {{ 'OTHER_TOOLS.CSV_TO_JSON.DETECT_DATA_TYPES' | translate }}
           </label>
         </div>
 
@@ -122,7 +121,7 @@
               [(ngModel)]="processNestedObjects"
               (change)="generateJSON()"
             />
-            Xử lý cấu trúc lồng nhau (ví dụ: "user.name")
+            {{ 'OTHER_TOOLS.CSV_TO_JSON.NESTED_OBJECTS' | translate }}
           </label>
         </div>
 
@@ -133,7 +132,7 @@
               [(ngModel)]="processNestedArrays"
               (change)="generateJSON()"
             />
-            Xử lý mảng lồng nhau (ví dụ: "items[0]")
+            {{ 'OTHER_TOOLS.CSV_TO_JSON.NESTED_ARRAYS' | translate }}
           </label>
         </div>
       </div>
@@ -142,10 +141,10 @@
     <!-- Preview Section -->
     <div class="preview-section" *ngIf="parsedData.length > 0">
       <div class="preview-header">
-        <h3>Kết quả JSON</h3>
+        <h3>{{ 'OTHER_TOOLS.CSV_TO_JSON.OUTPUT_JSON' | translate }}</h3>
         <div class="preview-actions">
           <span class="data-info"
-            >{{ parsedData.length }} dòng được chuyển đổi</span
+            >{{ parsedData.length }} {{ 'OTHER_TOOLS.CSV_TO_JSON.ROWS_CONVERTED' | translate }}</span
           >
           <button
             class="btn-copy"
@@ -153,7 +152,7 @@
             [disabled]="isCopying"
           >
             <i class="fas" [ngClass]="isCopying ? 'fa-check' : 'fa-copy'"></i>
-            {{ isCopying ? "Đã sao chép" : "Sao chép JSON" }}
+            {{ isCopying ? ('SUCCESS.COPIED' | translate) : ('OTHER_TOOLS.CSV_TO_JSON.COPY_BUTTON' | translate) }}
           </button>
         </div>
       </div>
@@ -164,7 +163,7 @@
 
       <div class="download-section">
         <button class="btn-primary" (click)="downloadJSON()">
-          <i class="fas fa-download"></i> Tải xuống file JSON
+          <i class="fas fa-download"></i> {{ 'OTHER_TOOLS.CSV_TO_JSON.DOWNLOAD_BUTTON' | translate }}
         </button>
       </div>
     </div>

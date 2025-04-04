@@ -18,6 +18,13 @@ export const PDF_ROUTES: Routes = [
             (m) => m.PdfToJpgComponent
           ),
       },
+      {
+        path: 'from-excel',
+        loadComponent: () =>
+          import('./convert-to-pdf/excel-to-pdf/excel-to-pdf.component').then(
+            (m) => m.ExcelToPdfComponent
+          ),
+      },
       // Thêm các routes khác cho PDF conversion
     ],
   },

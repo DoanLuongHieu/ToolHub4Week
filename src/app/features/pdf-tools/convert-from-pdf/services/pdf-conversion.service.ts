@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PdfConversionService {
   private readonly apiUrl = 'http://localhost:5000/api'; // URL máy chủ Flask
@@ -16,10 +16,12 @@ export class PdfConversionService {
    */
   checkApiStatus(): Observable<boolean> {
     return this.http.get<{ status: string }>(`${this.apiUrl}/health`).pipe(
-      map(response => response.status === 'ok'),
-      catchError(error => {
+      map((response) => response.status === 'ok'),
+      catchError((error) => {
         console.error('API Health Check Error:', error);
-        return throwError(() => 'Không thể kết nối đến máy chủ chuyển đổi PDF');
+        return throwError(
+          () => 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.API_ERRORS.SERVER_UNAVAILABLE'
+        );
       })
     );
   }
@@ -32,21 +34,25 @@ export class PdfConversionService {
     const formData = new FormData();
     formData.append('file', file);
 
-    return this.http.post(`${this.apiUrl}/convert-pdf-to-word`, formData, {
-      responseType: 'blob',
-      reportProgress: true,
-      observe: 'events'
-    }).pipe(
-      map((event: HttpEvent<Blob>) => {
-        if (event.type === HttpEventType.Response) {
-          return event.body as Blob;
-        }
-        return new Blob();
-      }),
-      catchError(error => {
-        console.error('PDF to Word Conversion Error:', error);
-        return throwError(() => 'Không thể chuyển đổi file PDF sang Word. Vui lòng thử lại sau.');
+    return this.http
+      .post(`${this.apiUrl}/convert-pdf-to-word`, formData, {
+        responseType: 'blob',
+        reportProgress: true,
+        observe: 'events',
       })
-    );
+      .pipe(
+        map((event: HttpEvent<Blob>) => {
+          if (event.type === HttpEventType.Response) {
+            return event.body as Blob;
+          }
+          return new Blob();
+        }),
+        catchError((error) => {
+          console.error('PDF to Word Conversion Error:', error);
+          return throwError(
+            () => 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.API_ERRORS.CONVERSION_ERROR'
+          );
+        })
+      );
   }
 }

@@ -1,0 +1,290 @@
+/* Light Mode - Default Theme */
+:host {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-accent: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --border-color: #dee2e6;
+  --primary-color: #0d6efd;
+  --primary-hover: #0b5ed7;
+  --success-color: #198754;
+  --success-hover: #157347;
+  --error-bg: #f8d7da;
+  --error-border: #f5c2c7;
+  --error-text: #842029;
+  --info-bg: #cff4fc;
+  --info-border: #b6effb;
+  --info-color: #055160;
+  --success-bg: #d1e7dd;
+  --success-border: #badbcc;
+  --success-text: #0f5132;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --excel-color: #217346;
+  --excel-hover: #1e6e41;
+}
+
+/* Dark Mode */
+:host-context([data-theme="dark"]) {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-accent: #282828;
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --border-color: #404040;
+  --primary-color: #4f46e5;
+  --primary-hover: #6366f1;
+  --success-color: #22c55e;
+  --success-hover: #16a34a;
+  --error-bg: #450a0a;
+  --error-border: #dc2626;
+  --error-text: #fca5a5;
+  --info-bg: #082f49;
+  --info-border: #0c4a6e;
+  --info-color: #7dd3fc;
+  --success-bg: #132e1f;
+  --success-border: #166534;
+  --success-text: #4ade80;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --excel-color: #4ade80;
+  --excel-hover: #22c55e;
+}
+
+.hidden {
+  display: none;
+}
+
+.transition {
+  transition: all 0.3s ease;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.container {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bg-blue-50 {
+  background-color: rgba(239, 246, 255, 0.7);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.progress-bar-animated {
+  animation: progressAnimation 2s linear infinite;
+}
+
+@keyframes progressAnimation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.hide {
+  display: none !important;
+}
+
+/* Các lớp CSS mới cho dark mode */
+.excel-pdf-container {
+  color: var(--text-primary);
+  background-color: transparent;
+}
+
+.converter-container {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+}
+
+.excel-pdf-title {
+  color: var(--primary-color);
+}
+
+.tool-description {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.description-text {
+  color: var(--text-primary);
+}
+
+.feature-title {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.feature-list {
+  color: var(--text-secondary);
+}
+
+.feature-item {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.upload-section {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.upload-section.drag-over {
+  border-color: var(--primary-color);
+  background-color: rgba(var(--primary-color-rgb, 79, 70, 229), 0.1);
+}
+
+.upload-prompt-container {
+  color: var(--text-primary);
+}
+
+.upload-icon {
+  color: var(--primary-color);
+}
+
+.upload-text {
+  color: var(--text-primary);
+}
+
+.upload-alt-text {
+  color: var(--text-secondary);
+}
+
+.file-input-label {
+  background-color: var(--primary-color);
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.file-input-label:hover {
+  background-color: var(--primary-hover);
+}
+
+.supported-formats {
+  color: var(--text-secondary);
+}
+
+.file-selected {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.file-icon {
+  color: var(--success-color);
+}
+
+.file-name {
+  color: var(--text-primary);
+}
+
+.file-size {
+  color: var(--text-secondary);
+}
+
+.action-buttons {
+  margin-top: 1rem;
+}
+
+.replace-file {
+  background-color: var(--bg-accent);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.replace-file:hover {
+  background-color: var(--bg-secondary);
+}
+
+.convert-button {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.convert-button:hover {
+  background-color: var(--success-hover);
+}
+
+.convert-button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-border);
+}
+
+.progress-section {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.progress-text {
+  color: var(--text-primary);
+}
+
+.progress-bar-container {
+  background-color: var(--bg-accent);
+}
+
+.progress-bar {
+  background-color: var(--primary-color);
+}
+
+.progress-status {
+  color: var(--text-secondary);
+}
+
+.progress-complete {
+  color: var(--success-color);
+}
+
+.tips-section {
+  color: var(--text-secondary);
+  background-color: var(--info-bg);
+  border: 1px solid var(--info-border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .converter-container {
+    padding: 1rem;
+  }
+  
+  .feature-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+}

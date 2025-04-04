@@ -5,8 +5,11 @@ import {
   signal,
   inject,
   AfterViewInit,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../../../core/services/theme.service';
 
 interface CropBox {
@@ -30,11 +33,11 @@ interface CropState {
 @Component({
   selector: 'app-crop-image',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './crop-image.component.html',
   styleUrl: './crop-image.component.css',
 })
-export class CropImageComponent implements AfterViewInit {
+export class CropImageComponent implements AfterViewInit, OnInit {
   @ViewChild('imageContainer') imageContainer!: ElementRef<HTMLDivElement>;
   @ViewChild('sourceImage') sourceImage!: ElementRef<HTMLImageElement>;
 
@@ -72,6 +75,10 @@ export class CropImageComponent implements AfterViewInit {
         this.initCropBox();
       };
     }
+  }
+
+  ngOnInit() {
+    // Additional initialization logic if needed
   }
 
   async handleFileInput(event: Event): Promise<void> {

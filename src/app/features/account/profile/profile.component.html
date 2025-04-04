@@ -2,48 +2,57 @@
   <div class="profile-sidebar">
     <div class="sidebar-header">
       <div class="user-avatar">
-        <img [src]="currentUser.photoURL || 'assets/images/default-avatar.png'" [alt]="currentUser.username">
+        <img
+          [src]="currentUser.photoURL || 'assets/images/default-avatar.png'"
+          [alt]="currentUser.username"
+        />
       </div>
       <div class="user-info">
         <h3>{{ currentUser.displayName || currentUser.username }}</h3>
         <p>{{ currentUser.email }}</p>
       </div>
     </div>
-    
+
     <div class="sidebar-menu">
-      <button 
-        class="menu-item" 
-        [class.active]="activeTab === 'personal-info'" 
+      <button
+        class="menu-item"
+        [class.active]="activeTab === 'personal-info'"
         (click)="setActiveTab('personal-info')"
       >
         <i class="icon-user"></i>
-        <span>Thông tin cá nhân</span>
+        <span>{{ "USER.ACCOUNT.PERSONAL_INFO" | translate }}</span>
       </button>
-      
-      <button 
-        class="menu-item" 
-        [class.active]="activeTab === 'change-password'" 
+
+      <button
+        class="menu-item"
+        [class.active]="activeTab === 'change-password'"
         (click)="setActiveTab('change-password')"
       >
         <i class="icon-lock"></i>
-        <span>Đổi mật khẩu</span>
+        <span>{{ "USER.ACCOUNT.CHANGE_PASSWORD" | translate }}</span>
       </button>
     </div>
   </div>
-  
+
   <div class="profile-content">
     <div class="content-header">
-      <h2>{{ activeTab === 'personal-info' ? 'Thông tin cá nhân' : 'Đổi mật khẩu' }}</h2>
+      <h2>
+        {{
+          activeTab === "personal-info"
+            ? ("USER.ACCOUNT.PERSONAL_INFO" | translate)
+            : ("USER.ACCOUNT.CHANGE_PASSWORD" | translate)
+        }}
+      </h2>
     </div>
-    
+
     <div class="content-body">
-      <app-personal-info 
-        *ngIf="activeTab === 'personal-info'" 
+      <app-personal-info
+        *ngIf="activeTab === 'personal-info'"
         [user]="currentUser"
       ></app-personal-info>
-      
-      <app-change-password 
-        *ngIf="activeTab === 'change-password'" 
+
+      <app-change-password
+        *ngIf="activeTab === 'change-password'"
         [userId]="currentUser.id"
       ></app-change-password>
     </div>
@@ -52,7 +61,9 @@
 
 <div class="login-required" *ngIf="!currentUser">
   <div class="message">
-    <h2>Vui lòng đăng nhập để xem thông tin tài khoản</h2>
-    <button class="btn-login" routerLink="/features/authentication/login">Đăng nhập</button>
+    <h2>{{ "USER.ACCOUNT.LOGIN_REQUIRED" | translate }}</h2>
+    <button class="btn-login" routerLink="/features/authentication/login">
+      {{ "USER.ACCOUNT.LOGIN_BUTTON" | translate }}
+    </button>
   </div>
 </div>

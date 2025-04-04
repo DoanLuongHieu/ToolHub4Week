@@ -432,8 +432,18 @@
   }
 }
 
-/* Smooth transitions for theme switching */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease, box-shadow 0.3s ease;
+@media (max-width: 640px) {
+  .feedback h2 {
+    font-size: 2rem;
+  }
+
+  .feedback-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .feedback-content {
+    padding: 2rem 1.5rem 1.5rem;
+  }
 }
+
+/* Remove theme switching transition */

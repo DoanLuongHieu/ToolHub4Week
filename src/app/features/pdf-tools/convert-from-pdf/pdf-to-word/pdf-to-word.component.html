@@ -1,9 +1,9 @@
 <div class="pdf-to-word">
   <div class="container">
     <header class="tool-header">
-      <h1>Chuyển đổi PDF sang Word</h1>
+      <h1>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.TITLE' | translate }}</h1>
       <p class="description">
-        Chuyển đổi file PDF của bạn sang định dạng Word (.docx) dễ dàng và miễn phí
+        {{ 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.DESCRIPTION' | translate }}
       </p>
     </header>
 
@@ -31,12 +31,12 @@
         @if (!selectedFile) {
           <div class="upload-prompt">
             <i class="fas fa-cloud-upload-alt"></i>
-            <h3>Kéo thả file PDF vào đây</h3>
-            <p>hoặc</p>
+            <h3>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.SELECT_FILE' | translate }}</h3>
+            <p>{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.SELECT_ALT' | translate }}</p>
             <button class="btn-primary" (click)="fileInput.click()">
-              Chọn file PDF
+              {{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.SELECT_BUTTON' | translate }}
             </button>
-            <p class="file-requirements">Định dạng hỗ trợ: PDF</p>
+            <p class="file-requirements">{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.SUPPORTED_FORMATS' | translate }}</p>
           </div>
         }
 
@@ -62,10 +62,10 @@
                 (click)="convertToWord()">
           @if (isConverting) {
             <i class="fas fa-spinner fa-spin"></i>
-            Đang chuyển đổi...
+            {{ 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.CONVERTING' | translate }}
           } @else {
             <i class="fas fa-exchange-alt"></i>
-            Chuyển đổi sang Word
+            {{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.CONVERT_BUTTON' | translate }}
           }
         </button>
       </div>
@@ -77,9 +77,9 @@
           </div>
           <p class="progress-text">
             @if (conversionProgress < 100) {
-              Đang xử lý...
+              {{ 'LOADING.PROCESSING' | translate }}
             } @else {
-              Hoàn tất! Đang tải file về máy của bạn.
+              {{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.PROGRESS.COMPLETE' | translate }}
             }
           </p>
         </div>
@@ -87,24 +87,23 @@
     }
 
     <div class="info-section">
-      <h3>Về công cụ chuyển đổi PDF sang Word</h3>
+      <h3>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.TITLE' | translate }}</h3>
       <p>
-        Công cụ này sử dụng Python với thư viện pdf-plumber và pdf2docx để chuyển đổi 
-        tài liệu PDF sang định dạng Word (.docx) với độ chính xác cao. 
-        Quá trình chuyển đổi diễn ra hoàn toàn trên máy chủ, bảo đảm an toàn dữ liệu.
+        {{ 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.DESCRIPTION' | translate }}
+        {{ 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.PROCESS_TIME' | translate }}
       </p>
       <div class="features">
         <div class="feature">
           <i class="fas fa-lock"></i>
-          <span>Bảo mật dữ liệu</span>
+          <span>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.FEATURES.FEATURE1' | translate }}</span>
         </div>
         <div class="feature">
           <i class="fas fa-rocket"></i>
-          <span>Chuyển đổi nhanh chóng</span>
+          <span>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.FEATURES.FEATURE2' | translate }}</span>
         </div>
         <div class="feature">
           <i class="fas fa-check-circle"></i>
-          <span>Chất lượng cao</span>
+          <span>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.FEATURES.FEATURE3' | translate }}</span>
         </div>
       </div>
     </div>

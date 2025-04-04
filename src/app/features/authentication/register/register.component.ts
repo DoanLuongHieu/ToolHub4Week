@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { ValidationService } from '../../../services/validation.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, TranslateModule],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
@@ -18,28 +24,47 @@ export class RegisterComponent implements OnInit {
   showPassword = false;
   showConfirmPassword = false;
   errorMessage = '';
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private validationService: ValidationService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
   }
 
   initForm(): void {
-    this.registerForm = this.formBuilder.group({
-      email: ['', [Validators.required, this.validationService.emailValidator()]],
-      username: ['', [Validators.required, this.validationService.usernameValidator()]],
-      password: ['', [Validators.required, this.validationService.passwordStrengthValidator()]],
-      confirmPassword: ['', Validators.required],
-      invitationCode: ['']
-    }, {
-      validators: this.validationService.matchPasswordValidator('password', 'confirmPassword')
-    });
+    this.registerForm = this.formBuilder.group(
+      {
+        email: [
+          '',
+          [Validators.required, this.validationService.emailValidator()],
+        ],
+        username: [
+          '',
+          [Validators.required, this.validationService.usernameValidator()],
+        ],
+        password: [
+          '',
+          [
+            Validators.required,
+            this.validationService.passwordStrengthValidator(),
+          ],
+        ],
+        confirmPassword: ['', Validators.required],
+        invitationCode: [''],
+      },
+      {
+        validators: this.validationService.matchPasswordValidator(
+          'password',
+          'confirmPassword'
+        ),
+      }
+    );
   }
 
   onSubmit(): void {
@@ -51,12 +76,16 @@ export class RegisterComponent implements OnInit {
     // Kiểm tra email và username đã tồn tại
     const { email, username } = this.registerForm.value;
     if (this.authService.isEmailTaken(email)) {
-      this.errorMessage = 'Email này đã được sử dụng';
+      this.errorMessage = this.translateService.instant(
+        'AUTH.REGISTER.EMAIL_TAKEN'
+      );
       return;
     }
 
     if (this.authService.isUsernameTaken(username)) {
-      this.errorMessage = 'Tên đăng nhập này đã được sử dụng';
+      this.errorMessage = this.translateService.instant(
+        'AUTH.REGISTER.USERNAME_TAKEN'
+      );
       return;
     }
 
@@ -66,14 +95,16 @@ export class RegisterComponent implements OnInit {
     this.authService.register(registerData).subscribe({
       next: () => {
         this.isSubmitting = false;
-        this.router.navigate(['/features/authentication/login'], { 
-          queryParams: { registered: 'true' } 
+        this.router.navigate(['/features/authentication/login'], {
+          queryParams: { registered: 'true' },
         });
       },
       error: (error) => {
         this.isSubmitting = false;
-        this.errorMessage = 'Đăng ký thất bại: ' + error.message;
-      }
+        this.errorMessage =
+          this.translateService.instant('AUTH.REGISTER.REGISTRATION_FAILED') +
+          error.message;
+      },
     });
   }
 
@@ -84,24 +115,27 @@ export class RegisterComponent implements OnInit {
   toggleConfirmPasswordVisibility(): void {
     this.showConfirmPassword = !this.showConfirmPassword;
   }
-  
+
   registerWithGoogle(): void {
     this.isSubmitting = true;
     this.errorMessage = '';
-    
+
     this.authService.registerWithGoogle().subscribe({
       next: (result) => {
         this.isSubmitting = false;
         if (result.isNewUser) {
           // Người dùng mới - chuyển đến trang hoàn thành đăng ký
-          this.router.navigate(['/features/authentication/complete-gmail-registration'], { 
-            queryParams: { 
-              uid: result.user.uid,
-              email: result.user.email,
-              name: result.user.displayName,
-              photo: result.user.photoURL
-            } 
-          });
+          this.router.navigate(
+            ['/features/authentication/complete-gmail-registration'],
+            {
+              queryParams: {
+                uid: result.user.uid,
+                email: result.user.email,
+                name: result.user.displayName,
+                photo: result.user.photoURL,
+              },
+            }
+          );
         } else {
           // Người dùng đã tồn tại - chuyển đến trang chính
           this.router.navigate(['/']);
@@ -109,8 +143,10 @@ export class RegisterComponent implements OnInit {
       },
       error: (error) => {
         this.isSubmitting = false;
-        this.errorMessage = 'Đăng ký với Google thất bại: ' + error.message;
-      }
+        this.errorMessage =
+          this.translateService.instant('AUTH.REGISTER.GOOGLE_REGISTER_ERROR') +
+          error.message;
+      },
     });
   }
 
@@ -124,7 +160,7 @@ export class RegisterComponent implements OnInit {
 
   // Đánh dấu tất cả các control là đã touched
   private markFormGroupTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach(control => {
+    Object.values(formGroup.controls).forEach((control) => {
       control.markAsTouched();
       if ((control as any).controls) {
         this.markFormGroupTouched(control as FormGroup);

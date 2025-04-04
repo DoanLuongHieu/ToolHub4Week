@@ -1,0 +1,775 @@
+{
+  "NAV": {
+    "ALL_TOOLS": "All Tools",
+    "FEATURES": "Features",
+    "AUTHENTICATION": "Authentication"
+  },
+  "PDF_TOOLS": {
+    "TITLE": "PDF Tools",
+    "CONVERT_FROM_PDF": "Convert from PDF",
+    "CONVERT_TO_PDF": "Convert to PDF",
+    "PDF_TO_WORD": "PDF to Word",
+    "PDF_TO_EXCEL": "PDF to Excel",
+    "WORD_TO_PDF": "Word to PDF",
+    "EXCEL_TO_PDF": "Excel to PDF",
+    "COMPRESS_PDF": "Compress PDF",
+    "SPLIT_PDF": "Split PDF",
+    "MERGE_PDF": "Merge PDF",
+    "ORGANIZE_PDF": "Organize PDF",
+    "HOME": {
+      "TITLE": "PDF Tools",
+      "DESCRIPTION": "Transform your PDF documents with our powerful set of tools",
+      "FEATURES": "Key Features"
+    },
+    "COMMON": {
+      "DRAG_DROP": "Choose PDF File or Drag & Drop",
+      "SUPPORTED_FORMAT": "Supported format: PDF",
+      "SELECTED_FILE": "Selected File",
+      "FILE_SIZE": "File Size",
+      "REPLACE_FILE": "Replace File",
+      "CLEAR_ALL": "Clear All",
+      "PROCESSING": "Processing...",
+      "DOWNLOAD": "Download",
+      "ERROR": "Error",
+      "SUCCESS": "Success",
+      "NOTE": "Note",
+      "SECURITY_NOTE": "All processing is done locally in your browser. Your files are not uploaded to any server.",
+      "MAX_SIZE": "Maximum file size: {{size}}MB"
+    },
+    "PDF_CONVERTERS": {
+      "TO_EXCEL": {
+        "TITLE": "PDF to Excel Converter",
+        "DESCRIPTION": "Convert tables from PDF files to Excel format (XLSX) or CSV quickly.",
+        "FEATURES": {
+          "FEATURE1": "Process all text in PDF",
+          "FEATURE2": "Process multiple pages",
+          "FEATURE3": "Support XLSX and CSV export",
+          "FEATURE4": "Process entirely in the browser - no server uploads"
+        },
+        "SELECT_FILE": "Choose PDF File or Drag & Drop",
+        "SUPPORTED_FORMATS": "Supported format: PDF",
+        "CONVERTING": "Converting PDF to Excel...",
+        "PROCESS_TIME": "The process may take a few seconds depending on the complexity of your PDF file",
+        "OPTIONS": {
+          "TITLE": "Conversion Options",
+          "FORMAT": "Output Format",
+          "XLSX": "Excel (XLSX)",
+          "CSV": "CSV",
+          "TABLE_DETECTION": "Table Detection",
+          "AUTO": "Automatic",
+          "MANUAL": "Manual (Precise)",
+          "SHEET_NAME": "Sheet Name",
+          "FIRST_ROW_HEADER": "Use First Row as Header"
+        },
+        "DOWNLOAD_BUTTON": "Download Excel File"
+      },
+      "TO_WORD": {
+        "TITLE": "PDF to Word Converter",
+        "DESCRIPTION": "Convert PDF documents to editable Word (DOCX) format with high accuracy.",
+        "FEATURES": {
+          "FEATURE1": "Preserve text formatting, fonts, and layout",
+          "FEATURE2": "Convert images, tables, and graphics",
+          "FEATURE3": "Support complex multi-page PDF documents",
+          "FEATURE4": "Process entirely in the browser - no server uploads"
+        },
+        "SELECT_FILE": "Choose PDF File or Drag & Drop",
+        "SUPPORTED_FORMATS": "Supported format: PDF",
+        "CONVERTING": "Converting PDF to Word...",
+        "PROCESS_TIME": "The process may take a few seconds depending on the complexity of your PDF file",
+        "OPTIONS": {
+          "TITLE": "Conversion Options",
+          "FORMAT": "Output Format",
+          "DOCX": "Word (DOCX)",
+          "RTF": "Rich Text Format (RTF)",
+          "LAYOUT": "Layout Options",
+          "PRESERVE_LAYOUT": "Preserve Layout",
+          "FLOWING_TEXT": "Flowing Text"
+        },
+        "DOWNLOAD_BUTTON": "Download Word File",
+        "API_ERRORS": {
+          "SERVER_UNAVAILABLE": "PDF conversion server is currently unavailable. Please try again later.",
+          "CONVERSION_ERROR": "Error converting file. Please try again."
+        }
+      },
+      "TO_JPG": {
+        "TITLE": "PDF to JPG Converter",
+        "DESCRIPTION": "Convert your PDF pages to high-quality JPG images.",
+        "FEATURES": {
+          "FEATURE1": "Convert PDF pages to JPG images",
+          "FEATURE2": "Extract specific pages",
+          "FEATURE3": "Custom quality settings",
+          "FEATURE4": "Batch conversion for all pages"
+        },
+        "SELECT_FILE": "Choose PDF File or Drag & Drop",
+        "CONVERTING": "Converting PDF to JPG...",
+        "OPTIONS": {
+          "TITLE": "Conversion Options",
+          "QUALITY": "Image Quality",
+          "DPI": "DPI",
+          "PAGE_RANGE": "Page Range",
+          "ALL_PAGES": "All Pages",
+          "CUSTOM_RANGE": "Custom Range",
+          "RANGE_EXAMPLE": "e.g., 1-3, 5, 7-9"
+        },
+        "DOWNLOAD_BUTTON": "Download JPG Images"
+      }
+    },
+    "TO_PDF_CONVERTERS": {
+      "FROM_EXCEL": {
+        "TITLE": "Excel to PDF Converter",
+        "DESCRIPTION": "This tool supports converting Excel files (xlsx, csv, xls, xlsm, txt) to PDF format. Maximum file size: 50MB.",
+        "FEATURES": {
+          "TITLE": "Supported features:",
+          "FEATURE1": "Preserves Excel formatting: colors, formatted text, borders",
+          "FEATURE2": "Supports formulas, hyperlinks, and complex formatted text",
+          "FEATURE3": "Processes Excel files with macros (VBA) and pivot tables",
+          "FEATURE4": "Automatically adjusts column width based on original data",
+          "FEATURE5": "Processes multiple sheets in a workbook into separate PDF pages",
+          "FEATURE6": "Supports various formats: xlsx, csv, xls, xlsm, txt"
+        },
+        "SELECT_FILE": "Drag and drop Excel file here",
+        "SELECT_ALT": "or",
+        "SELECT_BUTTON": "Select Excel File",
+        "SUPPORTED_FORMATS": "Supported formats: XLSX, CSV, XLS, XLSM, TXT",
+        "SELECTED_FILE": "Selected File",
+        "REPLACE_FILE": "Replace File",
+        "CONVERT_BUTTON": "Convert to PDF",
+        "PROCESSING": "Processing...",
+        "PROGRESS": {
+          "TITLE": "Progress: {{progress}}%",
+          "READING": "Reading Excel file...",
+          "ANALYZING": "Analyzing format and data structure...",
+          "CREATING": "Creating and formatting PDF...",
+          "FINALIZING": "Finalizing and preparing download...",
+          "COMPLETE": "Conversion complete! Your PDF has been downloaded."
+        },
+        "NOTE": "Note: All processing occurs locally in your browser.",
+        "SECURITY_NOTE": "Your files are not uploaded to any server, ensuring data safety and security."
+      },
+      "FROM_WORD": {
+        "TITLE": "Word to PDF Converter",
+        "DESCRIPTION": "Convert Word documents (DOCX, DOC, RTF) to PDF format with high accuracy. Maximum file size: 50MB.",
+        "FEATURES": {
+          "TITLE": "Supported features:",
+          "FEATURE1": "Preserves text formatting, fonts, and layout",
+          "FEATURE2": "Converts images and tables",
+          "FEATURE3": "Supports table of contents and internal links",
+          "FEATURE4": "Automatically adjusts pages",
+          "FEATURE5": "Creates searchable, indexed PDFs",
+          "FEATURE6": "Supports multiple formats: DOCX, DOC, RTF"
+        },
+        "SELECT_FILE": "Drag and drop Word file here",
+        "SELECT_ALT": "or",
+        "SELECT_BUTTON": "Select Word File",
+        "SUPPORTED_FORMATS": "Supported formats: DOCX, DOC, RTF",
+        "SELECTED_FILE": "Selected File",
+        "REPLACE_FILE": "Replace File",
+        "CONVERT_BUTTON": "Convert to PDF",
+        "PROCESSING": "Processing...",
+        "PROGRESS": {
+          "TITLE": "Progress: {{progress}}%",
+          "READING": "Reading Word file...",
+          "ANALYZING": "Analyzing format and content...",
+          "CREATING": "Creating and formatting PDF...",
+          "FINALIZING": "Finalizing and preparing download...",
+          "COMPLETE": "Conversion complete! Your PDF has been downloaded."
+        },
+        "NOTE": "Note: All processing occurs locally in your browser.",
+        "SECURITY_NOTE": "Your files are not uploaded to any server, ensuring data safety and security.",
+        "API_ERRORS": {
+          "SERVER_UNAVAILABLE": "Word conversion server is currently unavailable. Please try again later.",
+          "CONVERSION_ERROR": "Error converting file. Please try again."
+        }
+      }
+    },
+    "PDF_ORGANIZERS": {
+      "SPLIT": {
+        "TITLE": "Split PDF",
+        "DESCRIPTION": "Split your PDF into multiple files or extract specific pages. Drag and drop pages to reorder them.",
+        "SELECT_FILE": "Drop your PDF here or click to browse",
+        "PAGE_RANGES": "Enter page ranges (e.g., 1-3, 5, 7-9):",
+        "SELECT_ALL": "Select All",
+        "DESELECT_ALL": "Deselect All",
+        "LOADING_PAGE": "Loading page {{pageNumber}}...",
+        "SPLIT_BUTTON": "Split PDF",
+        "PROCESSING": "Processing your PDF..."
+      },
+      "COMPRESS": {
+        "TITLE": "PDF Compression Tool",
+        "DESCRIPTION": "Reduce the size of your PDF files while maintaining quality",
+        "SELECT_FILE": "Choose PDF File or Drag & Drop",
+        "COMPRESSION_LEVEL": "Compression Level: {{quality}}%",
+        "REMOVE_METADATA": "Remove PDF Metadata (Recommended for smaller size)",
+        "COMPRESS_BUTTON": "Compress PDF",
+        "COMPRESSING": "Compressing PDF...",
+        "ORIGINAL_PDF": "Original PDF",
+        "COMPRESSED_PDF": "Compressed PDF",
+        "SIZE": "Size: {{size}} KB",
+        "COMPRESSION_RATIO": "Compression: {{ratio}}%",
+        "DOWNLOAD_BUTTON": "Download Compressed PDF"
+      },
+      "MERGE": {
+        "TITLE": "Merge PDF Files",
+        "DESCRIPTION": "Combine multiple PDF files into a single PDF document",
+        "SELECT_FILES": "Drag & drop PDF files here or",
+        "SELECT_BUTTON": "Select Files",
+        "SELECTED_FILES": "Selected Files ({{count}})",
+        "MERGE_BUTTON": "Merge PDFs",
+        "MERGING": "Merging PDFs...",
+        "REORDER_HINT": "Drag files to reorder them before merging"
+      }
+    },
+    "TOOL_DESCRIPTIONS": {
+      "PDF_TO_WORD": "Convert PDF to editable Word documents",
+      "PDF_TO_EXCEL": "Convert PDF to editable Excel spreadsheets",
+      "WORD_TO_PDF": "Convert Word documents to PDF files",
+      "EXCEL_TO_PDF": "Convert Excel spreadsheets to PDF documents",
+      "COMPRESS_PDF": "Reduce PDF file size without losing quality",
+      "SPLIT_PDF": "Extract pages from PDF or save each page as a separate PDF",
+      "MERGE_PDF": "Combine multiple PDFs into a single document"
+    }
+  },
+  "IMAGE_TOOLS": {
+    "TITLE": "Image Tools",
+    "CONVERT": "Convert Images",
+    "IMAGE_CONVERTER": {
+      "TITLE": "Image Format Converter",
+      "DESCRIPTION": "Convert between popular image formats like JPG, PNG, and WebP",
+      "SELECT_FILE": "Choose Image File or Drag & Drop",
+      "SUPPORTED_FORMATS": "Supported formats: JPG, PNG, WebP",
+      "CONVERTING": "Converting image...",
+      "ORIGINAL_IMAGE": "Original Image",
+      "CONVERT_TO": "Convert to",
+      "CONVERTED_IMAGE": "Converted Image",
+      "DOWNLOAD_BUTTON": "Download"
+    },
+    "COMPRESS_IMAGE": {
+      "TITLE": "Image Compression Tool",
+      "DESCRIPTION": "Reduce image file size while maintaining good quality",
+      "SELECT_FILE": "Choose Image File or Drag & Drop",
+      "SUPPORTED_FORMATS": "Supported formats: JPG, PNG, WebP",
+      "COMPRESSING": "Compressing image...",
+      "QUALITY": "Quality",
+      "OUTPUT_FORMAT": "Output Format",
+      "COMPRESS_BUTTON": "Compress Image",
+      "ORIGINAL_IMAGE": "Original Image",
+      "COMPRESSED_IMAGE": "Compressed Image",
+      "SIZE": "Size",
+      "COMPRESSION_RATIO": "Compression",
+      "DOWNLOAD_BUTTON": "Download Compressed Image"
+    },
+    "CROP_IMAGE": {
+      "TITLE": "Image Cropping Tool",
+      "DESCRIPTION": "Crop, rotate, and resize your images",
+      "SELECT_FILE": "Choose Image File or Drag & Drop",
+      "SUPPORTED_FORMATS": "Supported formats: JPG, PNG, WebP",
+      "ASPECT_RATIO": "Aspect Ratio",
+      "ROTATION": "Rotation",
+      "ROTATE_LEFT": "Rotate Left",
+      "ROTATE_RIGHT": "Rotate Right",
+      "OUTPUT_FORMAT": "Output Format",
+      "CROP_BUTTON": "Crop Image",
+      "ORIGINAL_IMAGE": "Original Image",
+      "CROPPED_IMAGE": "Cropped Image",
+      "DOWNLOAD_BUTTON": "Download Cropped Image"
+    },
+    "READ_EXIF": {
+      "TITLE": "Image EXIF Reader",
+      "DESCRIPTION": "Read and display EXIF metadata from image files",
+      "SELECT_FILE": "Choose Image File or Drag & Drop",
+      "SUPPORTED_FORMATS": "Supported formats: JPG, PNG, WebP, TIFF, HEIC",
+      "LOADING": "Reading EXIF data...",
+      "IMAGE_PREVIEW": "Image Preview",
+      "ORIGINAL_IMAGE": "Original Image",
+      "NO_EXIF_DATA": "No EXIF data found in this image",
+      "EXIF_DATA": "EXIF Data",
+      "CAMERA_INFO": "Camera Information",
+      "IMAGE_INFO": "Image Information",
+      "GPS_INFO": "GPS Information",
+      "OTHER_INFO": "Other Information"
+    },
+    "FRAME_IMAGE": "Frame Image",
+    "EDIT": "Edit Images",
+    "TOOL_DESCRIPTIONS": {
+      "IMAGE_CONVERTER": "Convert between JPG, PNG, and WEBP image formats",
+      "COMPRESS_IMAGE": "Compress images to reduce file size",
+      "READ_EXIF": "Read EXIF information from images",
+      "CROP_IMAGE": "Crop and rotate images"
+    }
+  },
+  "OTHER_TOOLS": {
+    "TITLE": "Other Tools",
+    "PASSWORD_GENERATOR": {
+      "TITLE": "Password Generator",
+      "LENGTH": "Length",
+      "OPTIONS": "Options",
+      "INCLUDE_LOWERCASE": "Lowercase (a-z)",
+      "INCLUDE_UPPERCASE": "Uppercase (A-Z)",
+      "INCLUDE_NUMBERS": "Numbers (0-9)",
+      "INCLUDE_SYMBOLS": "Special Characters",
+      "EXCLUDE_SIMILAR": "Exclude similar characters",
+      "EXCLUDE_AMBIGUOUS": "Avoid repeating characters",
+      "AVOID_SEQUENTIAL": "Avoid sequential characters",
+      "ENSURE_ALL_TYPES": "Ensure all character types",
+      "GENERATE_BUTTON": "Generate Password",
+      "COPY_BUTTON": "Copy",
+      "PASSWORD_HISTORY": "Password History",
+      "CLEAR_HISTORY": "Clear History",
+      "EXPORT_PASSWORDS": "Export Passwords",
+      "CHECK_PASSWORD_STRENGTH": "Check Password Strength",
+      "ENTER_PASSWORD_TO_CHECK": "Enter password to check",
+      "TIME_TO_CRACK": "Time to crack: ",
+      "IMPROVEMENT_SUGGESTIONS": "Improvement Suggestions"
+    },
+    "LOREM_IPSUM": {
+      "TITLE": "Lorem Ipsum Generator",
+      "DESCRIPTION": "Generate placeholder text for layouts, designs, and mockups",
+      "METHOD": "Generation Method",
+      "VIETNAMESE_TEXT": "Vietnamese Text",
+      "PATTERN_BASED": "Pattern-Based",
+      "SYLLABLE_COMBINATION": "Syllable Combination",
+      "CLASSIC_LOREM_IPSUM": "Classic Lorem Ipsum",
+      "VIETNAMESE_DESCRIPTION": "Generates Vietnamese text using common words and syllable patterns, or uses classic Vietnamese text samples.",
+      "PATTERN_DESCRIPTION": "Generates text using consonant-vowel patterns to create pronounceable words.",
+      "SYLLABLE_DESCRIPTION": "Combines prefixes, roots, and suffixes to create structured words.",
+      "CLASSIC_DESCRIPTION": "Uses the traditional Lorem Ipsum text from the 1500s.",
+      "WORD_COUNT": "Number of Words",
+      "PARAGRAPH_COUNT": "Number of Paragraphs",
+      "GENERATE_BUTTON": "Generate Text",
+      "COPY_BUTTON": "Copy to Clipboard",
+      "GENERATED_TEXT": "Generated Text"
+    },
+    "JSON_TO_CSV": {
+      "TITLE": "JSON to CSV Converter",
+      "DESCRIPTION": "Convert JSON (JavaScript Object Notation) data to CSV (Comma-Separated Values) format with custom options",
+      "INPUT_JSON": "Paste JSON data here",
+      "OUTPUT_CSV": "CSV Result",
+      "OPTIONS": "Conversion Options",
+      "DELIMITER": "Delimiter",
+      "COMMA": "Comma (,)",
+      "SEMICOLON": "Semicolon (;)",
+      "TAB": "Tab (\\t)",
+      "VERTICAL_BAR": "Vertical Bar (|)",
+      "CUSTOM": "Custom",
+      "ENTER_DELIMITER": "Enter delimiter character",
+      "QUOTE_CHAR": "Quote Character",
+      "DOUBLE_QUOTE": "Double Quote (\")",
+      "SINGLE_QUOTE": "Single Quote (')",
+      "NONE": "None",
+      "INCLUDE_HEADERS": "Include Headers",
+      "FLATTEN_OBJECTS": "Flatten nested objects (user.name)",
+      "EXPAND_ARRAYS": "Expand arrays to multiple columns",
+      "INCLUDE_NULLS": "Include null/undefined values",
+      "FORMAT_DATES": "Format dates",
+      "SELECT_COLUMNS": "Select and order columns",
+      "SELECT_FILES": "Drag & drop JSON file here or click to select",
+      "SUPPORTED_FORMATS": "Supports JSON files up to 50MB",
+      "HIDE_EDITOR": "Hide text editor",
+      "SHOW_EDITOR": "Show/Edit JSON",
+      "INPUT_PLACEHOLDER": "Enter your JSON data here (e.g., [{'name': 'John', 'age': 30}])",
+      "CONVERT_BUTTON": "Convert to CSV",
+      "DOWNLOAD_BUTTON": "Download CSV File",
+      "COPY_BUTTON": "Copy CSV",
+      "ROWS_CONVERTED": "rows converted"
+    },
+    "CSV_TO_JSON": {
+      "TITLE": "CSV to JSON Converter",
+      "DESCRIPTION": "Convert CSV (Comma-Separated Values) data to JSON (JavaScript Object Notation) format with custom options",
+      "INPUT_CSV": "Paste CSV data here",
+      "OUTPUT_JSON": "JSON Result",
+      "OPTIONS": "Conversion Options",
+      "DELIMITER": "Delimiter",
+      "COMMA": "Comma (,)",
+      "SEMICOLON": "Semicolon (;)",
+      "TAB": "Tab (\\t)",
+      "VERTICAL_BAR": "Vertical Bar (|)",
+      "CUSTOM": "Custom",
+      "ENTER_DELIMITER": "Enter delimiter character",
+      "OUTPUT_FORMAT": "Output Format",
+      "PRETTY": "Pretty Format",
+      "COMPACT": "Compact",
+      "FIRST_ROW_HEADER": "First Row as Header",
+      "DETECT_DATA_TYPES": "Auto-detect data types",
+      "NESTED_OBJECTS": "Process nested structures (e.g., \"user.name\")",
+      "NESTED_ARRAYS": "Process nested arrays (e.g., \"items[0]\")",
+      "SELECT_FILES": "Drag & drop CSV file here or click to select",
+      "SUPPORTED_FORMATS": "Supports CSV files up to 50MB",
+      "HIDE_EDITOR": "Hide text editor",
+      "SHOW_EDITOR": "Show/Edit CSV",
+      "INPUT_PLACEHOLDER": "Enter your CSV data here (e.g., name,age,email)",
+      "CONVERT_BUTTON": "Convert to JSON",
+      "DOWNLOAD_BUTTON": "Download JSON File",
+      "COPY_BUTTON": "Copy JSON",
+      "ROWS_CONVERTED": "rows converted"
+    },
+    "NUMERICAL_ANALYSIS": {
+      "TITLE": "Numerical Analysis",
+      "DESCRIPTION": "This tool finds a mathematical expression that represents your birth year (c) using your birth day (a) and birth month (b) with basic operations (+, -, *, /).",
+      "DAY_OF_BIRTH": "Birth Day",
+      "MONTH_OF_BIRTH": "Birth Month",
+      "YEAR_OF_BIRTH": "Birth Year",
+      "SEARCH_METHOD": "Search Method",
+      "BFS_METHOD": "BFS (Breadth-First Search)",
+      "PRIME_FACTORIZATION": "Prime Factorization",
+      "DECIMAL_ANALYSIS": "Decimal Analysis",
+      "MODULO_METHOD": "Modulo Method",
+      "MEET_IN_MIDDLE": "Meet in the Middle",
+      "LADDER_METHOD": "Ladder Method",
+      "DIVIDE_CONQUER": "Divide and Conquer",
+      "MAX_DEPTH": "Maximum Depth",
+      "SHOW_STEPS": "Show intermediate steps",
+      "FIND_EXPRESSION": "Find Expression",
+      "STEPS": "Steps",
+      "RESULT": "Result",
+      "ERROR_EMPTY_VALUES": "Please enter all values",
+      "ERROR_DAY_RANGE": "Birth day must be between 1 and 31",
+      "ERROR_MONTH_RANGE": "Birth month must be between 1 and 12",
+      "ERROR_YEAR_RANGE": "Birth year must be between 1900 and 2099",
+      "ERROR_CALCULATION": "An error occurred during calculation",
+      "NO_EXPRESSION_FOUND": "No suitable expression was found",
+      "PRIME_FACTOR_STEP": "Factorizing {{target}} into prime factors: {{factors}}",
+      "DECIMAL_STEP": "Analyzing {{target}} in decimal system:"
+    },
+    "GENERATE": "Generate Tools",
+    "JAVASCRIPT": "Javascript Tools",
+    "MATHEMATICS": "Mathematics Tools",
+    "TOOL_DESCRIPTIONS": {
+      "PASSWORD_GENERATOR": "Generate random secure passwords",
+      "LOREM_IPSUM": "Generate lorem ipsum placeholder text",
+      "JSON_TO_CSV": "Convert JSON to CSV format",
+      "CSV_TO_JSON": "Convert CSV to JSON format",
+      "NUMERICAL_ANALYSIS": "Perform numerical analysis"
+    }
+  },
+  "ERROR": {
+    "UNEXPECTED": "An unexpected error occurred",
+    "NOT_FOUND": "Resource not found",
+    "ACCESS_DENIED": "Access denied",
+    "SERVER_ERROR": "Server error",
+    "NETWORK_ERROR": "Network error",
+    "VALIDATION_ERROR": "Validation error",
+    "COPY_FAILED": "Failed to copy text. Please try again."
+  },
+  "LOADING": {
+    "DEFAULT": "Loading...",
+    "PROCESSING": "Processing...",
+    "UPLOADING": "Uploading...",
+    "DOWNLOADING": "Downloading...",
+    "CONVERTING": "Converting...",
+    "TEXT": "Loading..."
+  },
+  "SUCCESS": {
+    "SAVED": "Successfully saved",
+    "UPDATED": "Successfully updated",
+    "DELETED": "Successfully deleted",
+    "UPLOADED": "Successfully uploaded",
+    "CONVERTED": "Successfully converted",
+    "COPIED": "Text copied to clipboard!"
+  },
+  "BUTTON": {
+    "SUBMIT": "Submit",
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "UPLOAD": "Upload",
+    "DOWNLOAD": "Download",
+    "CONVERT": "Convert",
+    "CLOSE": "Close",
+    "CONFIRM": "Confirm"
+  },
+  "COMMON": {
+    "WELCOME": "Welcome",
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "LOGOUT": "Logout"
+  },
+  "MENU": {
+    "HOME": "Home",
+    "ABOUT": "About",
+    "CONTACT": "Contact"
+  },
+  "TOOLTIP": {
+    "DRAG_DROP": "Drag and drop files here",
+    "MAX_SIZE": "Maximum size: {{size}}",
+    "SUPPORTED_FORMATS": "Supported formats: {{formats}}"
+  },
+  "THEME": {
+    "LIGHT": "Light Theme",
+    "DARK": "Dark Theme"
+  },
+  "SETTINGS": {
+    "LANGUAGE": "Language",
+    "THEME": "Theme",
+    "NOTIFICATIONS": "Notifications"
+  },
+  "USER": {
+    "PROFILE": "Profile",
+    "SETTINGS": "Settings",
+    "HELP": "Help",
+    "ACCOUNT_INFO": "Account Information",
+    "ACCOUNT": {
+      "PERSONAL_INFO": "Personal Information",
+      "CHANGE_PASSWORD": "Change Password",
+      "LOGIN_REQUIRED": "Please login to view account information",
+      "LOGIN_BUTTON": "Login",
+      "PERSONAL_DETAILS": "Personal Details",
+      "EMAIL": "Email",
+      "EMAIL_CANNOT_CHANGE": "Email cannot be changed",
+      "FULL_NAME": "Full Name",
+      "BIRTH_DATE": "Birth Date",
+      "GENDER": "Gender",
+      "SELECT_GENDER": "-- Select Gender --",
+      "GENDER_MALE": "Male",
+      "GENDER_FEMALE": "Female",
+      "GENDER_OTHER": "Other",
+      "SOCIAL_LINKS": "Social Media Links",
+      "FACEBOOK": "Facebook",
+      "YOUTUBE": "YouTube",
+      "TWITTER": "Twitter",
+      "INSTAGRAM": "Instagram",
+      "SAVE_BUTTON": "Save Changes",
+      "PROCESSING": "Saving...",
+      "UPDATE_SUCCESS": "Information updated successfully",
+      "UPDATE_ERROR": "Failed to update information: ",
+      "CHANGE_PHOTO": "Change Photo",
+      "REMOVE_PHOTO": "Remove Selected Photo",
+      "AVATAR_ALT": "Profile Avatar",
+      "FILE_TOO_LARGE": "File is too large. Maximum size is 2MB."
+    },
+    "PASSWORD": {
+      "CURRENT_PASSWORD": "Current Password",
+      "CURRENT_PASSWORD_PLACEHOLDER": "Enter your current password",
+      "CURRENT_PASSWORD_REQUIRED": "Please enter your current password",
+      "NEW_PASSWORD": "New Password",
+      "NEW_PASSWORD_PLACEHOLDER": "Enter new password",
+      "NEW_PASSWORD_REQUIRED": "Please enter a new password",
+      "NEW_PASSWORD_LENGTH": "Password must be at least 8 characters",
+      "NEW_PASSWORD_PATTERN": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+      "CONFIRM_PASSWORD": "Confirm New Password",
+      "CONFIRM_PASSWORD_PLACEHOLDER": "Confirm your new password",
+      "PASSWORDS_MISMATCH": "Passwords do not match",
+      "REQUIREMENTS_TITLE": "Password Requirements:",
+      "REQUIREMENT_LENGTH": "At least 8 characters",
+      "REQUIREMENT_UPPERCASE": "At least one uppercase letter",
+      "REQUIREMENT_LOWERCASE": "At least one lowercase letter",
+      "REQUIREMENT_NUMBER": "At least one number",
+      "REQUIREMENT_SPECIAL": "At least one special character (@, $, !, %, *, ?, &)",
+      "CHANGE_BUTTON": "Change Password",
+      "PROCESSING": "Processing...",
+      "CHANGE_SUCCESS": "Password changed successfully. Please login again.",
+      "CHANGE_ERROR": "Failed to change password: "
+    }
+  },
+  "HEADER": {
+    "HOME": "Home",
+    "ALL_TOOLS": "All Tools",
+    "PDF_TOOLS": "PDF Tools",
+    "IMAGE_TOOLS": "Image Tools",
+    "OTHER_TOOLS": "Other Tools",
+    "LOGIN": "Login",
+    "SIGNUP": "Sign Up",
+    "PROFILE": "Profile",
+    "LOGOUT": "Logout",
+    "LANGUAGE": "Language"
+  },
+  "HOME": {
+    "HERO": {
+      "BADGE": "Tool #1",
+      "TITLE": "Transform Your Documents With",
+      "SUBTITLE": "Professional tools for PDF, Image, and Other Tool conversion - all in one place",
+      "FEATURE1": "Fast Processing",
+      "FEATURE2": "High Quality",
+      "FEATURE3": "Secure Files",
+      "GET_STARTED": "Get Started",
+      "LEARN_MORE": "Learn More",
+      "STAT1_NUMBER": "1000+",
+      "STAT1_TEXT": "Files Processed",
+      "STAT2_NUMBER": "10+",
+      "STAT2_TEXT": "Happy Users",
+      "STAT3_NUMBER": "15+",
+      "STAT3_TEXT": "Powerful Tools"
+    },
+    "TOOLS_SECTION": {
+      "BADGE": "Our Solutions",
+      "TITLE": "Our",
+      "TITLE_HIGHLIGHT": "Powerful",
+      "TITLE_SUFFIX": "Tools",
+      "SUBTITLE": "Discover our powerful suite of tools designed to make document and image processing effortless",
+      "PDF_DESCRIPTION": "Transform your PDF documents effortlessly with our comprehensive suite of PDF tools. Convert PDFs to Word, Excel, and other formats.",
+      "IMAGE_DESCRIPTION": "Edit, convert, and optimize your images with our powerful tools. Compress images, convert formats, and add professional frames.",
+      "OTHER_DESCRIPTION": "Our collection of utility tools helps with various tasks from password generation to data format conversion and numerical analysis.",
+      "EXPLORE_PDF": "Explore PDF Tools",
+      "EXPLORE_IMAGE": "Explore Image Tools",
+      "EXPLORE_OTHER": "Explore Other Tools"
+    },
+    "WHY_CHOOSE_US": {
+      "BADGE": "Why Choose Us",
+      "TITLE": "Why ToolHub4Week",
+      "TITLE_HIGHLIGHT": "Stands Out",
+      "SUBTITLE": "ToolHub4Week stands out with these key advantages",
+      "REASON1_TITLE": "Fast & Efficient",
+      "REASON1_DESCRIPTION": "Process your files in seconds with our optimized conversion engines. Our tools are designed for maximum performance.",
+      "REASON2_TITLE": "Secure & Private",
+      "REASON2_DESCRIPTION": "Your files are automatically deleted after processing for total privacy. We never store your documents longer than necessary.",
+      "REASON3_TITLE": "Easy to Use",
+      "REASON3_DESCRIPTION": "Intuitive interface designed for quick file conversions with minimal steps. User-friendly design for everyone.",
+      "REASON4_TITLE": "Free Access",
+      "REASON4_DESCRIPTION": "Access essential tools without any cost, upgrade for premium features. Basic functionality available for free."
+    },
+    "FEEDBACK": {
+      "TITLE": "What Users Say",
+      "SUBTITLE": "Discover why thousands of users trust ToolHub4Week for their document and image needs"
+    },
+    "CTA": {
+      "TITLE": "Ready to Get Started?",
+      "SUBTITLE": "Transform your first document in just a few clicks",
+      "GET_STARTED": "Get Started Now",
+      "EXPLORE_TOOLS": "Explore Tools"
+    }
+  },
+  "FOOTER": {
+    "DESCRIPTION": "ToolHub4Week provides a suite of free, high-quality tools for processing PDF documents, images, and more. Our mission is to make document processing accessible to everyone.",
+    "QUICK_LINKS": "Quick Links",
+    "ABOUT_US": "About Us",
+    "PRIVACY_POLICY": "Privacy Policy",
+    "TERMS": "Terms of Service",
+    "SITEMAP": "Sitemap",
+    "FOLLOW_US": "Follow Us",
+    "COPYRIGHT": "ToolHub4Week. All rights reserved."
+  },
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "Login",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Enter your email",
+      "PASSWORD": "Password",
+      "PASSWORD_PLACEHOLDER": "Enter your password",
+      "REMEMBER_ME": "Remember me",
+      "FORGOT_PASSWORD": "Forgot password?",
+      "LOGIN_BUTTON": "Login",
+      "NO_ACCOUNT": "Don't have an account?",
+      "SIGNUP_LINK": "Sign up",
+      "OR": "or",
+      "GOOGLE_LOGIN": "Login with Google",
+      "FACEBOOK_LOGIN": "Login with Facebook",
+      "GITHUB_LOGIN": "Login with GitHub",
+      "ERROR_MESSAGE": "Invalid username or password",
+      "PROCESSING": "Processing...",
+      "SUCCESS_REGISTRATION": "Registration successful! Please login to continue.",
+      "GOOGLE_LOGIN_ERROR": "Google login failed: "
+    },
+    "REGISTER": {
+      "TITLE": "Create an account",
+      "FULL_NAME": "Full Name",
+      "FULL_NAME_PLACEHOLDER": "Enter your full name",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Enter your email",
+      "USERNAME": "Username",
+      "USERNAME_PLACEHOLDER": "Choose a username",
+      "PASSWORD": "Password",
+      "PASSWORD_PLACEHOLDER": "Enter your password",
+      "CONFIRM_PASSWORD": "Confirm Password",
+      "CONFIRM_PASSWORD_PLACEHOLDER": "Confirm your password",
+      "INVITATION_CODE": "Invitation code (optional)",
+      "INVITATION_CODE_PLACEHOLDER": "Enter invitation code if you have one",
+      "AGREE_TERMS": "I agree to the ",
+      "TERMS_LINK": "Terms of Service",
+      "AND": " and ",
+      "PRIVACY_LINK": "Privacy Policy",
+      "REGISTER_BUTTON": "Register",
+      "HAVE_ACCOUNT": "Already have an account?",
+      "LOGIN_LINK": "Login",
+      "OR": "OR",
+      "GOOGLE_REGISTER": "Sign up with Google",
+      "FACEBOOK_REGISTER": "Sign up with Facebook",
+      "GITHUB_REGISTER": "Sign up with GitHub",
+      "REQUIRED": "Required",
+      "PROCESSING": "Processing...",
+      "EMAIL_TAKEN": "This email is already in use",
+      "USERNAME_TAKEN": "This username is already taken",
+      "REGISTRATION_FAILED": "Registration failed: ",
+      "GOOGLE_REGISTER_ERROR": "Failed to register with Google: "
+    },
+    "COMPLETE_GMAIL_REGISTRATION": {
+      "TITLE": "Complete Registration",
+      "SUBTITLE": "Please provide a username for your account",
+      "HELLO": "Hello",
+      "USERNAME": "Username",
+      "USERNAME_PLACEHOLDER": "Choose a username",
+      "USERNAME_HINT": "You will use this username to login to the system",
+      "PASSWORD": "Password",
+      "PASSWORD_PLACEHOLDER": "Create a password",
+      "PASSWORD_HINT": "Password must be at least 8 characters, including uppercase, lowercase, and numbers",
+      "COMPLETE_BUTTON": "Complete Registration",
+      "PROCESSING": "Processing...",
+      "USERNAME_TAKEN": "This username is already taken",
+      "REGISTRATION_FAILED": "Registration failed: "
+    },
+    "FORGOT_PASSWORD": {
+      "TITLE": "Forgot Password",
+      "SUBTITLE": "Enter your email to receive password reset instructions",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Enter your email address",
+      "SUBMIT_BUTTON": "Send Instructions",
+      "BACK_TO_LOGIN": "Back to login",
+      "PROCESSING": "Sending...",
+      "SUCCESS_MESSAGE": "Password reset instructions have been sent to your email.",
+      "ERROR_MESSAGE": "Error sending password reset instructions."
+    }
+  },
+  "ABOUT": {
+    "HEADER": {
+      "TITLE": "About ToolHub4Week",
+      "DESCRIPTION": "We're building the future of document and media conversion tools - making them accessible, efficient, and user-friendly for everyone."
+    },
+    "MISSION": {
+      "TITLE": "Our Mission",
+      "PARAGRAPH1": "At ToolHub4Week, our mission is to democratize access to powerful document processing tools. We believe that everyone should have access to high-quality conversion, editing, and optimization tools without needing specialized software or technical expertise.",
+      "PARAGRAPH2": "By offering a comprehensive suite of browser-based tools, we aim to empower individuals, small businesses, students, and professionals to work more efficiently with their documents and media files."
+    },
+    "VALUES": {
+      "TITLE": "Our Values",
+      "PRIVACY_SECURITY": {
+        "TITLE": "Privacy & Security",
+        "DESCRIPTION": "We prioritize the security of your files and personal information. Files are processed in your browser when possible and deleted from our servers immediately after processing."
+      },
+      "SPEED_EFFICIENCY": {
+        "TITLE": "Speed & Efficiency",
+        "DESCRIPTION": "We continuously optimize our tools to ensure fast processing times, making your workflow as efficient as possible."
+      },
+      "ACCESSIBILITY": {
+        "TITLE": "Accessibility",
+        "DESCRIPTION": "We're committed to making our tools accessible to everyone, regardless of technical expertise or financial resources."
+      },
+      "INNOVATION": {
+        "TITLE": "Innovation",
+        "DESCRIPTION": "We continuously improve our existing tools and develop new ones to meet evolving user needs and technological advancements."
+      }
+    },
+    "TEAM": {
+      "TITLE": "Our Team",
+      "INTRO": "Meet the passionate individuals behind ToolHub4Week who work hard to deliver the best experience for our users."
+    },
+    "JOURNEY": {
+      "TITLE": "Our Journey"
+    },
+    "CTA": {
+      "TITLE": "Join Us On Our Mission",
+      "DESCRIPTION": "Start using our tools today and experience the difference.",
+      "EXPLORE": "Explore Our Tools",
+      "CONTACT": "Contact Us"
+    }
+  },
+  "SITEMAP": {
+    "TITLE": "Sitemap",
+    "DESCRIPTION": "Find all pages on ToolHub4Week",
+    "SECTIONS": {
+      "MAIN_PAGES": "Main Pages",
+      "PDF_TOOLS": "PDF Tools",
+      "IMAGE_TOOLS": "Image Tools",
+      "OTHER_TOOLS": "Other Tools",
+      "USER_ACCOUNT": "User Account"
+    }
+  }
+}

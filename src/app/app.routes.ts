@@ -4,13 +4,48 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./features/landing-app/landing-app.component').then(
-        (m) => m.LandingAppComponent
+      import('./features/home-page/home-page.component').then(
+        (m) => m.HomePageComponent
       ),
   },
   {
     path: 'features',
     children: [
+      {
+        path: 'sitemap',
+        loadComponent: () =>
+          import('./features/sitemap/sitemap.component').then(
+            (m) => m.SitemapComponent
+          ),
+      },
+      {
+        path: 'about',
+        loadComponent: () =>
+          import('./features/about/about.component').then(
+            (m) => m.AboutComponent
+          ),
+      },
+      {
+        path: 'about-us',
+        loadComponent: () =>
+          import('./features/about-us/about-us.component').then(
+            (m) => m.AboutUsComponent
+          ),
+      },
+      {
+        path: 'privacy-policy',
+        loadComponent: () =>
+          import('./features/privacy-policy/privacy-policy.component').then(
+            (m) => m.PrivacyPolicyComponent
+          ),
+      },
+      {
+        path: 'terms-of-service',
+        loadComponent: () =>
+          import('./features/terms-of-service/terms-of-service.component').then(
+            (m) => m.TermsOfServiceComponent
+          ),
+      },
       {
         path: 'pdf-tools',
         children: [
@@ -171,13 +206,13 @@ export const routes: Routes = [
                     './features/image-tools/edit/crop-image/crop-image.component'
                   ).then((m) => m.CropImageComponent),
               },
-              {
-                path: 'frame-image',
-                loadComponent: () =>
-                  import(
-                    './features/image-tools/edit/frame-image/frame-image.component'
-                  ).then((m) => m.FrameImageComponent),
-              },
+              // {
+              //   path: 'frame-image',
+              //   loadComponent: () =>
+              //     import(
+              //       './features/image-tools/edit/frame-image/frame-image.component'
+              //     ).then((m) => m.FrameImageComponent),
+              // },
             ],
           },
         ],

@@ -1,15 +1,18 @@
 <div class="container">
   <div class="content">
-    <h1>Phân Tích Số Học</h1>
+    <h1>{{ "OTHER_TOOLS.NUMERICAL_ANALYSIS.TITLE" | translate }}</h1>
     <p class="description">
-      Công cụ này sẽ tìm biểu thức toán học biểu diễn năm sinh (c) thông qua
-      ngày sinh (a) và tháng sinh (b) chỉ sử dụng các phép toán cơ bản (+, -, *,
-      /).
+      {{ "OTHER_TOOLS.NUMERICAL_ANALYSIS.DESCRIPTION" | translate }}
     </p>
 
     <div class="input-form">
       <div class="input-group">
-        <label for="day">Ngày sinh (a):</label>
+        <label for="day"
+          >{{
+            "OTHER_TOOLS.NUMERICAL_ANALYSIS.DAY_OF_BIRTH" | translate
+          }}
+          (a):</label
+        >
         <input
           type="number"
           id="day"
@@ -21,7 +24,12 @@
       </div>
 
       <div class="input-group">
-        <label for="month">Tháng sinh (b):</label>
+        <label for="month"
+          >{{
+            "OTHER_TOOLS.NUMERICAL_ANALYSIS.MONTH_OF_BIRTH" | translate
+          }}
+          (b):</label
+        >
         <input
           type="number"
           id="month"
@@ -33,7 +41,12 @@
       </div>
 
       <div class="input-group">
-        <label for="year">Năm sinh (c):</label>
+        <label for="year"
+          >{{
+            "OTHER_TOOLS.NUMERICAL_ANALYSIS.YEAR_OF_BIRTH" | translate
+          }}
+          (c):</label
+        >
         <input
           type="number"
           id="year"
@@ -46,20 +59,46 @@
 
       <div class="options-section">
         <div class="option-group">
-          <label for="method">Phương pháp tìm kiếm:</label>
+          <label for="method"
+            >{{
+              "OTHER_TOOLS.NUMERICAL_ANALYSIS.SEARCH_METHOD" | translate
+            }}:</label
+          >
           <select id="method" [(ngModel)]="selectedMethod">
-            <option value="bfs">BFS (Tìm kiếm theo chiều rộng)</option>
-            <option value="prime">Phân tích số nguyên tố</option>
-            <option value="decimal">Phân tích thập phân</option>
-            <option value="modulo">Phương pháp đồng dư</option>
-            <option value="meetMiddle">Gặp giữa</option>
-            <option value="ladder">Phương pháp bậc thang</option>
-            <option value="divideConquer">Chia để trị</option>
+            <option value="bfs">
+              {{ "OTHER_TOOLS.NUMERICAL_ANALYSIS.BFS_METHOD" | translate }}
+            </option>
+            <option value="prime">
+              {{
+                "OTHER_TOOLS.NUMERICAL_ANALYSIS.PRIME_FACTORIZATION" | translate
+              }}
+            </option>
+            <option value="decimal">
+              {{
+                "OTHER_TOOLS.NUMERICAL_ANALYSIS.DECIMAL_ANALYSIS" | translate
+              }}
+            </option>
+            <option value="modulo">
+              {{ "OTHER_TOOLS.NUMERICAL_ANALYSIS.MODULO_METHOD" | translate }}
+            </option>
+            <option value="meetMiddle">
+              {{ "OTHER_TOOLS.NUMERICAL_ANALYSIS.MEET_IN_MIDDLE" | translate }}
+            </option>
+            <option value="ladder">
+              {{ "OTHER_TOOLS.NUMERICAL_ANALYSIS.LADDER_METHOD" | translate }}
+            </option>
+            <option value="divideConquer">
+              {{ "OTHER_TOOLS.NUMERICAL_ANALYSIS.DIVIDE_CONQUER" | translate }}
+            </option>
           </select>
         </div>
 
         <div class="option-group">
-          <label for="maxDepth">Độ sâu tối đa:</label>
+          <label for="maxDepth"
+            >{{
+              "OTHER_TOOLS.NUMERICAL_ANALYSIS.MAX_DEPTH" | translate
+            }}:</label
+          >
           <input
             type="number"
             id="maxDepth"
@@ -73,7 +112,7 @@
         <div class="checkbox-group">
           <label class="checkbox-label">
             <input type="checkbox" [(ngModel)]="showSteps" />
-            Hiển thị các bước trung gian
+            {{ "OTHER_TOOLS.NUMERICAL_ANALYSIS.SHOW_STEPS" | translate }}
           </label>
         </div>
       </div>
@@ -83,7 +122,9 @@
         (click)="findExpression()"
         [disabled]="isLoading"
       >
-        <span *ngIf="!isLoading">Tìm Biểu Thức</span>
+        <span *ngIf="!isLoading">{{
+          "OTHER_TOOLS.NUMERICAL_ANALYSIS.FIND_EXPRESSION" | translate
+        }}</span>
         <span *ngIf="isLoading" class="loading-spinner"></span>
       </button>
     </div>
@@ -97,7 +138,7 @@
       </div>
 
       <div class="steps-display" *ngIf="showSteps && steps.length > 0">
-        <h3>Các bước thực hiện:</h3>
+        <h3>{{ "OTHER_TOOLS.NUMERICAL_ANALYSIS.STEPS" | translate }}:</h3>
         <div class="step" *ngFor="let step of steps; let i = index">
           <span class="step-number">{{ i + 1 }}.</span>
           <span class="step-content">{{ step }}</span>
@@ -105,7 +146,7 @@
       </div>
 
       <div class="result-display" *ngIf="result && !error">
-        <h3>Kết quả:</h3>
+        <h3>{{ "OTHER_TOOLS.NUMERICAL_ANALYSIS.RESULT" | translate }}:</h3>
         <div class="expression-container">
           <div class="expression">
             <div class="expression-content">{{ result }}</div>

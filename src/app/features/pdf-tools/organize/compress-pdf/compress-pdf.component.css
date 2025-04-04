@@ -13,6 +13,12 @@
   --error-bg: #f8d7da;
   --error-border: #f5c2c7;
   --error-text: #842029;
+  --info-bg: #cff4fc;
+  --info-border: #b6effb;
+  --info-color: #055160;
+  --success-bg: #d1e7dd;
+  --success-border: #badbcc;
+  --success-text: #0f5132;
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -214,6 +220,14 @@ h1 {
   --error-bg: #450a0a;
   --error-border: #dc2626;
   --error-text: #fca5a5;
+  --info-bg: #082f49;
+  --info-border: #0c4a6e;
+  --info-color: #7dd3fc;
+  --success-bg: #132e1f;
+  --success-border: #166534;
+  --success-text: #4ade80;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 /* Animations */

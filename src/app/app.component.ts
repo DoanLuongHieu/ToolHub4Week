@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,11 @@ import { HeaderComponent } from './shared/components/header/header.component';
     <router-outlet></router-outlet>
   `,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'toolhub4week';
+  private themeService = inject(ThemeService);
+
+  ngOnInit() {
+    this.themeService.initTheme();
+  }
 }

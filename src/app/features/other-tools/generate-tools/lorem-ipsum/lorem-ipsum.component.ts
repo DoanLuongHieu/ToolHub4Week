@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
   vnNounWords,
   vnVerbs,
@@ -20,11 +21,13 @@ interface Notification {
 @Component({
   selector: 'app-lorem-ipsum',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, TranslateModule],
   templateUrl: './lorem-ipsum.component.html',
   styleUrl: './lorem-ipsum.component.css',
 })
 export class LoremIpsumComponent {
+  private translate = inject(TranslateService);
+  
   wordCount: number = 50;
   paragraphCount: number = 1;
   generatedText: string = '';
@@ -526,14 +529,19 @@ export class LoremIpsumComponent {
   }
 
   copyToClipboard(): void {
+    if (!this.generatedText) return;
+
     navigator.clipboard
       .writeText(this.generatedText)
       .then(() => {
-        this.showNotification('Text copied to clipboard!', 'success');
+        this.showNotification(
+          this.translate.instant('SUCCESS.COPIED'),
+          'success'
+        );
       })
       .catch(() => {
         this.showNotification(
-          'Failed to copy text. Please try again.',
+          this.translate.instant('ERROR.COPY_FAILED'),
           'error'
         );
       });

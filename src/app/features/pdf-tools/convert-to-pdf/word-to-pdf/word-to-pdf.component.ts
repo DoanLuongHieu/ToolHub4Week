@@ -1,10 +1,10 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpEventType } from '@angular/common/http';
-import { finalize } from 'rxjs/operators';
-import { environment } from '../../../../../environments/environment';
+import { WordConversionService } from '../services/word-conversion.service';
 import { SafePipe } from '../../../../shared/pipes/safe.pipe';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { WordToPdfState } from './word-to-pdf.state';
 
 interface ConversionState {
   isConverting: boolean;
@@ -12,28 +12,48 @@ interface ConversionState {
   progress: number;
   originalFile: File | null;
   convertedUrl: string | null;
+  apiAvailable: boolean;
 }
 
 @Component({
   selector: 'app-word-to-pdf',
   standalone: true,
-  imports: [CommonModule, FormsModule, SafePipe],
+  imports: [CommonModule, FormsModule, SafePipe, TranslateModule],
   templateUrl: './word-to-pdf.component.html',
   styleUrl: './word-to-pdf.component.css',
 })
-export class WordToPdfComponent {
-  private http = inject(HttpClient);
-
-  state = signal<ConversionState>({
-    isConverting: false,
-    error: null,
-    progress: 0,
-    originalFile: null,
-    convertedUrl: null,
-  });
+export class WordToPdfComponent implements OnDestroy {
+  private wordConversionService = inject(WordConversionService);
+  private translateService = inject(TranslateService);
+  state = new WordToPdfState();
 
   isDragging = false;
   supportedFormats = ['.doc', '.docx'];
+
+  constructor() {
+    this.checkApiStatus();
+  }
+
+  private checkApiStatus(): void {
+    this.wordConversionService.checkApiStatus().subscribe({
+      next: (isAvailable) => {
+        this.state.update((state) => ({
+          ...state,
+          apiAvailable: isAvailable,
+          error: null,
+        }));
+      },
+      error: (error) => {
+        this.state.update((state) => ({
+          ...state,
+          apiAvailable: false,
+          error: this.translateService.instant(
+            'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.API_ERRORS.SERVER_UNAVAILABLE'
+          ),
+        }));
+      },
+    });
+  }
 
   async handleFileInput(event: Event): Promise<void> {
     const input = event.target as HTMLInputElement;
@@ -42,7 +62,7 @@ export class WordToPdfComponent {
     if (!file) {
       this.state.update((state) => ({
         ...state,
-        error: 'Please select a file',
+        error: 'Vui lòng chọn một file',
       }));
       return;
     }
@@ -51,7 +71,7 @@ export class WordToPdfComponent {
       this.state.update((state) => ({
         ...state,
         error:
-          'Invalid file format. Please select a Word document (.doc or .docx)',
+          'Định dạng file không hợp lệ. Vui lòng chọn file Word (.doc hoặc .docx)',
       }));
       return;
     }
@@ -71,11 +91,8 @@ export class WordToPdfComponent {
   }
 
   async convertToPdf(): Promise<void> {
-    const file = this.state().originalFile;
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append('file', file);
+    const file = this.state.call().originalFile;
+    if (!file || !this.state.call().apiAvailable) return;
 
     this.state.update((state) => ({
       ...state,
@@ -85,60 +102,45 @@ export class WordToPdfComponent {
     }));
 
     try {
-      this.http
-        .post(`/api/convert/word-to-pdf`, formData, {
-          reportProgress: true,
-          observe: 'events',
-          responseType: 'blob',
-        })
-        .pipe(
-          finalize(() => {
+      this.wordConversionService.convertWordToPdf(file).subscribe({
+        next: (blob: Blob) => {
+          if (blob && blob.size > 0) {
+            const url = URL.createObjectURL(blob);
             this.state.update((state) => ({
               ...state,
-              isConverting: false,
+              convertedUrl: url,
+              progress: 100,
             }));
-          })
-        )
-        .subscribe({
-          next: (event) => {
-            if (event.type === HttpEventType.UploadProgress) {
-              const progress = event.total
-                ? Math.round((100 * event.loaded) / event.total)
-                : 0;
-
-              this.state.update((state) => ({
-                ...state,
-                progress,
-              }));
-            }
-
-            if (event.type === HttpEventType.Response) {
-              const blob = event.body as Blob;
-              const url = URL.createObjectURL(blob);
-
-              this.state.update((state) => ({
-                ...state,
-                convertedUrl: url,
-              }));
-            }
-          },
-          error: (error) => {
-            this.state.update((state) => ({
-              ...state,
-              error: 'Error converting file. Please try again.',
-            }));
-          },
-        });
+          }
+        },
+        error: (error) => {
+          this.state.update((state) => ({
+            ...state,
+            error: this.translateService.instant(
+              'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.API_ERRORS.CONVERSION_ERROR'
+            ),
+          }));
+        },
+        complete: () => {
+          this.state.update((state) => ({
+            ...state,
+            isConverting: false,
+          }));
+        },
+      });
     } catch (error) {
       this.state.update((state) => ({
         ...state,
-        error: 'Error converting file. Please try again.',
+        error: this.translateService.instant(
+          'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_WORD.API_ERRORS.CONVERSION_ERROR'
+        ),
+        isConverting: false,
       }));
     }
   }
 
   downloadPdf(): void {
-    const url = this.state().convertedUrl;
+    const url = this.state.call().convertedUrl;
     if (!url) return;
 
     const link = document.createElement('a');
@@ -148,7 +150,7 @@ export class WordToPdfComponent {
   }
 
   private getOutputFilename(): string {
-    const originalName = this.state().originalFile?.name || 'document';
+    const originalName = this.state.call().originalFile?.name || 'document';
     const baseName = originalName.split('.').slice(0, -1).join('.');
     return `${baseName}.pdf`;
   }
@@ -177,7 +179,7 @@ export class WordToPdfComponent {
   }
 
   ngOnDestroy(): void {
-    const convertedUrl = this.state().convertedUrl;
+    const convertedUrl = this.state.call().convertedUrl;
     if (convertedUrl) {
       URL.revokeObjectURL(convertedUrl);
     }

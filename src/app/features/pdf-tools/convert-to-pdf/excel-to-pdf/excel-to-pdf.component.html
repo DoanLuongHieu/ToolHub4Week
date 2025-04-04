@@ -1,1 +1,81 @@
-<p>excel-to-pdf works!</p>
+<div class="container mx-auto px-4 py-8 excel-pdf-container">
+  <div class="max-w-3xl mx-auto rounded-lg shadow-lg p-6 converter-container">
+    <h1 class="text-2xl font-bold text-center mb-8 excel-pdf-title">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.TITLE' | translate }}</h1>
+    
+    <div class="mb-6 tool-description">
+      <p class="mb-4 description-text">
+        {{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.DESCRIPTION' | translate }}
+      </p>
+      <div class="flex flex-col space-y-2">
+        <p class="font-medium feature-title">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.FEATURES.TITLE' | translate }}</p>
+        <ul class="list-disc list-inside ml-4 feature-list">
+          <li class="feature-item">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.FEATURES.FEATURE1' | translate }}</li>
+          <li class="feature-item">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.FEATURES.FEATURE2' | translate }}</li>
+          <li class="feature-item">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.FEATURES.FEATURE3' | translate }}</li>
+          <li class="feature-item">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.FEATURES.FEATURE4' | translate }}</li>
+          <li class="feature-item">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.FEATURES.FEATURE5' | translate }}</li>
+          <li class="feature-item">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.FEATURES.FEATURE6' | translate }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-2 border-dashed rounded-lg p-8 text-center mb-6 upload-section" 
+         [ngClass]="{'drag-over': file}"
+         (dragover)="$event.preventDefault()" 
+         (drop)="$event.preventDefault(); onFileSelected($event)">
+      <input type="file" 
+             id="excel-file" 
+             class="hidden" 
+             accept=".xlsx,.csv,.xls,.xlsm,.txt" 
+             (change)="onFileSelected($event)">
+      
+      <div *ngIf="!file" class="upload-prompt-container">
+        <i class="fas fa-file-excel text-5xl mb-4 upload-icon"></i>
+        <p class="mb-2 upload-text">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.SELECT_FILE' | translate }}</p>
+        <p class="text-sm mb-4 upload-alt-text">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.SELECT_ALT' | translate }}</p>
+        <label for="excel-file" class="py-2 px-4 rounded cursor-pointer transition file-input-label">
+          {{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.SELECT_BUTTON' | translate }}
+        </label>
+        <p class="text-xs mt-4 supported-formats">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.SUPPORTED_FORMATS' | translate }}</p>
+      </div>
+
+      <div *ngIf="file" class="flex flex-col items-center file-selected">
+        <i class="fas fa-file-excel text-4xl mb-2 file-icon"></i>
+        <p class="font-medium mb-1 file-name">{{ file.name }}</p>
+        <p class="text-sm mb-4 file-size">{{ (file.size / 1024 / 1024).toFixed(2) }} MB</p>
+        <div class="flex space-x-3 action-buttons">
+          <button (click)="resetForm()" class="py-1 px-3 rounded text-sm transition replace-file">
+            {{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.REPLACE_FILE' | translate }}
+          </button>
+          <button (click)="convertToPdf()" 
+                  [disabled]="isConverting"
+                  class="py-1 px-4 rounded text-sm transition convert-button"
+                  [ngClass]="{'disabled': isConverting}">
+            <span *ngIf="!isConverting">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.CONVERT_BUTTON' | translate }}</span>
+            <span *ngIf="isConverting">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.PROCESSING' | translate }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="errorMessage" class="px-4 py-3 rounded mb-4 error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+
+    <div *ngIf="showProgress" class="mt-4 progress-section">
+      <p class="text-sm mb-1 progress-text">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.PROGRESS.TITLE' | translate:{ progress: progress } }}</p>
+      <div class="w-full rounded-full h-2.5 progress-bar-container">
+        <div class="h-2.5 rounded-full progress-bar-animated progress-bar" [style.width.%]="progress"></div>
+      </div>
+      <p *ngIf="progress > 0 && progress < 30" class="text-xs mt-1 progress-status">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.PROGRESS.READING' | translate }}</p>
+      <p *ngIf="progress >= 30 && progress < 60" class="text-xs mt-1 progress-status">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.PROGRESS.ANALYZING' | translate }}</p>
+      <p *ngIf="progress >= 60 && progress < 90" class="text-xs mt-1 progress-status">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.PROGRESS.CREATING' | translate }}</p>
+      <p *ngIf="progress >= 90 && progress < 100" class="text-xs mt-1 progress-status">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.PROGRESS.FINALIZING' | translate }}</p>
+      <p *ngIf="progress === 100" class="text-xs mt-1 progress-complete">{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.PROGRESS.COMPLETE' | translate }}</p>
+    </div>
+
+    <div class="mt-8 text-sm tips-section">
+      <p class="mb-2"><strong>{{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.NOTE' | translate }}</strong> {{ 'PDF_TOOLS.TO_PDF_CONVERTERS.FROM_EXCEL.SECURITY_NOTE' | translate }}</p>
+    </div>
+  </div>
+</div>

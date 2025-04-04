@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, ElementRef, ViewChild, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   DragDropModule,
@@ -7,11 +7,12 @@ import {
 } from '@angular/cdk/drag-drop';
 import { PDFDocument } from 'pdf-lib';
 import { saveAs } from 'file-saver';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-merge-pdf',
   standalone: true,
-  imports: [CommonModule, DragDropModule],
+  imports: [CommonModule, DragDropModule, TranslateModule],
   templateUrl: './merge-pdf.component.html',
   styleUrl: './merge-pdf.component.css',
 })

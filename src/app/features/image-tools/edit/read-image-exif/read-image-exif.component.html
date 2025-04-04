@@ -1,5 +1,5 @@
 <div class="exif-container">
-  <h1>Image EXIF Reader</h1>
+  <h1>{{ 'IMAGE_TOOLS.READ_EXIF.TITLE' | translate }}</h1>
 
   <div
     class="upload-section"
@@ -8,17 +8,17 @@
     [class.drag-over]="isDragging"
   >
     <label for="fileInput" class="file-input-label">
-      <span>Choose Image File or Drag & Drop</span>
+      <span>{{ 'IMAGE_TOOLS.READ_EXIF.SELECT_FILE' | translate }}</span>
       <input
         type="file"
         id="fileInput"
         accept=".jpg,.jpeg,.png,.webp,.tiff,.heic"
         (change)="handleFileInput($event)"
-        [attr.aria-label]="'Choose image file to read EXIF'"
+        [attr.aria-label]="'IMAGE_TOOLS.READ_EXIF.SELECT_FILE' | translate"
       />
     </label>
     <div class="supported-formats">
-      Supported formats: JPG, PNG, WebP, TIFF, HEIC
+      {{ 'IMAGE_TOOLS.READ_EXIF.SUPPORTED_FORMATS' | translate }}
     </div>
   </div>
 
@@ -27,17 +27,17 @@
   </div>
 
   <div class="loading-status" *ngIf="state().isLoading">
-    Reading EXIF data...
+    {{ 'IMAGE_TOOLS.READ_EXIF.LOADING' | translate }}
   </div>
 
   <div class="content-container" *ngIf="state().originalImage">
     <!-- Image Preview -->
     <div class="image-preview">
-      <h2>Image Preview</h2>
+      <h2>{{ 'IMAGE_TOOLS.READ_EXIF.IMAGE_PREVIEW' | translate }}</h2>
       <div class="image-display">
         <img
           [src]="state().originalImage"
-          alt="Original image"
+          alt="{{ 'IMAGE_TOOLS.READ_EXIF.ORIGINAL_IMAGE' | translate }}"
           class="preview-image"
         />
       </div>
@@ -65,7 +65,7 @@
 
     <!-- No EXIF Data Message -->
     <div class="no-exif-message" *ngIf="!state().exifData">
-      No EXIF data found in this image
+      {{ 'IMAGE_TOOLS.READ_EXIF.NO_EXIF_DATA' | translate }}
     </div>
   </div>
 </div>

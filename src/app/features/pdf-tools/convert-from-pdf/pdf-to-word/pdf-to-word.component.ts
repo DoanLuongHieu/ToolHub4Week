@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { PdfConversionService } from '../services/pdf-conversion.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-pdf-to-word',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, TranslateModule],
   templateUrl: './pdf-to-word.component.html',
   styleUrls: ['./pdf-to-word.component.css'],
 })
@@ -18,7 +19,10 @@ export class PdfToWordComponent implements OnInit {
   apiAvailable = false;
   apiError = '';
 
-  constructor(private pdfConversionService: PdfConversionService) {}
+  constructor(
+    private pdfConversionService: PdfConversionService,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.checkApiStatus();
@@ -32,9 +36,11 @@ export class PdfToWordComponent implements OnInit {
       },
       error: (error) => {
         this.apiAvailable = false;
-        this.apiError = 'Máy chủ chuyển đổi PDF hiện không khả dụng. Vui lòng thử lại sau.';
+        this.apiError = this.translateService.instant(
+          'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.API_ERRORS.SERVER_UNAVAILABLE'
+        );
         console.error('API Status Check Failed:', error);
-      }
+      },
     });
   }
 
@@ -111,12 +117,15 @@ export class PdfToWordComponent implements OnInit {
           }
         },
         error: (error) => {
-          console.error('Conversion failed:', error);
-          alert('Chuyển đổi thất bại. Vui lòng thử lại.');
+          this.isConverting = false;
+          this.apiError = this.translateService.instant(
+            'PDF_TOOLS.PDF_CONVERTERS.TO_WORD.API_ERRORS.CONVERSION_ERROR'
+          );
+          console.error('Conversion Error:', error);
         },
         complete: () => {
           this.isConverting = false;
-        }
+        },
       });
     } catch (error) {
       console.error('Conversion error:', error);

@@ -1,38 +1,63 @@
 <div class="converter-container">
-  <h1>PDF to Excel Converter</h1>
+  <h1>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.TITLE' | translate }}</h1>
+  
+  <div class="tool-description">
+    <p>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.DESCRIPTION' | translate }}</p>
+    <div class="feature-list">
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        <span>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.FEATURES.FEATURE1' | translate }}</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        <span>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.FEATURES.FEATURE2' | translate }}</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        <span>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.FEATURES.FEATURE3' | translate }}</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">✓</span>
+        <span>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.FEATURES.FEATURE4' | translate }}</span>
+      </div>
+    </div>
+  </div>
 
   <div
     class="upload-section"
     (dragover)="onDragOver($event)"
     (drop)="onDrop($event)"
+    (dragleave)="onDragLeave($event)"
     [class.drag-over]="state().isDragging"
   >
     <label for="fileInput" class="file-input-label">
-      <span>Choose PDF File or Drag & Drop </span>
+      <span>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.SELECT_FILE' | translate }}</span>
       <input
         type="file"
         id="fileInput"
         accept=".pdf"
         (change)="handleFileInput($event)"
-        [attr.aria-label]="'Choose PDF file to convert'"
+        [attr.aria-label]="'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.SELECT_FILE' | translate"
       />
     </label>
-    <div class="supported-formats">Supported format: PDF</div>
+    <div class="supported-formats">{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.SUPPORTED_FORMATS' | translate }}</div>
   </div>
 
   <div class="error-message" *ngIf="state().error">
-    {{ state().error }}
+    <span class="error-icon">⚠️</span> {{ state().error }}
   </div>
 
   <div class="conversion-status" *ngIf="state().isConverting">
-    Converting PDF to Excel...
+    <div class="loading-spinner"></div>
+    <p>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.CONVERTING' | translate }}</p>
+    <p class="subtext">{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.PROCESS_TIME' | translate }}</p>
   </div>
 
   <div
     class="format-selection"
     *ngIf="state().originalFile && !state().isConverting"
   >
-    <h3>Output Format:</h3>
+    <h3>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.OPTIONS.FORMAT' | translate }}:</h3>
     <div class="format-buttons">
       <button
         *ngFor="let format of supportedFormats"
@@ -44,27 +69,64 @@
       </button>
     </div>
 
+    <div class="format-info">
+      <div *ngIf="state().outputFormat === 'xlsx'">
+        <h4>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.OPTIONS.XLSX' | translate }}</h4>
+        <p>Định dạng tiêu chuẩn cho bảng tính Microsoft Excel. Cho phép bạn chỉnh sửa và định dạng dữ liệu sau khi chuyển đổi.</p>
+        <p class="subtext">Phù hợp để: Phân tích dữ liệu, tạo biểu đồ, chỉnh sửa, lưu trữ</p>
+      </div>
+      <div *ngIf="state().outputFormat === 'csv'">
+        <h4>{{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.OPTIONS.CSV' | translate }} (Comma Separated Values)</h4>
+        <p>Định dạng văn bản đơn giản, được hỗ trợ bởi hầu hết các ứng dụng bảng tính và cơ sở dữ liệu.</p>
+        <p class="subtext">Phù hợp để: Nhập dữ liệu vào các hệ thống khác, tương thích rộng rãi, tệp nhỏ gọn</p>
+      </div>
+    </div>
+
     <button
       class="convert-button"
       (click)="convertFile()"
       [disabled]="state().isConverting"
     >
-      Convert to {{ state().outputFormat.toUpperCase() }}
+      {{ 'BUTTON.CONVERT' | translate }} {{ state().outputFormat.toUpperCase() }}
     </button>
   </div>
 
   <div class="file-info" *ngIf="state().originalFile">
-    <h3>Selected File:</h3>
-    <p>{{ state().originalFile?.name || "" }}</p>
+    <h3>{{ 'PDF_TOOLS.COMMON.SELECTED_FILE' | translate }}:</h3>
+    <p><strong>{{ 'PDF_TOOLS.COMMON.SELECTED_FILE' | translate }}:</strong> {{ state().originalFile?.name || "" }}</p>
+    <p><strong>{{ 'PDF_TOOLS.COMMON.FILE_SIZE' | translate }}:</strong> {{ getFormattedFileSize(state().originalFile) }}</p>
   </div>
 
   <div class="download-container" *ngIf="state().convertedFile">
+    <h3>{{ 'SUCCESS.CONVERTED' | translate }}!</h3>
+    <p>File đã được chuyển đổi sang định dạng {{ state().outputFormat.toUpperCase() }}</p>
     <button
       class="download-button"
       (click)="downloadFile()"
-      [attr.aria-label]="'Download converted file'"
+      [attr.aria-label]="'Tải xuống file đã chuyển đổi'"
     >
-      Download {{ state().outputFormat.toUpperCase() }}
+      {{ 'PDF_TOOLS.PDF_CONVERTERS.TO_EXCEL.DOWNLOAD_BUTTON' | translate }}
     </button>
+  </div>
+  
+  <div class="usage-tips" *ngIf="!state().originalFile">
+    <h3>Mẹo sử dụng:</h3>
+    <ul>
+      <li>Để có kết quả tốt nhất, hãy sử dụng PDF có các bảng được định dạng rõ ràng</li>
+      <li>Mỗi trang PDF sẽ được chuyển đổi thành một sheet riêng biệt trong Excel</li>
+      <li>Nếu bạn chỉ cần dữ liệu ở định dạng đơn giản, hãy chọn xuất sang CSV</li>
+      <li>Đối với bảng có cấu trúc phức tạp, kết quả có thể cần chỉnh sửa thêm sau khi chuyển đổi</li>
+      <li>Công cụ này xử lý hoàn toàn trên trình duyệt, dữ liệu của bạn không được gửi đến bất kỳ máy chủ nào</li>
+    </ul>
+  </div>
+  
+  <div class="limitations" *ngIf="!state().originalFile">
+    <h3>{{ 'PDF_TOOLS.COMMON.NOTE' | translate }}:</h3>
+    <ul>
+      <li>Công cụ này tập trung vào việc trích xuất dữ liệu dạng bảng từ PDF</li>
+      <li>Định dạng phức tạp như biểu đồ hoặc hình ảnh sẽ không được chuyển đổi</li>
+      <li>Nếu PDF được bảo vệ bằng mật khẩu, hãy gỡ bỏ bảo vệ trước khi sử dụng công cụ này</li>
+      <li>File PDF quá lớn (> 50MB) có thể gây chậm trễ trong quá trình xử lý</li>
+    </ul>
   </div>
 </div>
