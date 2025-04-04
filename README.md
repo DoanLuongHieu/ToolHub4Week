@@ -23,7 +23,6 @@ ToolHub4Week là một ứng dụng web toàn diện cung cấp nhiều công c�
   - Nén hình ảnh
   - Đọc thông tin EXIF
   - Cắt hình ảnh
-  - Đóng khung hình ảnh
 
 ### 3. Công cụ khác
 - **Tạo**
@@ -43,9 +42,9 @@ ToolHub4Week là một ứng dụng web toàn diện cung cấp nhiều công c�
 ## Công nghệ sử dụng
 
 - **Frontend**: Angular 17, TypeScript, RxJS
-- **UI/UX**: CSS/SCSS, Responsive Design
+- **UI/UX**: Tailwind CSS, Responsive Design
 - **Backend**: Firebase (Authentication, Hosting)
-- **Thư viện**: pdf-lib, pdfjs-dist, cropperjs, exifr, file-saver
+- **Thư viện**: pdf-lib, pdfjs-dist, cropperjs, exifr, file-saver, exceljs, jspdf
 
 ## Yêu cầu cài đặt
 - Node.js (phiên bản 18.x hoặc cao hơn)
