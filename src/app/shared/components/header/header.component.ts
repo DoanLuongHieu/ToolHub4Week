@@ -8,27 +8,16 @@ import {
   LanguageService,
   Language,
 } from '../../../core/services/language.service';
-import { AuthService, User } from '../../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { User } from '../../../models/user.model';
+import { DropdownState } from '../../../models/ui.model';
 // import { MobileMenuComponent } from '../mobile-menu/mobile-menu.component';
-
-interface DropdownState {
-  pdf: boolean;
-  image: boolean;
-  others: boolean;
-  tools: boolean;
-  user: boolean;
-}
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    CommonModule, 
-    RouterLink, 
-    ClickOutsideDirective,
-    TranslateModule
-  ],
+  imports: [CommonModule, RouterLink, ClickOutsideDirective, TranslateModule],
   templateUrl: './header.component.html',
   styleUrls: [
     './header.component.css',
@@ -41,17 +30,18 @@ export class HeaderComponent {
   private authService = inject(AuthService);
   protected languageService = inject(LanguageService);
   private router = inject(Router);
-  
+
   currentLang = this.languageService.getCurrentLang();
   currentUser: User | null = null;
   isDarkMode = this.themeService.getCurrentTheme();
-  
+
   isDropdownOpen: DropdownState = {
     pdf: false,
     image: false,
     others: false,
     tools: false,
-    user: false
+    user: false,
+    account: false,
   };
 
   constructor() {
@@ -64,9 +54,9 @@ export class HeaderComponent {
           this.isDropdownOpen[key as keyof DropdownState] = false;
         });
       });
-      
+
     // Đăng ký lắng nghe sự thay đổi của người dùng hiện tại
-    this.authService.currentUser$.subscribe(user => {
+    this.authService.currentUser$.subscribe((user) => {
       this.currentUser = user;
     });
   }
@@ -100,10 +90,10 @@ export class HeaderComponent {
       },
       error: (error) => {
         console.error('Đăng xuất thất bại:', error);
-      }
+      },
     });
   }
-  
+
   // Lấy avatar mặc định nếu người dùng không có avatar
   getDefaultAvatar(username: string): string {
     return `https://ui-avatars.com/api/?name=${username}&background=random&color=fff&size=128`;

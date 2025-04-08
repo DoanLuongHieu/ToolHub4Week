@@ -1,0 +1,122 @@
+CẤU TRÚC MVVM CỦA DỰ ÁN TOOLHUB4WEEK
+================================
+
+1. VIEW LAYER (UI)
+-----------------
+src/app/
+├── components/                    # Các component UI cơ bản
+│   ├── header/                   # Header component
+│   ├── footer/                   # Footer component
+│   ├── sidebar/                  # Sidebar navigation
+│   └── loading-spinner/          # Loading indicator
+│
+├── layouts/                      # Các layout chính
+│   ├── main-layout/             # Layout chính cho ứng dụng
+│   └── auth-layout/             # Layout cho trang authentication
+│
+└── features/                     # Các tính năng chính
+    ├── pdf-tools/               # Công cụ PDF
+    │   ├── pdf-tools-home/      # Trang chủ PDF tools
+    │   ├── convert-to-pdf/      # Chuyển đổi sang PDF
+    │   ├── convert-from-pdf/    # Chuyển đổi từ PDF
+    │   └── organize/            # Tổ chức PDF
+    │
+    ├── image-tools/             # Công cụ ảnh
+    │   ├── edit/               # Chỉnh sửa ảnh
+    │   ├── convert/            # Chuyển đổi ảnh
+    │   └── image-ai/           # Xử lý ảnh bằng AI
+    │
+    ├── authentication/          # Xác thực
+    │   ├── login/              # Đăng nhập
+    │   ├── register/           # Đăng ký
+    │   └── forgot-password/    # Quên mật khẩu
+    │
+    └── account/                 # Quản lý tài khoản
+        ├── profile/            # Thông tin cá nhân
+        └── settings/           # Cài đặt
+
+2. VIEWMODEL LAYER
+-----------------
+src/app/
+├── services/                    # Các service chính
+│   ├── pdf.service.ts          # Xử lý PDF
+│   ├── image.service.ts        # Xử lý ảnh
+│   ├── auth.service.ts         # Xác thực
+│   └── user.service.ts         # Quản lý người dùng
+│
+├── features/
+│   ├── pdf-tools/
+│   │   └── services/           # Services cho PDF tools
+│   │       ├── pdf-converter.service.ts
+│   │       └── pdf-organizer.service.ts
+│   │
+│   └── image-tools/
+│       └── services/           # Services cho image tools
+│           ├── image-editor.service.ts
+│           └── image-converter.service.ts
+│
+└── core/services/              # Core services
+    ├── translation.service.ts  # Dịch thuật
+    ├── language.service.ts     # Ngôn ngữ
+    ├── theme.service.ts        # Giao diện
+    ├── navigation.service.ts   # Điều hướng
+    ├── error.service.ts        # Xử lý lỗi
+    └── loading.service.ts      # Loading state
+
+3. MODEL LAYER
+-------------
+src/app/
+├── models/                     # Các model chính
+│   ├── user.model.ts          # Model người dùng
+│   ├── pdf.model.ts           # Model PDF
+│   └── image.model.ts         # Model ảnh
+│
+├── core/                      # Core models và interfaces
+│   ├── interfaces/            # Các interface
+│   │   ├── user.interface.ts
+│   │   ├── pdf.interface.ts
+│   │   └── image.interface.ts
+│   │
+│   └── constants/             # Các hằng số
+│       ├── app.constants.ts
+│       └── routes.constants.ts
+│
+└── shared/models/             # Shared models
+    ├── response.model.ts      # Model response
+    └── error.model.ts         # Model lỗi
+
+4. DATA FLOW
+-----------
+View Layer (UI) <-> ViewModel Layer (Services) <-> Model Layer (Models)
+                                                                  ↑
+                                                           Firebase Services
+                                                                  ↓
+                                                           Firestore Database
+
+5. FIREBASE INTEGRATION
+---------------------
+- Authentication Service
+- Firestore Database Service
+- Storage Service
+- Analytics Service
+
+6. STATE MANAGEMENT
+-----------------
+- RxJS Observables
+- BehaviorSubjects
+- State Management trong Services
+- Local Storage cho persistent data
+
+7. ERROR HANDLING
+---------------
+- Global Error Interceptor
+- Error Service
+- Error Components
+- Error Logging
+
+8. INTERNATIONALIZATION
+---------------------
+- Translation Service
+- Language Service
+- i18n Files
+- Language Selector Component 

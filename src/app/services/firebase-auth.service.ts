@@ -2,35 +2,30 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, from, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { User } from './auth.service';
+import { User } from '../models/user.model';
 
 // Firebase
 import { initializeApp } from 'firebase/app';
-import { 
-  getAuth, 
-  GoogleAuthProvider, 
-  signInWithPopup, 
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
   signOut,
   UserCredential,
   onAuthStateChanged,
-  Auth as FirebaseAuth
+  Auth as FirebaseAuth,
 } from 'firebase/auth';
 
-export interface FirebaseUser {
-  uid: string;
-  email: string | null;
-  displayName: string | null;
-  photoURL: string | null;
-  isNewUser?: boolean;
-}
+// Sử dụng FirebaseUser từ file model
+import { FirebaseUser } from '../models/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FirebaseAuthService {
   private auth: FirebaseAuth;
   private googleProvider = new GoogleAuthProvider();
-  
+
   private currentUserSubject = new BehaviorSubject<FirebaseUser | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
@@ -41,10 +36,10 @@ export class FirebaseAuthService {
     // Khởi tạo Firebase
     const app = initializeApp(environment.firebaseConfig);
     this.auth = getAuth(app);
-    
+
     // Cấu hình GoogleAuthProvider
     this.googleProvider.setCustomParameters({
-      prompt: 'select_account'
+      prompt: 'select_account',
     });
 
     // Kiểm tra trạng thái xác thực khi khởi tạo
@@ -65,10 +60,13 @@ export class FirebaseAuthService {
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
-          photoURL: user.photoURL
+          photoURL: user.photoURL,
         };
         this.currentUserSubject.next(firebaseUser);
-        localStorage.setItem(this.FIREBASE_USER_KEY, JSON.stringify(firebaseUser));
+        localStorage.setItem(
+          this.FIREBASE_USER_KEY,
+          JSON.stringify(firebaseUser)
+        );
       } else {
         this.currentUserSubject.next(null);
         localStorage.removeItem(this.FIREBASE_USER_KEY);
@@ -78,46 +76,45 @@ export class FirebaseAuthService {
 
   // Đăng nhập bằng Google
   signInWithGoogle(): Observable<FirebaseUser> {
-    return from(signInWithPopup(this.auth, this.googleProvider))
-      .pipe(
-        map((result: UserCredential) => {
-          const user = result.user;
-          const isNewUser = user.metadata.creationTime === user.metadata.lastSignInTime;
-          
-          const firebaseUser: FirebaseUser = {
-            uid: user.uid,
-            email: user.email,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
-            isNewUser: isNewUser
-          };
-          
-          return firebaseUser;
-        }),
-        tap(user => {
-          this.currentUserSubject.next(user);
-          localStorage.setItem(this.FIREBASE_USER_KEY, JSON.stringify(user));
-        }),
-        catchError(error => {
-          console.error('Lỗi đăng nhập Google:', error);
-          throw error;
-        })
-      );
+    return from(signInWithPopup(this.auth, this.googleProvider)).pipe(
+      map((result: UserCredential) => {
+        const user = result.user;
+        const isNewUser =
+          user.metadata.creationTime === user.metadata.lastSignInTime;
+
+        const firebaseUser: FirebaseUser = {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          isNewUser: isNewUser,
+        };
+
+        return firebaseUser;
+      }),
+      tap((user) => {
+        this.currentUserSubject.next(user);
+        localStorage.setItem(this.FIREBASE_USER_KEY, JSON.stringify(user));
+      }),
+      catchError((error) => {
+        console.error('Lỗi đăng nhập Google:', error);
+        throw error;
+      })
+    );
   }
 
   // Đăng xuất
   signOut(): Observable<void> {
-    return from(signOut(this.auth))
-      .pipe(
-        tap(() => {
-          this.currentUserSubject.next(null);
-          localStorage.removeItem(this.FIREBASE_USER_KEY);
-        }),
-        catchError(error => {
-          console.error('Lỗi đăng xuất:', error);
-          return of(undefined);
-        })
-      );
+    return from(signOut(this.auth)).pipe(
+      tap(() => {
+        this.currentUserSubject.next(null);
+        localStorage.removeItem(this.FIREBASE_USER_KEY);
+      }),
+      catchError((error) => {
+        console.error('Lỗi đăng xuất:', error);
+        return of(undefined);
+      })
+    );
   }
 
   // Lấy thông tin người dùng hiện tại
@@ -146,15 +143,15 @@ export class FirebaseAuthService {
     // Mô phỏng việc tìm kiếm người dùng từ Firestore
     const storedUsers = localStorage.getItem('toolhub_users');
     const users: User[] = storedUsers ? JSON.parse(storedUsers) : [];
-    const user = users.find(u => u.id === uid);
-    
+    const user = users.find((u) => u.id === uid);
+
     return of(user || null);
   }
 
   // Kiểm tra xem người dùng đã đăng ký username chưa
   hasCompletedRegistration(uid: string): Observable<boolean> {
     return this.findUserByUid(uid).pipe(
-      map(user => !!user && !!user.username)
+      map((user) => !!user && !!user.username)
     );
   }
-} 
+}

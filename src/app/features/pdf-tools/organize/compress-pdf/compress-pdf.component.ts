@@ -3,17 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PDFDocument, PDFName, PDFDict, PDFRef, PDFObject } from 'pdf-lib';
 import { TranslateModule } from '@ngx-translate/core';
-
-interface CompressionState {
-  isCompressing: boolean;
-  error: string | null;
-  originalFile: File | null;
-  compressedFile: Uint8Array | null;
-  originalSize: number | null;
-  compressedSize: number | null;
-  quality: number;
-  removeMetadata: boolean;
-}
+import { CompressionState } from '../../../../models/pdf.model';
 
 @Component({
   selector: 'app-compress-pdf',

@@ -1,36 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { delay, tap, switchMap, map, catchError } from 'rxjs/operators';
-import { FirebaseAuthService, FirebaseUser } from './firebase-auth.service';
-
-export interface User {
-  id: string;
-  email: string;
-  username: string;
-  createdAt: Date;
-  invitationCode?: string;
-  photoURL?: string; // Ảnh đại diện từ Google
-  displayName?: string; // Tên hiển thị từ Google
-  fullName?: string; // Họ và tên đầy đủ
-  birthDate?: string; // Ngày sinh
-  gender?: string; // Giới tính
-  facebookUrl?: string; // Tài khoản Facebook
-  youtubeUrl?: string; // Tài khoản YouTube
-  twitterUrl?: string; // Tài khoản Twitter
-  instagramUrl?: string; // Tài khoản Instagram
-}
-
-export interface RegisterRequest {
-  email: string;
-  username: string;
-  password: string;
-  invitationCode?: string;
-}
-
-export interface LoginRequest {
-  usernameOrEmail: string;
-  password: string;
-}
+import { FirebaseAuthService } from './firebase-auth.service';
+import {
+  User,
+  RegisterRequest,
+  LoginRequest,
+  FirebaseUser,
+} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -123,6 +100,7 @@ export class AuthService {
     displayName?: string;
   }): Observable<User> {
     const newUser: User = {
+      uid: data.uid,
       id: data.uid,
       email: data.email,
       username: data.username,
@@ -230,8 +208,10 @@ export class AuthService {
 
   // Tạo đối tượng người dùng mới
   private createUser(userData: RegisterRequest): User {
+    const id = this.generateId();
     return {
-      id: this.generateId(),
+      uid: id,
+      id: id,
       email: userData.email,
       username: userData.username,
       createdAt: new Date(),

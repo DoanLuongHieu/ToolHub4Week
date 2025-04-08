@@ -1,0 +1,100 @@
+CẤU TRÚC MVVM THỰC TẾ CỦA DỰ ÁN TOOLHUB4WEEK
+==========================================
+
+1. MODEL (Dữ liệu và Business Logic)
+-----------------------------------
+src/app/
+├── models/           # Thư mục chứa các model, nhưng chưa có file nào
+└── shared/models/    # Thư mục chứa các shared model, nhưng chưa có file nào
+
+
+2. VIEW (Giao diện người dùng)
+-----------------------------
+src/app/
+├── components/       # Components UI chung
+│   ├── subscription-info/
+│   └── subscription-popup/
+│
+├── shared/components/  # Components chia sẻ
+│
+├── features/         # Các tính năng của ứng dụng (chứa components)
+│   ├── image-tools/  # Công cụ xử lý ảnh
+│   ├── pdf-tools/    # Công cụ xử lý PDF
+│   │   ├── pdf-tools-home/
+│   │   ├── convert-to-pdf/
+│   │   ├── convert-from-pdf/
+│   │   └── organize/
+│   ├── authentication/  # Xác thực người dùng
+│   │   ├── login/
+│   │   │   ├── login.component.ts
+│   │   │   ├── login.component.html
+│   │   │   └── login.component.css
+│   │   ├── register/
+│   │   ├── forgot-password/
+│   │   └── complete-gmail-registration/
+│   ├── home-page/    # Trang chủ
+│   ├── account/      # Quản lý tài khoản
+│   ├── about/        # Trang giới thiệu
+│   ├── about-us/     # Trang về chúng tôi
+│   ├── privacy-policy/ # Chính sách bảo mật
+│   ├── terms-of-service/ # Điều khoản dịch vụ
+│   ├── sitemap/      # Sơ đồ trang web
+│   ├── all-tools/    # Tất cả công cụ
+│   ├── other-tools/  # Các công cụ khác
+│   └── landing-app/  # Trang đích
+│
+└── layouts/          # Bố cục trang
+
+
+3. VIEWMODEL (Kết nối View-Model)
+-------------------------------
+src/app/
+├── services/         # Các service chính
+│   ├── auth.service.ts            # Xử lý xác thực
+│   ├── firebase-auth.service.ts   # Xác thực Firebase
+│   ├── translation.service.ts     # Dịch thuật
+│   ├── translation.service.spec.ts # Test dịch thuật
+│   └── validation.service.ts      # Xác thực dữ liệu
+│
+├── features/pdf-tools/services/  # Services riêng cho PDF tools
+│
+├── features/image-tools/services/ # Services riêng cho Image tools
+│
+└── core/services/   # Core services
+    ├── translation.service.ts   # Dịch
+    ├── language.service.ts      # Ngôn ngữ
+    ├── theme.service.ts         # Theme
+    ├── navigation.service.ts    # Điều hướng
+    ├── error.service.ts         # Xử lý lỗi
+    └── loading.service.ts       # Trạng thái loading
+
+
+4. CÁCH THỨC HOẠT ĐỘNG CỦA MVVM TRONG DỰ ÁN
+------------------------------------------
+A. Component trong feature (VD: login.component.ts)
+   - Chứa template (login.component.html) - VIEW
+   - Chứa stylesheet (login.component.css) - VIEW
+   - Chứa logic component (login.component.ts) - kết nối VIEW và VIEWMODEL
+
+B. Service (VD: auth.service.ts)
+   - Chứa business logic - VIEWMODEL
+   - Kết nối với Firebase - External Service
+   - Xử lý dữ liệu và trả về cho component
+
+C. Luồng dữ liệu
+   1. Người dùng tương tác với VIEW (login.component.html)
+   2. VIEW gọi đến VIEWMODEL (auth.service.ts) thông qua component (login.component.ts)
+   3. VIEWMODEL xử lý logic và giao tiếp với Firebase
+   4. Kết quả trả về qua VIEWMODEL đến VIEW để hiển thị
+
+
+5. FOLDERS CHÍNH VÀ VAI TRÒ TRONG MVVM
+-------------------------------------
+- src/app/features/: Chứa các tính năng của ứng dụng (VIEW)
+- src/app/services/: Chứa các service (VIEWMODEL)
+- src/app/core/services/: Chứa các core service (VIEWMODEL)
+- src/app/models/: (Dự kiến) chứa các model dữ liệu (MODEL)
+- src/app/shared/: Chứa các thành phần dùng chung (VIEW + VIEWMODEL)
+
+LƯU Ý: Cấu trúc dự án hiện tại đang trong giai đoạn phát triển, một số thư mục đã được tạo 
+nhưng chưa có nội dung (như models/). Đây là hiện trạng thực tế của dự án. 

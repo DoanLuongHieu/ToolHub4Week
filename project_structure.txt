@@ -1,0 +1,93 @@
+CẤU TRÚC DỰ ÁN TOOLHUB4WEEK
+=========================
+
+1. CẤU TRÚC THƯ MỤC CHÍNH
+------------------------
+src/
+├── app/                    # Thư mục chính chứa mã nguồn ứng dụng
+├── assets/                 # Tài nguyên tĩnh (ảnh, font, ...)
+├── environments/           # Cấu hình môi trường
+└── styles.css             # CSS toàn cục
+
+2. CẤU TRÚC THƯ MỤC APP
+-----------------------
+app/
+├── features/              # Các tính năng chính của ứng dụng
+│   ├── all-tools/        # Trang hiển thị tất cả công cụ
+│   ├── authentication/   # Xác thực người dùng
+│   ├── home-page/        # Trang chủ
+│   ├── pdf-tools/        # Công cụ xử lý PDF
+│   ├── image-tools/      # Công cụ xử lý ảnh
+│   ├── account/          # Quản lý tài khoản
+│   ├── about/            # Thông tin về ứng dụng
+│   ├── privacy-policy/   # Chính sách bảo mật
+│   ├── terms-of-service/ # Điều khoản sử dụng
+│   └── sitemap/          # Sơ đồ trang web
+│
+├── shared/               # Các thành phần dùng chung
+│   ├── components/       # Component dùng chung
+│   ├── directives/       # Directives tùy chỉnh
+│   ├── models/           # Model dùng chung
+│   ├── pipes/            # Pipes tùy chỉnh
+│   ├── styles/           # Styles dùng chung
+│   └── examples/         # Ví dụ mẫu
+│
+├── core/                 # Core module
+│   ├── interceptors/     # HTTP interceptors
+│   ├── services/         # Core services
+│   ├── guards/           # Route guards
+│   ├── handlers/         # Error handlers
+│   └── modules/          # Core modules
+│
+├── services/             # Các service chính
+├── models/               # Các model chính
+├── components/           # Các component chính
+├── layouts/              # Các layout chính
+├── app.routes.ts         # Cấu hình routing
+├── app.config.ts         # Cấu hình ứng dụng
+└── app.component.ts      # Component gốc
+
+3. CÔNG NGHỆ SỬ DỤNG
+-------------------
+- Framework: Angular 17
+- UI Framework: Tailwind CSS, Angular Material
+- State Management: RxJS
+- Backend: Firebase
+- Testing: Jasmine, Karma
+- Build Tools: Angular CLI
+- Language: TypeScript
+
+4. KIẾN TRÚC MVVM
+----------------
+- View Layer: components/, layouts/
+- ViewModel Layer: features/, services/
+- Model Layer: models/, core/
+
+5. CÁC TÍNH NĂNG CHÍNH
+---------------------
+- Xử lý PDF (đọc, chỉnh sửa, chuyển đổi)
+- Xử lý ảnh (cắt, chỉnh sửa, metadata)
+- Xác thực người dùng
+- Quản lý tài khoản
+- Giao diện responsive
+- Đa ngôn ngữ
+- SEO optimization
+
+6. CẤU TRÚC FIREBASE
+--------------------
+- Authentication
+- Firestore Database
+- Storage
+- Hosting
+
+7. CẤU TRÚC TESTING
+------------------
+- Unit Tests: Jasmine
+- E2E Tests: Protractor
+- Test Coverage: Karma Coverage
+
+8. CẤU TRÚC DEPLOYMENT
+---------------------
+- Firebase Hosting
+- CI/CD Pipeline
+- Environment Configurations 

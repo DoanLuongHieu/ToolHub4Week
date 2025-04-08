@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
-import { AuthService, User } from '../../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
+import { User } from '../../../models/user.model';
 import { PersonalInfoComponent } from '../personal-info/personal-info.component';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';

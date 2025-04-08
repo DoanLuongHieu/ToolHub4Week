@@ -2,23 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-
-interface SimpleLink {
-  title: string;
-  url: string;
-}
-
-interface NestedLink {
-  title: string;
-  links: SimpleLink[];
-}
-
-type SectionLink = SimpleLink | NestedLink;
-
-interface SiteMapSection {
-  title: string;
-  links: SectionLink[];
-}
+import {
+  SimpleLink,
+  NestedLink,
+  SectionLink,
+  SiteMapSection,
+} from '../../models/ui.model';
 
 @Component({
   selector: 'app-sitemap',
